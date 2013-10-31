@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{39635317-45F8-4F67-98C8-F2BAA1C491AA}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProjectEuler</RootNamespace>
+    <AssemblyName>ProjectEuler</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Problems 90-99\Problem90.cs" />
+    <Compile Include="Problems 90-99\Problem92.cs" />
+    <Compile Include="Problems 90-99\Problem94.cs" />
+    <Compile Include="Problems 90-99\Problem95.cs" />
+    <Compile Include="Problems 90-99\Problem97.cs" />
+    <Compile Include="Problems 90-99\Problem99.cs" />
+    <Compile Include="Problems 80-89\Problem80.cs" />
+    <Compile Include="Problems 80-89\Problem81.cs" />
+    <Compile Include="Problems 80-89\Problem82.cs" />
+    <Compile Include="Problems 80-89\Problem83.cs" />
+    <Compile Include="Problems 80-89\Problem85.cs" />
+    <Compile Include="Problems 80-89\Problem86.cs" />
+    <Compile Include="Problems 80-89\Problem87.cs" />
+    <Compile Include="Problems 80-89\Problem89.cs" />
+    <Compile Include="Problems 70-79\Problem70.cs" />
+    <Compile Include="Problems 70-79\Problem71.cs" />
+    <Compile Include="Problems 70-79\Problem72.cs" />
+    <Compile Include="Problems 70-79\Problem73.cs" />
+    <Compile Include="Problems 70-79\Problem74.cs" />
+    <Compile Include="Problems 70-79\Problem75.cs" />
+    <Compile Include="Problems 70-79\Problem76.cs" />
+    <Compile Include="Problems 70-79\Problem77.cs" />
+    <Compile Include="Problems 70-79\Problem78.cs" />
+    <Compile Include="Problems 70-79\Problem79.cs" />
+    <Compile Include="Problems 60-69\Problem60.cs" />
+    <Compile Include="Problems 60-69\Problem61.cs" />
+    <Compile Include="Problems 60-69\Problem62.cs" />
+    <Compile Include="Problems 60-69\Problem63.cs" />
+    <Compile Include="Problems 60-69\Problem64.cs" />
+    <Compile Include="Problems 60-69\Problem65.cs" />
+    <Compile Include="Problems 60-69\Problem66.cs" />
+    <Compile Include="Problems 60-69\Problem67.cs" />
+    <Compile Include="Problems 60-69\Problem68.cs" />
+    <Compile Include="Problems 60-69\Problem69.cs" />
+    <Compile Include="Problems 50-59\Problem52.cs" />
+    <Compile Include="Problems 50-59\Problem53.cs" />
+    <Compile Include="Problems 50-59\Problem55.cs" />
+    <Compile Include="Problems 50-59\Problem56.cs" />
+    <Compile Include="Problems 50-59\Problem57.cs" />
+    <Compile Include="Problems 50-59\Problem58.cs" />
+    <Compile Include="Problems 50-59\Problem59.cs" />
+    <Compile Include="Problems 1-9\Problem1.cs" />
+    <Compile Include="Problems 10-19\Problem10.cs" />
+    <Compile Include="Problems 10-19\Problem11.cs" />
+    <Compile Include="Problems 10-19\Problem12.cs" />
+    <Compile Include="Problems 10-19\Problem13.cs" />
+    <Compile Include="Problems 10-19\Problem14.cs" />
+    <Compile Include="Problems 10-19\Problem15.cs" />
+    <Compile Include="Problems 10-19\Problem16.cs" />
+    <Compile Include="Problems 10-19\Problem17.cs" />
+    <Compile Include="Problems 10-19\Problem18.cs" />
+    <Compile Include="Problems 10-19\Problem19.cs" />
+    <Compile Include="Problems 1-9\Problem2.cs" />
+    <Compile Include="Problems 20-29\Problem20.cs" />
+    <Compile Include="Problems 20-29\Problem21.cs" />
+    <Compile Include="Problems 20-29\Problem22.cs" />
+    <Compile Include="Problems 20-29\Problem23.cs" />
+    <Compile Include="Problems 20-29\Problem24.cs" />
+    <Compile Include="Problems 20-29\Problem25.cs" />
+    <Compile Include="Problems 20-29\Problem26.cs" />
+    <Compile Include="Problems 20-29\Problem27.cs" />
+    <Compile Include="Problems 20-29\Problem28.cs" />
+    <Compile Include="Problems 20-29\Problem29.cs" />
+    <Compile Include="Problems 1-9\Problem3.cs" />
+    <Compile Include="Problems 30-39\Problem30.cs" />
+    <Compile Include="Problems 30-39\Problem31.cs" />
+    <Compile Include="Problems 30-39\Problem32.cs" />
+    <Compile Include="Problems 30-39\Problem33.cs" />
+    <Compile Include="Problems 30-39\Problem34.cs" />
+    <Compile Include="Problems 30-39\Problem35.cs" />
+    <Compile Include="Problems 30-39\Problem36.cs" />
+    <Compile Include="Problems 30-39\Problem37.cs" />
+    <Compile Include="Problems 30-39\Problem38.cs" />
+    <Compile Include="Problems 30-39\Problem39.cs" />
+    <Compile Include="Problems 1-9\Problem4.cs" />
+    <Compile Include="Problems 40-49\Problem40.cs" />
+    <Compile Include="Problems 40-49\Problem41.cs" />
+    <Compile Include="Problems 40-49\Problem42.cs" />
+    <Compile Include="Problems 40-49\Problem43.cs" />
+    <Compile Include="Problems 40-49\Problem44.cs" />
+    <Compile Include="Problems 40-49\Problem45.cs" />
+    <Compile Include="Problems 40-49\Problem46.cs" />
+    <Compile Include="Problems 1-9\Problem5.cs" />
+    <Compile Include="Problems 1-9\Problem6.cs" />
+    <Compile Include="Problems 1-9\Problem7.cs" />
+    <Compile Include="Problems 1-9\Problem8.cs" />
+    <Compile Include="Problems 1-9\Problem9.cs" />
+    <Compile Include="Problems 40-49\Problem47.cs" />
+    <Compile Include="Problems 40-49\Problem48.cs" />
+    <Compile Include="Problems 40-49\Problem49.cs" />
+    <Compile Include="Problems 50-59\Problem50.cs" />
+    <Compile Include="Problems 50-59\Problem51.cs" />
+    <Compile Include="Problems 90-99\Problem93.cs" />
+    <Compile Include="Problems 90-99\Problem98.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CarlJohansen\CarlJohansen.csproj">
+      <Project>{d592a7c4-f6ee-44fa-9710-441df2d9b0f6}</Project>
+      <Name>CarlJohansen</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Primes\Primes.csproj">
+      <Project>{358b9c7e-82b3-4184-af17-b1e063ef62ac}</Project>
+      <Name>Primes</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="toinclude.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
