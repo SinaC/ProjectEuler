@@ -33,7 +33,7 @@ namespace ProjectEuler
                             list89.Add(item, item);
                         break;
                     }
-                    else if (i == 1 || list1.ContainsKey(i))
+                    if (i == 1 || list1.ContainsKey(i))
                     {
                         foreach (ulong item in list)
                             list1.Add(item, item);

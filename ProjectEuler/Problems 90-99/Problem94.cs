@@ -9,7 +9,7 @@
             // area = 1/4 * ( 3a # 1 ) * sqrt( ( a # 1 )^2 * ( a | 1 ) )  with # representing + (b=a+1) or - (b=a-1) and  | representing - (b=a+1) or + (b=a-1)
             const ulong perimeterLimit = 1000000000;
             const ulong sideLimit = 1 + (1000000000 / 3);
-            ulong count = 1;
+            //ulong count = 1;
             ulong sum = 0;
             for (ulong a = 3; a <= sideLimit; a += 2)
             {
@@ -25,7 +25,7 @@
                     {
                         //Console.WriteLine("+1 --> a=" + a + " b=" + b1 + " p=" + perimeter1);
                         sum += perimeter1;
-                        count++;
+                        //count++;
                         continue; // no need to test second case
                     }
                 }
@@ -39,7 +39,7 @@
                     {
                         //Console.WriteLine("-1 --> a=" + a + " b=" + b2 + " p=" + perimeter2);
                         sum += perimeter2;
-                        count++;
+                        //count++;
                     }
                 }
             }

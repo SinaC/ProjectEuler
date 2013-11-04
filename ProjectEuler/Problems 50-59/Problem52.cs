@@ -5,7 +5,7 @@
         public ulong Solve()
         {
             ulong n = 1;
-            ulong result = 0;
+            ulong result;
             while (true)
             {
                 //string sortedString = _52_SortString(n.ToString());

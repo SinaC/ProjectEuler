@@ -12,8 +12,8 @@ namespace ProjectEuler
             Dictionary<ulong, int> cache = new Dictionary<ulong, int>();
             for (ulong n = 69; n <= limit; n++)
             {
-                int index = 0;
-                bool fFound = false;
+                int index;
+                bool fFound;
                 List<ulong> list = new List<ulong>();
                 ulong sum = n;
                 while (true)

@@ -105,7 +105,7 @@
             ulong[] chain = new ulong[limit];
             for (ulong i = 0; i < limit; i++)
                 chain[i] = 0;
-            ulong index = 0;
+            //ulong index = 0;
             ulong longest = 0;
             ulong smallestOfLongestLength = 0;
             for (ulong i = 2; i < limit; i++)
@@ -115,7 +115,7 @@
                 if (fCheckChain && length > longest)
                 {
                     longest = length;
-                    index = i;
+                    //index = i;
                     smallestOfLongestLength = smallest;
                 }
             }

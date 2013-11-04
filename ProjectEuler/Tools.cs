@@ -452,10 +452,9 @@ namespace ProjectEuler
         {
             if (a.Length < b.Length)
                 return -1;
-            else if (a.Length > b.Length)
+            if (a.Length > b.Length)
                 return +1;
-            else
-                return String.CompareOrdinal(a, b);
+            return String.CompareOrdinal(a, b);
         }
 
         // Solve a*lastX + b*lastY = 1

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 
@@ -62,7 +63,7 @@ namespace ProjectEuler
 
             for (int i = 0; i < squares.Length; i++)
             {
-                int squareLength = squares[i].ToString().Length;
+                int squareLength = squares[i].ToString(CultureInfo.InvariantCulture).Length;
 
                 //Too short, keep looking
                 if (squareLength < word1.Length)

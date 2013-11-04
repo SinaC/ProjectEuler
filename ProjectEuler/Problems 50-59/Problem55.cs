@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Globalization;
+using System.Text;
 
 namespace ProjectEuler
 {
@@ -11,7 +12,7 @@ namespace ProjectEuler
             for (ulong i = 11; i <= limit; i++)
             {
                 bool fOk = false;
-                string n = i.ToString();
+                string n = i.ToString(CultureInfo.InvariantCulture);
                 for (int t = 0; t < 50; t++)
                 {
                     string reverse = ReverseString(n);

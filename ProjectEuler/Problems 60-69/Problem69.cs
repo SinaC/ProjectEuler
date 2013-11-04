@@ -33,8 +33,7 @@ namespace ProjectEuler
                     ulong newProduct = product * n;
                     if (newProduct > limit)
                         break;
-                    else
-                        product = newProduct;
+                    product = newProduct;
                 }
             return product;
         }
