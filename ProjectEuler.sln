@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Primes", "Primes\Primes.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarlJohansen", "CarlJohansen\CarlJohansen.csproj", "{D592A7C4-F6EE-44FA-9710-441DF2D9B0F6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fractions", "Fractions\Fractions.csproj", "{83FCA5F6-3811-4F0F-AEAE-E4AF5B704B59}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{D592A7C4-F6EE-44FA-9710-441DF2D9B0F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D592A7C4-F6EE-44FA-9710-441DF2D9B0F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D592A7C4-F6EE-44FA-9710-441DF2D9B0F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83FCA5F6-3811-4F0F-AEAE-E4AF5B704B59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83FCA5F6-3811-4F0F-AEAE-E4AF5B704B59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83FCA5F6-3811-4F0F-AEAE-E4AF5B704B59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83FCA5F6-3811-4F0F-AEAE-E4AF5B704B59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

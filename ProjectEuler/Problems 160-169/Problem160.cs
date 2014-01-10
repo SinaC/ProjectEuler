@@ -4,7 +4,7 @@ namespace ProjectEuler
 {
     public class Problem160
     {
-        // Under construction
+        [UnderConstruction]
         public ulong Solve()
         {
             //http://mathcentral.uregina.ca/QQ/database/QQ.09.07/s/mukesh1.html

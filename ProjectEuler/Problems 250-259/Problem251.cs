@@ -2,9 +2,9 @@
 
 namespace ProjectEuler
 {
-    // TOO SLOW
     public class Problem251
     {
+        [TooSlow]
         public ulong Solve()
         {
             //http://www77.wolframalpha.com/input/?i=((a%2Bbsqrt(c))^(1/3))+%2B+((a-bsqrt(c))^(1/3))+%3D+1 

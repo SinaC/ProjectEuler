@@ -2,9 +2,9 @@
 
 namespace ProjectEuler
 {
-    // UNDER CONSTRUCTION
     public class Problem277
     {
+        [UnderConstruction]
         public ulong Solve()
         {
             // Let An be ( n - a ) / b

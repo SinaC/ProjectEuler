@@ -1,8 +1,36 @@
-﻿namespace ProjectEuler
+﻿using System;
+
+namespace ProjectEuler
 {
     public class Problem94
     {
-        public ulong Solve()
+        public long Solve()
+        {
+            const long MAX = 1000000000;
+            const long MAXI = 20;
+
+            long[] m = new long[MAXI];
+            m[0] = -1;
+            m[1] = 1;
+            long a = 1;
+            long sum = 0;
+            //Console.WriteLine(" i         m         a         b       sum");
+            for (long i = 2; i < MAXI; i++)
+            {
+                m[i] = (i%2 == 0) ? (m[i - 1] + m[i - 2]) : (2*m[i - 1] + m[i - 2]);
+                a += 4*m[i]*m[i - 1];
+                long b = (i%2 == 0) ? (a + 1) : (a - 1);
+                if (a + a + b > MAX) 
+                    break;
+                if (m[i] > 0 && a > 0 && b > 0)
+                    sum += a + a + b;
+                //Console.WriteLine("{0,2} {1,9} {2,9} {3,9} {4,9}", i, m[i], a, b, sum);
+            }
+            return sum;
+        }
+
+        [TooSlow]
+        public ulong OLDSolve()
         {
             // Brute-force
             // perimeter = 2*a+b with b=a+1 or b=a-1

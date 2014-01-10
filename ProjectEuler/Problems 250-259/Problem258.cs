@@ -1,8 +1,8 @@
 ﻿namespace ProjectEuler
 {
-    // TOO SLOW
     public class Problem258
     {
+        [TooSlow]
         public ulong Solve()
         {
             // Gk = Fk-2000

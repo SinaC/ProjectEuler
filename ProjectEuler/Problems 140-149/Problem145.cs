@@ -2,6 +2,7 @@
 {
     public class Problem145
     {
+        [TooSlow]
         public ulong Solve()
         {
             // Brute-force

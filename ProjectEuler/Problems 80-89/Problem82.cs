@@ -9,6 +9,60 @@ namespace ProjectEuler
             using (System.IO.StreamReader reader = new System.IO.StreamReader(path))
             {
                 const int size = 80;
+                ulong[,] matrix = new ulong[size,size];
+                int column = 0;
+                while (!reader.EndOfStream)
+                {
+                    string s = reader.ReadLine();
+                    string[] numbers = s.Split(',');
+                    int row = 0;
+                    foreach (string number in numbers)
+                        matrix[row++, column] = Convert.ToUInt64(number);
+                    column++;
+                }
+
+                ulong[,] max = new ulong[size, size];
+                for (int i = 0; i < size; i++)
+                    for (int j = 0; j < size; j++)
+                        max[i, j] = ulong.MaxValue;
+
+                for (int i = 0; i < size; i++)
+                    max[0, i] = matrix[0, i];
+
+                for (int i = 0; i < size-1; i++)
+                {
+                    // for each column
+                    for (int j = 0; j < size; j++)
+                    {
+                        // for each row
+                        int tempJ = j;
+                        while ((--tempJ) >= 0)
+                            if (matrix[i,tempJ] + max[i,tempJ + 1] < max[i,tempJ])
+                                max[i,tempJ] = matrix[i,tempJ] + max[i,tempJ + 1];
+                        tempJ = j;
+                        while ((++tempJ) < size)
+                            if (matrix[i,tempJ] + max[i,tempJ - 1] < max[i,tempJ])
+                                max[i,tempJ] = matrix[i,tempJ] + max[i,tempJ - 1];
+                    }
+
+                    for (int j = 0; j < size; j++)
+                        max[i + 1,j] = max[i,j] + matrix[i + 1,j];
+                }
+
+                ulong smallest = ulong.MaxValue;
+                for (int j = 0; j < size; j++)
+                    if (max[size-1, j] < smallest)
+                        smallest = max[size-1, j];
+                return smallest;
+            }
+        }
+
+        [TooSlow]
+        public ulong OLDSolve(string path)
+        {
+            using (System.IO.StreamReader reader = new System.IO.StreamReader(path))
+            {
+                const int size = 80;
                 ulong[,] matrix = new ulong[size, size];
                 int row = 0;
                 while (!reader.EndOfStream)

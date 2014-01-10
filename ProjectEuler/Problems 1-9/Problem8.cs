@@ -2,7 +2,7 @@
 {
     public class Problem8
     {
-        public uint Solve()
+        public ulong Solve()
         {
             const string s =
                 "73167176531330624919225119674426574742355349194934" +
@@ -25,14 +25,14 @@
                 "84580156166097919133875499200524063689912560717606" +
                 "05886116467109405077541002256983155200055935729725" +
                 "71636269561882670428252483600823257530420752963450";
-            uint largest = 0;
+            ulong largest = 0;
             for (int i = 0; i < s.Length - 4; i++)
             {
-                uint number = uint.Parse(s.Substring(i, 1)) *
-                              uint.Parse(s.Substring(i + 1, 1)) *
-                              uint.Parse(s.Substring(i + 2, 1)) *
-                              uint.Parse(s.Substring(i + 3, 1)) *
-                              uint.Parse(s.Substring(i + 4, 1));
+                ulong number = ulong.Parse(s.Substring(i, 1)) *
+                              ulong.Parse(s.Substring(i + 1, 1)) *
+                              ulong.Parse(s.Substring(i + 2, 1)) *
+                              ulong.Parse(s.Substring(i + 3, 1)) *
+                              ulong.Parse(s.Substring(i + 4, 1));
                 if (number > largest)
                     largest = number;
             }

@@ -1,8 +1,12 @@
-﻿namespace ProjectEuler
+﻿using System;
+using System.Globalization;
+using System.Linq;
+
+namespace ProjectEuler
 {
     public class Problem93
     {
-        public int[] Solve()
+        public string Solve()
         {
             //a+b+c+d
             //a+(b+c)+d
@@ -64,7 +68,7 @@
                 comb = GetNextCombination(4, 10, comb);
             }
 
-            return best;
+            return best == null ? String.Empty : best.Aggregate(String.Empty, (s, i) => s + i.ToString(CultureInfo.InvariantCulture));
         }
 
         private double? ope(double? a, double? b, int op)

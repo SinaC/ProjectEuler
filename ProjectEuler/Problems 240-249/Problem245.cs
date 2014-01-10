@@ -2,6 +2,7 @@
 {
     public class Problem245
     {
+        [UnderConstruction]
         public ulong Solve()
         {
             //        n - phi(n)     n - phi(n)   1

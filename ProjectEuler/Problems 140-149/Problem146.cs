@@ -5,6 +5,7 @@ namespace ProjectEuler
 {
     public class Problem146
     {
+        [TooSlow]
         public ulong Solve()
         {
             //// 2 hours to complete

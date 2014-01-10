@@ -36,6 +36,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes.cs" />
+    <Compile Include="Problems 200-209\Problem207.cs" />
+    <Compile Include="Problems 200-209\Problem200.cs" />
+    <Compile Include="Problems 320-329\Problem329.cs" />
+    <Compile Include="Problems 210-219\Problem211.cs" />
     <Compile Include="Problems 270-279\Problem277.cs" />
     <Compile Include="Problems 290-299\Problem293.cs" />
     <Compile Include="Problems 290-299\Problem297.cs" />
@@ -214,6 +219,10 @@
     <ProjectReference Include="..\CarlJohansen\CarlJohansen.csproj">
       <Project>{d592a7c4-f6ee-44fa-9710-441df2d9b0f6}</Project>
       <Name>CarlJohansen</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fractions\Fractions.csproj">
+      <Project>{83fca5f6-3811-4f0f-aeae-e4af5b704b59}</Project>
+      <Name>Fractions</Name>
     </ProjectReference>
     <ProjectReference Include="..\Primes\Primes.csproj">
       <Project>{358b9c7e-82b3-4184-af17-b1e063ef62ac}</Project>

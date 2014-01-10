@@ -31,7 +31,7 @@ namespace ProjectEuler
                     digit = Tools.ToUInt64(a[stringIndex]);
                     k = 0;
                 }
-                Console.WriteLine(digitIndex + "  " + d + "  " + stringIndex + "  " + k + "  " + digit);
+                //Console.WriteLine(digitIndex + "  " + d + "  " + stringIndex + "  " + k + "  " + digit);
                 sum += digit * pow10;
                 pow10 *= 10;
                 pow7 *= 7;

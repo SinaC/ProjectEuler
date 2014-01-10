@@ -4,6 +4,7 @@ namespace ProjectEuler
 {
     public class Problem153
     {
+        [TooSlow]
         public ulong Solve()
         {
             // http://oeis.org/A132994

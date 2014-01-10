@@ -2,6 +2,7 @@
 {
     public class Problem166
     {
+        [TooSlow]
         public ulong Solve()
         {
             ulong count = 0;

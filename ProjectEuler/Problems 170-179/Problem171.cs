@@ -2,9 +2,9 @@
 
 namespace ProjectEuler
 {
-    // UNDER CONSTRUCTION
     public class Problem171
     {
+        [UnderConstruction]
         public ulong Solve()
         {
             // min f(n) = 1 if n = 10^k
@@ -37,7 +37,7 @@ namespace ProjectEuler
                 ulong sumSquareDigits = SumSquareDigits(n);
                 if (isPerfectSquare[sumSquareDigits])
                 {
-                    Console.WriteLine(n + "->" + sumSquareDigits);
+                    //Console.WriteLine(n + "->" + sumSquareDigits);
                     count++;
                 }
             }

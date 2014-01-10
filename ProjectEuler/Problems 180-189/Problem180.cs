@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Fractions;
 
 namespace ProjectEuler
 {
@@ -29,41 +30,41 @@ namespace ProjectEuler
 
             const ulong order = 35;
             // Create fractions
-            Dictionary<Fraction, bool> fractions = new Dictionary<Fraction, bool>(new FractionEqualityComparer());
+            Dictionary<OldFraction, bool> fractions = new Dictionary<OldFraction, bool>(new FractionEqualityComparer());
             for (ulong denominator = 1; denominator <= order; denominator++)
                 for (ulong numerator = 1; numerator <= denominator - 1; numerator++)
                 {
-                    Fraction fraction = new Fraction(numerator, denominator);
+                    OldFraction fraction = new OldFraction(numerator, denominator);
                     fraction.Simplify();
                     if (!fractions.ContainsKey(fraction))
                         fractions.Add(fraction, true);
                 }
             // Compute z for each pair of fraction x, y
             // If z is in fractions, store x+y+z if not already stored
-            Dictionary<Fraction, int> sums = new Dictionary<Fraction, int>(new FractionEqualityComparer());
-            foreach (KeyValuePair<Fraction, bool> kvx in fractions)
-                foreach (KeyValuePair<Fraction, bool> kvy in fractions)
+            Dictionary<OldFraction, int> sums = new Dictionary<OldFraction, int>(new FractionEqualityComparer());
+            foreach (KeyValuePair<OldFraction, bool> kvx in fractions)
+                foreach (KeyValuePair<OldFraction, bool> kvy in fractions)
                 {
-                    Fraction x = kvx.Key;
-                    Fraction y = kvy.Key;
+                    OldFraction x = kvx.Key;
+                    OldFraction y = kvy.Key;
                     // Sum
                     // Compute sqrt( x^2 + y^2 )
                     ulong numeratorSqrt = x.Numerator * x.Numerator * y.Denominator * y.Denominator + y.Numerator * y.Numerator * x.Denominator * x.Denominator;
                     ulong denominatorSqrt = x.Denominator * x.Denominator * y.Denominator * y.Denominator;
-                    Fraction.Simplify(ref numeratorSqrt, ref denominatorSqrt);
+                    OldFraction.Simplify(ref numeratorSqrt, ref denominatorSqrt);
                     // Test n=2 and n=-2 only if sqrt(x^2 + y^2) is a perfect square
                     if (Tools.IsPerfectSquare(numeratorSqrt) && Tools.IsPerfectSquare(denominatorSqrt))
                     {
                         numeratorSqrt = (ulong)Math.Sqrt(numeratorSqrt);
                         denominatorSqrt = (ulong)Math.Sqrt(denominatorSqrt);
-                        Fraction.Simplify(ref numeratorSqrt, ref denominatorSqrt);
+                        OldFraction.Simplify(ref numeratorSqrt, ref denominatorSqrt);
                         // n = 2
-                        Fraction zn2 = new Fraction(numeratorSqrt, denominatorSqrt);
+                        OldFraction zn2 = new OldFraction(numeratorSqrt, denominatorSqrt);
                         zn2.Simplify();
                         if (fractions.ContainsKey(zn2))
                         {
-                            Fraction sum = Fraction.Add(x, y);
-                            sum = Fraction.Add(sum, zn2);
+                            OldFraction sum = OldFraction.Add(x, y);
+                            sum = OldFraction.Add(sum, zn2);
                             sum.Simplify();
                             if (sums.ContainsKey(sum))
                                 sums[sum]++;
@@ -72,12 +73,12 @@ namespace ProjectEuler
                             //Console.WriteLine("x=" + x.ToString() + "   y=" + y.ToString() + "  zn2=" + zn2.ToString());
                         }
                         // n = -2  -> x*y / n2
-                        Fraction zn_2 = new Fraction(x.Numerator * y.Numerator * zn2.Denominator, x.Denominator * y.Denominator * zn2.Numerator);
+                        OldFraction zn_2 = new OldFraction(x.Numerator * y.Numerator * zn2.Denominator, x.Denominator * y.Denominator * zn2.Numerator);
                         zn_2.Simplify();
                         if (fractions.ContainsKey(zn_2))
                         {
-                            Fraction sum = Fraction.Add(x, y);
-                            sum = Fraction.Add(sum, zn_2);
+                            OldFraction sum = OldFraction.Add(x, y);
+                            sum = OldFraction.Add(sum, zn_2);
                             sum.Simplify();
                             if (sums.ContainsKey(sum))
                                 sums[sum]++;
@@ -87,12 +88,12 @@ namespace ProjectEuler
                         }
                     }
                     // n = 1
-                    Fraction zn1 = Fraction.Add(x, y);
+                    OldFraction zn1 = OldFraction.Add(x, y);
                     zn1.Simplify();
                     if (fractions.ContainsKey(zn1))
                     {
-                        Fraction sum = Fraction.Add(x, y);
-                        sum = Fraction.Add(sum, zn1);
+                        OldFraction sum = OldFraction.Add(x, y);
+                        sum = OldFraction.Add(sum, zn1);
                         sum.Simplify();
                         if (sums.ContainsKey(sum))
                             sums[sum]++;
@@ -101,12 +102,12 @@ namespace ProjectEuler
                         //Console.WriteLine("x=" + x.ToString() + "   y=" + y.ToString() + "  zn1=" + zn1.ToString());
                     }
                     // n = -1  -> x*y / n1
-                    Fraction zn_1 = new Fraction(x.Numerator * y.Numerator * zn1.Denominator, x.Denominator * y.Denominator * zn1.Numerator);
+                    OldFraction zn_1 = new OldFraction(x.Numerator * y.Numerator * zn1.Denominator, x.Denominator * y.Denominator * zn1.Numerator);
                     zn_1.Simplify();
                     if (fractions.ContainsKey(zn_1))
                     {
-                        Fraction sum = Fraction.Add(x, y);
-                        sum = Fraction.Add(sum, zn_1);
+                        OldFraction sum = OldFraction.Add(x, y);
+                        sum = OldFraction.Add(sum, zn_1);
                         sum.Simplify();
                         if (sums.ContainsKey(sum))
                             sums[sum]++;
@@ -115,75 +116,24 @@ namespace ProjectEuler
                         //Console.WriteLine("x=" + x.ToString() + "   y=" + y.ToString() + "  zn_1=" + zn_1.ToString());
                     }
                 }
-            Fraction total = new Fraction(0, 1);
-            foreach (KeyValuePair<Fraction, int> kv in sums)
+            OldFraction total = new OldFraction(0, 1);
+            foreach (KeyValuePair<OldFraction, int> kv in sums)
             {
-                total = Fraction.Add(total, kv.Key);
+                total = OldFraction.Add(total, kv.Key);
                 total.Simplify();
             }
             return total.Numerator + total.Denominator;
         }
 
-        class Fraction
-        {
-            public ulong Numerator, Denominator;
-
-            public Fraction(ulong numerator, ulong denominator)
-            {
-                Numerator = numerator;
-                Denominator = denominator;
-            }
-
-            public void Simplify()
-            {
-                ulong a = Numerator;
-                ulong b = Denominator;
-                ulong r;
-                while (0 != (r = a % b))
-                {
-                    a = b;
-                    b = r;
-                }
-                // b contains PGCD
-                Numerator /= b;
-                Denominator /= b;
-            }
-
-            public static Fraction Add(Fraction f1, Fraction f2)
-            {
-                return new Fraction(f1.Numerator * f2.Denominator + f2.Numerator * f1.Denominator, f1.Denominator * f2.Denominator);
-            }
-
-            public static void Simplify(ref ulong numerator, ref ulong denominator)
-            {
-                ulong a = numerator;
-                ulong b = denominator;
-                ulong r;
-                while (0 != (r = a % b))
-                {
-                    a = b;
-                    b = r;
-                }
-                // b contains PGCD
-                numerator /= b;
-                denominator /= b;
-            }
-
-            public override string ToString()
-            {
-                return Numerator.ToString() + "/" + Denominator.ToString();
-            }
-        }
-
-        class FractionEqualityComparer : IEqualityComparer<Fraction>
+        class FractionEqualityComparer : IEqualityComparer<OldFraction>
         {
             #region IEqualityComparer<Fraction> Members
-            bool IEqualityComparer<Fraction>.Equals(Fraction x, Fraction y)
+            bool IEqualityComparer<OldFraction>.Equals(OldFraction x, OldFraction y)
             {
                 return x.Numerator == y.Numerator && x.Denominator == y.Denominator;
             }
 
-            int IEqualityComparer<Fraction>.GetHashCode(Fraction obj)
+            int IEqualityComparer<OldFraction>.GetHashCode(OldFraction obj)
             {
                 return obj.Numerator.GetHashCode() ^ obj.Denominator.GetHashCode();
             }

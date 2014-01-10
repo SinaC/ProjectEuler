@@ -34,6 +34,7 @@ namespace ProjectEuler
             //}
             //return b;
 
+            //http://wiki.san-ss.com.ar/project-euler-problem-100
             // diophantine quadratic equation -> http://www.alpertron.com.ar/QUAD.HTM to get the coefficient
             //X0 = 1
             //Y0 = 1

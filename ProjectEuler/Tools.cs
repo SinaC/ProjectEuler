@@ -560,5 +560,25 @@ namespace ProjectEuler
             }
             return result;
         }
+
+        public static ulong[] Radicals(ulong limit)
+        {
+            ulong[] radicals = new ulong[limit + 1];
+            radicals[0] = 0;
+            radicals[1] = 1;
+            for (ulong rad = 2; rad <= limit; rad++)
+            {
+                if (radicals[rad] > 0)
+                    continue;
+                for (ulong n = rad; n <= limit; n += rad)
+                {
+                    if (radicals[n] == 0)
+                        radicals[n] = rad;
+                    else
+                        radicals[n] *= rad;
+                }
+            }
+            return radicals;
+        }
     }
 }
