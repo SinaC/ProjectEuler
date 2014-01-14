@@ -39,7 +39,7 @@
             return largest;
         }
 
-//        public ulong Problem8()
+        //        public ulong Solve()
 //        {
 //            const string number = 
 //        "73167176531330624919225119674426574742355349194934" +

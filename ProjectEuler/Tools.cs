@@ -561,7 +561,7 @@ namespace ProjectEuler
             return result;
         }
 
-        public static ulong[] Radicals(ulong limit)
+        public static ulong[] Radicals(ulong limit) // totient
         {
             ulong[] radicals = new ulong[limit + 1];
             radicals[0] = 0;

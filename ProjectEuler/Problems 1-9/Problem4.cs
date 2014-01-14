@@ -33,12 +33,12 @@ namespace ProjectEuler
             return palindrome;
         }
 
-        private ulong MakePalindrome(ulong firstHalf)
+        private static ulong MakePalindrome(ulong firstHalf)
         {
             char[] reversed = firstHalf.ToString(CultureInfo.InvariantCulture).Reverse().ToArray();
             return Convert.ToUInt32(firstHalf + new string(reversed));
         }
-        //public ulong Problem4()
+        //public ulong Solve()
         //{
         //    // product of the 3-digits number is a 6-digits number
         //    // must be a palindrom, so digits will be: abccba

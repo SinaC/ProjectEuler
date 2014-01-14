@@ -26,7 +26,7 @@
         //            sum += increment;
         //            increment -= (n - 1);
         //        }
-        //        return sum + _28_Sub(n - 2);
+        //        return sum + Sub(n - 2);
         //    }
         //}
     }

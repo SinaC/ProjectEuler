@@ -37,6 +37,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes.cs" />
+    <Compile Include="Palindrom.cs" />
+    <Compile Include="Problems 350-359\Problem358.cs" />
+    <Compile Include="Problems 350-359\Problem357.cs" />
+    <Compile Include="Problems 340-349\Problem348.cs" />
     <Compile Include="Problems 200-209\Problem207.cs" />
     <Compile Include="Problems 200-209\Problem200.cs" />
     <Compile Include="Problems 320-329\Problem329.cs" />

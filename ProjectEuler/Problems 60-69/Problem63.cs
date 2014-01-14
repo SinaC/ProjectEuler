@@ -32,7 +32,7 @@ namespace ProjectEuler
             return count;
         }
 
-        private string MulStringByDigit(string multiplicand, int multiplier)
+        private static string MulStringByDigit(string multiplicand, int multiplier)
         {
             StringBuilder result = new StringBuilder(multiplicand.Length + 1);
             int carry = 0;

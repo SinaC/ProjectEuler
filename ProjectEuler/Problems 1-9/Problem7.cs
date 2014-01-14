@@ -18,7 +18,7 @@
         }
 
         /*
-         public ulong Problem7() {
+         public ulong Solve() {
             const ulong count = 10001;
             ulong n = 3;
             ulong primeCount = 1; // 2 is a prime

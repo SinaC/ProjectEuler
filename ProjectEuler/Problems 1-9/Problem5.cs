@@ -30,7 +30,7 @@ namespace ProjectEuler
         }
 
         /*
-        public ulong Problem5() {
+        public ulong Solve() {
             //ulong result = 2 * 3 * 5 * 7 * 9 * 11 * 13 * 17 * 19; // start with the product of the first prime
             //while (true) {
             //    bool fOk = true;

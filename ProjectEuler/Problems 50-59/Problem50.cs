@@ -42,7 +42,6 @@
             // the gap between 2 primes is > 1 (except for 2 and 3) so we can divide 1413 by 2
             // we suppose there is at least 200 terms
             for (ulong i = 200; i <= 707; i++)
-            {
                 for (ulong start = 2; start <= 13; start++)
                 { 
                     // a long chain must start with the first primes
@@ -71,7 +70,6 @@
                             nMax = sum;
                         }
                 }
-            }
             return nMax;
         }
     }

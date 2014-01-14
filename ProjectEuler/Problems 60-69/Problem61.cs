@@ -47,7 +47,7 @@ namespace ProjectEuler
             return sum;
         }
 
-        private List<ulong> BuildPolygonalList(ulong lowerBound, ulong upperBound, Func<ulong, double> getIndexFunc, Func<ulong, ulong> getPolygonalFunc)
+        private static List<ulong> BuildPolygonalList(ulong lowerBound, ulong upperBound, Func<ulong, double> getIndexFunc, Func<ulong, ulong> getPolygonalFunc)
         {
             List<ulong> list = new List<ulong>();
             ulong lowerLimit = (ulong)getIndexFunc(lowerBound);
@@ -64,7 +64,7 @@ namespace ProjectEuler
             return list;
         }
 
-        private bool Sub(ulong number, IReadOnlyCollection<List<ulong>> collectionsLeft, ulong startItem/*, ulong depth*/, ref ulong[] items)
+        private static bool Sub(ulong number, IReadOnlyCollection<List<ulong>> collectionsLeft, ulong startItem/*, ulong depth*/, ref ulong[] items)
         {
             bool fStop = false;
             foreach (List<ulong> collection in collectionsLeft)

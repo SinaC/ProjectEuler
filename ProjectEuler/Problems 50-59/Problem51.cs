@@ -13,7 +13,8 @@ namespace ProjectEuler
             int[] digits = new int[10];
             for (ulong n = 10001; n < limit; n += 2)
             {
-                if (sieve[n]) continue;
+                if (sieve[n]) 
+                    continue;
                 // Check if the number has more than 2 repeating digits excluding last digit
                 // Count digits
                 string s = n.ToString(CultureInfo.InvariantCulture);

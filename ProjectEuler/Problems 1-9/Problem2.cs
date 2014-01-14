@@ -25,7 +25,7 @@
             }
             return sum;
         }
-        //public ulong Problem2()
+        //public ulong Solve()
         //{
         //    // Fn = Fn-1 + Fn-2
         //    const ulong limit = 4000000;

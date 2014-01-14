@@ -65,7 +65,7 @@ namespace ProjectEuler
 
         static void Main(string[] args)
         {
-            Problem127 problem = new Problem127();
+            Problem358 problem = new Problem358();
             ulong result = problem.Solve();
             //SolveAll(runTooSlow:true);
         }

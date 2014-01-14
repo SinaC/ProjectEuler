@@ -23,7 +23,7 @@
 
             return solution;
         }
-        //public ulong Problem3()
+        //public ulong Solve()
         //{
         //    const ulong number = 600851475143;
         //    ulong sqrtN = (ulong)(Math.Sqrt(number) + 0.5);
