@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ProjectEuler
+﻿namespace ProjectEuler
 {
     public class Problem171
     {

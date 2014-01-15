@@ -1,5 +1,5 @@
 ﻿using System;
-using CarlJohansen;
+using System.Numerics;
 
 namespace ProjectEuler
 {
@@ -35,22 +35,23 @@ namespace ProjectEuler
             //A = B * ( 10^k - m ) / ( 10*m - 1 )
             //N = A * 10 + B
             // If  B * ( 10^k - m ) % ( 10*m - 1 ) == 0  and  N > 10^k  then  we have found a solution
-            BigInt sum = 0;
+            BigInteger sum = 0;
             for (long m = 1; m <= 9; m++)
             {
-                BigInt biPower10K = 10;
-                BigInt biM = m;
+                BigInteger biPower10K = 10;
+                BigInteger biM = m;
                 for (long k = 2; k <= 100; k++)
                 {
                     for (long b = 1; b <= 9; b++)
                     {
-                        BigInt biB = b;
-                        BigInt biRemainder;
-                        BigInt biA; // = A
-                        BigInt.DivAndMod((biB * (biPower10K - biM)), (10 * biM - 1), out biRemainder, out biA);
+                        BigInteger biB = b;
+                        BigInteger biRemainder;
+                        //BigInteger biA; // = A
+                        //BigInteger.DivAndMod((biB * (biPower10K - biM)), (10 * biM - 1), out biRemainder, out biA);
+                        BigInteger biA = BigInteger.DivRem((biB*(biPower10K - biM)), (10*biM - 1), out biRemainder);
                         if (0 == biRemainder)
                         {
-                            BigInt biN = biA * 10 + biB;
+                            BigInteger biN = biA * 10 + biB;
                             if (biN > biPower10K)
                             {
                                 //Console.WriteLine(m + "-->" + k + "  " + biN.NumDigits + "  " + biQuotient.ToString() + " " + b);

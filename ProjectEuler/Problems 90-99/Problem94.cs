@@ -1,26 +1,24 @@
-﻿using System;
-
-namespace ProjectEuler
+﻿namespace ProjectEuler
 {
     public class Problem94
     {
         public long Solve()
         {
-            const long MAX = 1000000000;
-            const long MAXI = 20;
+            const long max = 1000000000;
+            const long maxi = 20;
 
-            long[] m = new long[MAXI];
+            long[] m = new long[maxi];
             m[0] = -1;
             m[1] = 1;
             long a = 1;
             long sum = 0;
             //Console.WriteLine(" i         m         a         b       sum");
-            for (long i = 2; i < MAXI; i++)
+            for (long i = 2; i < maxi; i++)
             {
                 m[i] = (i%2 == 0) ? (m[i - 1] + m[i - 2]) : (2*m[i - 1] + m[i - 2]);
                 a += 4*m[i]*m[i - 1];
                 long b = (i%2 == 0) ? (a + 1) : (a - 1);
-                if (a + a + b > MAX) 
+                if (a + a + b > max) 
                     break;
                 if (m[i] > 0 && a > 0 && b > 0)
                     sum += a + a + b;

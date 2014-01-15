@@ -66,7 +66,7 @@ namespace ProjectEuler
                 Console.WriteLine("Candidate {0}  sum {1}", candidate, sum);
             }
 
-            return 0;
+            return 0; // candidates have been checked manually
 
 
             ////http://en.wikipedia.org/wiki/Cyclic_number

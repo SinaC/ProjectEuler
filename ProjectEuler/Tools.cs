@@ -9,8 +9,8 @@ namespace ProjectEuler
     public class Tools
     {
         public const double Epsilon = 0.00001;
-        public static readonly ulong[] Factorials10 = { 1 /*0*/, 1 /*1*/, 2 /*2*/, 6 /*3*/, 24 /*4*/, 120 /*5*/, 720 /*6*/, 5040 /*7*/, 40320 /*8*/, 362880 /*9*/, 3628800 /*10*/};
-        public static readonly ulong[] Primes10 = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 };
+        public static readonly ulong[] Factorials10 = {1 /*0*/, 1 /*1*/, 2 /*2*/, 6 /*3*/, 24 /*4*/, 120 /*5*/, 720 /*6*/, 5040 /*7*/, 40320 /*8*/, 362880 /*9*/, 3628800 /*10*/};
+        public static readonly ulong[] Primes10 = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
 
         public static ulong ToUInt64(char c)
         {
@@ -35,7 +35,7 @@ namespace ProjectEuler
         public static bool[] BuildSieve(ulong limit)
         {
             bool[] numbers = new bool[limit + 1];
-            ulong sqrtLimit = (ulong)Math.Sqrt(limit);
+            ulong sqrtLimit = (ulong) Math.Sqrt(limit);
             for (int i = 0; i < numbers.Length; i++)
                 numbers[i] = false; // prime by default
             for (ulong i = 4; i <= limit; i += 2) // mark even number
@@ -43,7 +43,7 @@ namespace ProjectEuler
             for (ulong i = 3; i <= sqrtLimit; i += 2)
             {
                 if (!numbers[i])
-                    for (ulong j = i * i; j <= limit; j += 2 * i)
+                    for (ulong j = i*i; j <= limit; j += 2*i)
                         numbers[j] = true;
             }
             numbers[0] = true; // not prime
@@ -65,6 +65,23 @@ namespace ProjectEuler
         public static ulong SumDigits(string number)
         {
             return number.Aggregate<char, ulong>(0, (current, c) => current + ToUInt64(c));
+        }
+
+        public static ulong GetDigitalRoot(ulong number)
+        {
+            //ulong ret = 0;
+
+            //while (number > 0)
+            //{
+            //    ret += number % 10;
+            //    number /= 10;
+            //}
+
+            //if (ret >= 10)
+            //    return GetDigitalRoot(ret);
+            //else
+            //    return ret;
+            return number - ((number - 1)/9)*9;
         }
 
         public static ulong Factorial(ulong number)
@@ -561,7 +578,7 @@ namespace ProjectEuler
             return result;
         }
 
-        public static ulong[] Radicals(ulong limit) // totient
+        public static ulong[] Radicals(ulong limit)
         {
             ulong[] radicals = new ulong[limit + 1];
             radicals[0] = 0;
@@ -579,6 +596,69 @@ namespace ProjectEuler
                 }
             }
             return radicals;
+        }
+
+        public static List<ulong> Divisors(ulong n, bool[] sieve)
+        {
+            List<ulong> ret = new List<ulong>
+                {
+                    1
+                };
+
+            ulong sieveLimit = (ulong) sieve.LongCount();
+            for (ulong p = 2; p < sieveLimit; p++)
+                if (!sieve[p])
+                {
+                    List<ulong> tmp = new List<ulong>(ret);
+                    ulong tmpp = 1;
+
+                    if (n == 1)
+                        break;
+                    if (p*p > n)
+                    {
+                        tmp.AddRange(ret.Select(it => it*n));
+                        ret = tmp;
+                        break;
+                    }
+                    if (n%p != 0)
+                        continue;
+
+                    while (n%p == 0)
+                    {
+                        n /= p;
+                        tmpp *= p;
+                        tmp.AddRange(ret.Select(it => it*tmpp));
+                    }
+                    ret = tmp;
+                }
+
+            return ret;
+        }
+
+        public static IEnumerable<T[]> Combinations<T>(IEnumerable<T> enumerable, int nrepeats)
+        {
+            List<T> items = enumerable.ToList();
+            T[] ret = new T[nrepeats];
+            int[] indices = new int[nrepeats];
+            int current = 0;
+
+            while (true)
+            {
+                if (indices[current] < items.Count)
+                {
+                    ret[current] = items[indices[current]++];
+                    if (current == nrepeats - 1)
+                        yield return ret.Clone() as T[];
+                    else
+                        indices[++current] = indices[current - 1];
+                }
+                else
+                {
+                    if (current == 0)
+                        break;
+                    current--;
+                }
+            }
         }
     }
 }

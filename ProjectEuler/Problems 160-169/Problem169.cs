@@ -1,4 +1,4 @@
-﻿using CarlJohansen;
+﻿using System.Numerics;
 
 namespace ProjectEuler
 {
@@ -6,13 +6,13 @@ namespace ProjectEuler
     {
         public string Solve()
         {
-            BigInt n = BigInt.Power(10, 25);
-            BigInt a, b;
+            BigInteger n = BigInteger.Pow(10, 25);
+            BigInteger a, b;
             Sub(n, out a, out b);
             return a.ToString();
         }
 
-        private void Sub(BigInt n, out BigInt a, out BigInt b)
+        private void Sub(BigInteger n, out BigInteger a, out BigInteger b)
         {
             if (n == 0)
             {
@@ -21,7 +21,7 @@ namespace ProjectEuler
             }
             else
             {
-                BigInt a_, b_;
+                BigInteger a_, b_;
                 Sub(n / 2, out a_, out b_);
                 if (0 == (n % 2))
                 {

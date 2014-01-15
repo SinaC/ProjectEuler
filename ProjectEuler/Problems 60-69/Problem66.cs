@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using CarlJohansen;
+using System.Numerics;
 
 namespace ProjectEuler
 {
@@ -12,7 +12,7 @@ namespace ProjectEuler
             //http://en.wikipedia.org/wiki/Pell%27s_equation#Fundamental_solution_via_continued_fractions
             // X^2 - D*Y^2 = 1
             const ulong limit = 1000;
-            BigInt max = 0;
+            BigInteger max = 0;
             ulong maxN = 0;
             for (ulong n = 2; n <= limit; n++)
             {
@@ -21,19 +21,19 @@ namespace ProjectEuler
                     continue; // No solution if D is a square
                 // Continued fraction convergent may be injected as X and Y for diophante equation X^2 - DY^2 until result = 1 (X = numerator and Y = denominator)
                 List<ulong> continuedFractions = Tools.SqrtContinuedFraction(n);
-                BigInt numerator2 = 1;
-                BigInt denominator2 = 0;
-                BigInt numerator1 = (long)continuedFractions[0];
-                BigInt denominator1 = 1;
-                BigInt numerator;
-                BigInt bigIntN = (long)n;
+                BigInteger numerator2 = 1;
+                BigInteger denominator2 = 0;
+                BigInteger numerator1 = (long)continuedFractions[0];
+                BigInteger denominator1 = 1;
+                BigInteger numerator;
+                BigInteger biN = (long)n;
                 int i = 1;
                 while (true)
                 {
-                    BigInt continuedFraction = (long)continuedFractions[i];
+                    BigInteger continuedFraction = (long)continuedFractions[i];
                     numerator = numerator2 + numerator1 * continuedFraction;
-                    BigInt denominator = denominator2 + denominator1 * continuedFraction;
-                    BigInt result = numerator * numerator - bigIntN * denominator * denominator;
+                    BigInteger denominator = denominator2 + denominator1 * continuedFraction;
+                    BigInteger result = numerator * numerator - biN * denominator * denominator;
                     if (result == 1)
                         break;
                     numerator2 = numerator1;

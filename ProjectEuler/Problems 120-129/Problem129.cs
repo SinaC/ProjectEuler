@@ -4,7 +4,7 @@
     {
         public ulong Solve()
         {
-            const ulong limit = 10;
+            const ulong limit = 1000000;
             ulong n = limit + 1;
             while (true)
             {

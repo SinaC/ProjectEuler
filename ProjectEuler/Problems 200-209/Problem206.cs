@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using CarlJohansen;
+using System.Numerics;
 
 namespace ProjectEuler
 {
@@ -12,11 +12,11 @@ namespace ProjectEuler
             // must end with 00
             // use 1_2_3_4_5_6_7_8_9 and multiply result by 10
             // must end with an odd number
-            string pattern = "1_2_3_4_5_6_7_8_9";
-            BigInt n = 138902663; // sqrt(19293949596979899) which is the highest number possible
+            const string pattern = "1_2_3_4_5_6_7_8_9";
+            BigInteger n = 138902663; // sqrt(19293949596979899) which is the highest number possible
             while (true)
             {
-                BigInt square = n * n;
+                BigInteger square = n * n;
                 string s = square.ToString();
                 if (s.Length < pattern.Length)
                     break; // no answer

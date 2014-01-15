@@ -36,7 +36,7 @@ namespace ProjectEuler
                 }
             }
             Array.Sort(radicals, Radical.Compare);
-            return radicals[limit].N;
+            return radicals[10000].N;
         }
 
         private class Radical

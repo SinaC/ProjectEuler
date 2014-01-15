@@ -34,10 +34,19 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes.cs" />
     <Compile Include="Palindrom.cs" />
+    <Compile Include="Problems 140-149\Problem140.cs" />
+    <Compile Include="Problems 90-99\Problem96.cs" />
+    <Compile Include="Problems 90-99\Problem91.cs" />
+    <Compile Include="Problems 50-59\Problem54.cs" />
+    <Compile Include="Problems 80-89\Problem84.cs" />
+    <Compile Include="Problems 80-89\Problem88.cs" />
+    <Compile Include="Problems 150-159\Problem159.cs" />
+    <Compile Include="Problems 240-249\Problem248.cs" />
     <Compile Include="Problems 350-359\Problem358.cs" />
     <Compile Include="Problems 350-359\Problem357.cs" />
     <Compile Include="Problems 340-349\Problem348.cs" />
@@ -220,10 +229,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CarlJohansen\CarlJohansen.csproj">
-      <Project>{d592a7c4-f6ee-44fa-9710-441df2d9b0f6}</Project>
-      <Name>CarlJohansen</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Fractions\Fractions.csproj">
       <Project>{83fca5f6-3811-4f0f-aeae-e4af5b704b59}</Project>
       <Name>Fractions</Name>
@@ -231,6 +236,10 @@
     <ProjectReference Include="..\Primes\Primes.csproj">
       <Project>{358b9c7e-82b3-4184-af17-b1e063ef62ac}</Project>
       <Name>Primes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SudokuSolver\SudokuSolver.csproj">
+      <Project>{f31140ac-db15-43b9-b75a-fc06ea4e362b}</Project>
+      <Name>SudokuSolver</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

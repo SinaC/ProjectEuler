@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{358B9C7E-82B3-4184-AF17-B1E063EF62AC}</ProjectGuid>
+    <ProjectGuid>{F31140AC-DB15-43B9-B75A-FC06EA4E362B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Primes</RootNamespace>
-    <AssemblyName>Primes</AssemblyName>
+    <RootNamespace>SudokuSolver</RootNamespace>
+    <AssemblyName>SudokuSolver</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -34,9 +34,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Check.cs" />
-    <Compile Include="Prime.cs" />
-    <Compile Include="SoE.cs" />
+    <Compile Include="DancingLinks.cs" />
+    <Compile Include="ExactCover.cs" />
+    <Compile Include="Solver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

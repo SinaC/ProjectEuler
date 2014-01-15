@@ -1,5 +1,5 @@
 ﻿using System;
-using CarlJohansen;
+using System.Numerics;
 
 namespace ProjectEuler
 {
@@ -11,9 +11,9 @@ namespace ProjectEuler
             string[] results = new string[40];
             int idx = 0;
             for (uint a = 2; a <= 100; a++)
-                for (uint b = 2; b <= 50; b++)
+                for (int b = 2; b <= 50; b++)
                 {
-                    BigInt p = BigInt.Power(a, b);
+                    BigInteger p = BigInteger.Pow(a, b);
                     string s = p.ToString();
                     ulong sumDigits = Tools.SumDigits(s);
                     if (a == sumDigits)
