@@ -13,7 +13,7 @@ namespace ProjectEuler
             while (true)
             {
                 // Don't consider prime
-                if (!Primes.Check.IsPrime(n) && 1 == Tools.PGCD(n, 10))
+                if (!Primes.Check.IsPrime(n) && 1 == Tools.GCD(n, 10))
                 {
                     // Compute An
                     ulong An = 1;

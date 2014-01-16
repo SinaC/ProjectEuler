@@ -27,7 +27,7 @@
                 {
                     if (n * b < a * d && e * d < n * f)
                     {
-                        ulong pgcd = Tools.PGCD(n, d);
+                        ulong pgcd = Tools.GCD(n, d);
                         if (1 == pgcd)
                             count++;
                         else

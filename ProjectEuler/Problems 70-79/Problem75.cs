@@ -14,7 +14,7 @@ namespace ProjectEuler
             for (ulong i = 1; i <= sideLimit; i += 2)
                 for (ulong j = 2; j <= sideLimit; j += 2)
                 {
-                    ulong pgcd = Tools.PGCD(i, j);
+                    ulong pgcd = Tools.GCD(i, j);
                     if (1 == pgcd)
                     { // reduced triplet
                         //ulong a = (ulong)Math.Abs((long)(i * i) - (long)(j * j));

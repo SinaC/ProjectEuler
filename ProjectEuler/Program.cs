@@ -76,8 +76,8 @@ namespace ProjectEuler
         {
             //Problem96 problem = new Problem96();
             //ulong result = problem.Solve(@"D:\GitHub\ProjectEuler\Datas\Problem96.txt");
-            Problem66 problem = new Problem66();
-            string result = problem.Solve();
+            Problem153 problem = new Problem153();
+            ulong result = problem.Solve();
             //SolveAll();
         }
     }

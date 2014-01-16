@@ -48,7 +48,7 @@ namespace ProjectEuler
                                     radical *= radicals[b];
                                     if (radical < c)
                                     {
-                                        if (Tools.PGCD(radicals[a], radicals[b]) == 1)
+                                        if (Tools.GCD(radicals[a], radicals[b]) == 1)
                                         {
                                             //count++;
                                             count1 += c;
@@ -77,7 +77,7 @@ namespace ProjectEuler
                 {
                     ulong lim = c/radicals[c];
                     for (ulong j = 1; j < c/2; j++)
-                        if (Tools.PGCD(c, j) == 1)
+                        if (Tools.GCD(c, j) == 1)
                             if (radicals[c - j]*radicals[j] < lim) 
                                 total += c;
                 }
@@ -100,11 +100,11 @@ namespace ProjectEuler
                     ulong c = a + b;
                     if (!sieve[a] && !sieve[b] && !sieve[c]) // heuristic
                         continue;
-                    if (1 != Tools.PGCD(a, b)) // by definition
+                    if (1 != Tools.GCD(a, b)) // by definition
                         continue;
-                    if (1 != Tools.PGCD(a, c)) // by definition
+                    if (1 != Tools.GCD(a, c)) // by definition
                         continue;
-                    if (1 != Tools.PGCD(b, c)) // by definition
+                    if (1 != Tools.GCD(b, c)) // by definition
                         continue;
                     ulong radB = Radical(sieve, b);
                     ulong radC = Radical(sieve, c);

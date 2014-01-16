@@ -56,7 +56,7 @@ namespace ProjectEuler
 
         private void SimplifyFraction(ulong numerator, ulong denominator, out ulong simplifiedNumerator, out ulong simplifiedDenominator)
         {
-            ulong pgcd = Tools.PGCD(numerator, denominator);
+            ulong pgcd = Tools.GCD(numerator, denominator);
             simplifiedNumerator = numerator / pgcd;
             simplifiedDenominator = denominator / pgcd;
         }

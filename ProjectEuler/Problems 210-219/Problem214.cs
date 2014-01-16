@@ -23,7 +23,7 @@
             //        ulong totient = Phi(sieve, n);
             //        totients[n] = totient;
             //        filled++;
-            //        // phi(n*m) = phi(n)*phi(m) * d / phi(d)  with d = PGCD(m,n)
+            //        // phi(n*m) = phi(n)*phi(m) * d / phi(d)  with d = GCD(m,n)
             //        // Calculate phi of multiple of multiple < n
             //        for (ulong multiple = 2; multiple < n; multiple++) {
             //            ulong product = multiple * n;
@@ -31,7 +31,7 @@
             //                break;
             //            ulong totientMultiple = totients[multiple];
             //            if (0 == totientMultiple) throw new Exception("!!!");
-            //            ulong pgcd = PGCD(n, multiple);
+            //            ulong pgcd = GCD(n, multiple);
             //            ulong totientPGCD = totients[pgcd];
             //            if (0 == totientPGCD) throw new Exception("!!!");
             //            totients[product] = (totient * totientMultiple * pgcd) / totientPGCD;
@@ -54,7 +54,7 @@
             //}
             //return sum;
 
-            // phi(n*m) = phi(n)*phi(m) * d / phi(d)  with d = PGCD(m,n)
+            // phi(n*m) = phi(n)*phi(m) * d / phi(d)  with d = GCD(m,n)
             // if m is prime, phi(n*m) = phi(n)*phi(m)
             const ulong limit = 40000000;
             const ulong chainLength = 25;

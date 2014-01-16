@@ -17,7 +17,7 @@ namespace ProjectEuler
                 // Check if terminating decimal or not
                 // simplify denominator of fraction i/k
                 // if the simplified denominator is divisible only by 2s or 5s the number is a terminating decimal
-                ulong pgcd = Tools.PGCD(i, kMax);
+                ulong pgcd = Tools.GCD(i, kMax);
                 kMax /= pgcd; // simplify denominator
                 while (0 == (kMax & 1)) // divides by 2 as much as possible
                     kMax /= 2;

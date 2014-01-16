@@ -92,7 +92,7 @@ namespace ProjectEuler
             return fact;
         }
 
-        public static ulong PGCD(ulong a, ulong b)
+        public static ulong GCD(ulong a, ulong b)
         {
             ulong r;
             while (0 != (r = a%b))
@@ -446,7 +446,7 @@ namespace ProjectEuler
             // Take advantage of Boolean short-circuit evaluation
             if (h != 2 && h != 3 && h != 5 && h != 6 && h != 7 && h != 8)
             {
-                ulong t = (ulong) (Math.Sqrt((double) n) + 0.5d);
+                ulong t = (ulong) (Math.Sqrt(n) + 0.5d);
                 return t*t == n;
             }
             return false;

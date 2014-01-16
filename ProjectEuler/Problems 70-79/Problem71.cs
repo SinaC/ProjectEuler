@@ -15,7 +15,7 @@
             for (ulong d = 2; d <= limit; d++)
             {
                 ulong n = (a * d - 1) / b;
-                ulong pgcd = Tools.PGCD(n, d);
+                ulong pgcd = Tools.GCD(n, d);
                 if (1 == pgcd && n * bestD > bestN * d)
                 {
                     // n/d > bestN/bestD

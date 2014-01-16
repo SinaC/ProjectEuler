@@ -34,7 +34,7 @@ namespace ProjectEuler
 
             // n = d * q + r
             // q/d = d/r  and  q/r = (d/r)^2
-            // { r, d, q } = { r, r*a/b, r*a^2/b^2 } with PGCD(a,b) == 1
+            // { r, d, q } = { r, r*a/b, r*a^2/b^2 } with GCD(a,b) == 1
             // q is integral if r is a multiple of b^2
             // r = b^2 * c
             // { r, d, q } = { b^2, a*b*c, a^2*c }
@@ -44,7 +44,7 @@ namespace ProjectEuler
             for (ulong a = 2; a < 200/*trial-error*/; a++)
                 for (ulong b = 1; b < a; b++)
                 {
-                    ulong pgcd = Tools.PGCD(a, b);
+                    ulong pgcd = Tools.GCD(a, b);
                     if (pgcd > 1)
                         continue;
                     for (ulong c = 1; ; c++)

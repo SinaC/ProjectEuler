@@ -8,7 +8,7 @@
             ulong n = limit + 1;
             while (true)
             {
-                if (1 == Tools.PGCD(n, 10))
+                if (1 == Tools.GCD(n, 10))
                 {
                     // Compute An
                     ulong An = 1;

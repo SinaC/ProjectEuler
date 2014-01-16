@@ -25,7 +25,7 @@ namespace SudokuSolver
             public DancingLinksNode Right;
             public DancingLinksNode Up;
             public DancingLinksNode Down;
-            public int RowID;
+            public readonly int RowID;
 
             public DancingLinksNode(DancingLinksHeader header, int row)
             {
@@ -50,28 +50,30 @@ namespace SudokuSolver
             }
         }
 
-        private DancingLinksHeader control;
+        private readonly DancingLinksHeader _control;
 
         public DancingLinks(int[][] matrix)
         {
-            control = new DancingLinksHeader();
-            control.Header = null;
-            control.Up = null;
-            control.Down = null;
-
+            _control = new DancingLinksHeader
+                {
+                    Header = null,
+                    Up = null,
+                    Down = null
+                };
             for (int c = 0; c < matrix[0].Length; c++)
             {
-                var header = new DancingLinksHeader();
-
-                header.Left = control.Left;
-                header.Right = control;
+                var header = new DancingLinksHeader
+                    {
+                        Left = _control.Left,
+                        Right = _control
+                    };
                 header.Left.Right = header;
                 header.Right.Left = header;
             }
 
             for (int i = 0; i < matrix.Length; i++)
             {
-                DancingLinksHeader header = control.Right as DancingLinksHeader;
+                DancingLinksHeader header = _control.Right as DancingLinksHeader;
                 DancingLinksNode last = null;
 
                 for (int j = 0; j < matrix[i].Length; j++, header = header.Right as DancingLinksHeader)
@@ -106,7 +108,7 @@ namespace SudokuSolver
             DancingLinksHeader header = null;
             int min = int.MaxValue;
 
-            for (var tmp = control.Right as DancingLinksHeader; tmp != control; tmp = tmp.Right as DancingLinksHeader)
+            for (var tmp = _control.Right as DancingLinksHeader; tmp != _control; tmp = tmp.Right as DancingLinksHeader)
             {
                 if (min > tmp.Count)
                 {
@@ -118,7 +120,7 @@ namespace SudokuSolver
             return header;
         }
 
-        private void Cover(DancingLinksNode node)
+        private static void Cover(DancingLinksNode node)
         {
             var header = node.Header;
 
@@ -136,7 +138,7 @@ namespace SudokuSolver
             }
         }
 
-        private void Uncover(DancingLinksNode node)
+        private static void Uncover(DancingLinksNode node)
         {
             var header = node.Header;
 
@@ -156,7 +158,7 @@ namespace SudokuSolver
 
         private bool Search(List<int> solution)
         {
-            if (control.Right == control)
+            if (_control.Right == _control)
             {
                 var args = new SolutionFoundEventArgs(solution);
 
