@@ -1,6 +1,8 @@
 ﻿//http://www.alpertron.com.ar/ECM.HTM
 //https://github.com/nayuki/Project-Euler-solutions
 //https://github.com/l2y3n2/my-project-euler
+//http://nayuki.eigenstate.org/page/project-euler-solutions
+//http://eulersolutions.fr.yuku.com/forums/3/General?page=10#.Ut4tJtI1jqQ
 
 using System;
 using System.Collections.Generic;
@@ -72,12 +74,33 @@ namespace ProjectEuler
             }
         }
 
+        //private class P11 : Problem
+        //{
+        //    public P11() : base(11)
+        //    {
+        //    }
+
+        //    [TooSlow]
+        //    public override string Solve()
+        //    {
+        //        string data = Data;
+        //        string[] lines = data.Split('\n');
+
+        //        return data;
+        //    }
+        //}
+
         static void Main(string[] args)
         {
+            //P11 p = new P11();
+            //bool tooSlow = p.IsTooSlow;
+            //bool underConstruction = p.IsUnderConstruction;
+            //string r = p.Solve();
+
             //Problem96 problem = new Problem96();
             //ulong result = problem.Solve(@"D:\GitHub\ProjectEuler\Datas\Problem96.txt");
-            Problem153 problem = new Problem153();
-            ulong result = problem.Solve();
+            Problem315 problem = new Problem315();
+            string result = problem.Solve();
             //SolveAll();
         }
     }

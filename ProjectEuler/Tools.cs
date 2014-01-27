@@ -84,6 +84,23 @@ namespace ProjectEuler
             return number - ((number - 1)/9)*9;
         }
 
+        public static long GetDigitalRoot(long number)
+        {
+            //ulong ret = 0;
+
+            //while (number > 0)
+            //{
+            //    ret += number % 10;
+            //    number /= 10;
+            //}
+
+            //if (ret >= 10)
+            //    return GetDigitalRoot(ret);
+            //else
+            //    return ret;
+            return number - ((number - 1) / 9) * 9;
+        }
+
         public static ulong Factorial(ulong number)
         {
             ulong fact = 1;
