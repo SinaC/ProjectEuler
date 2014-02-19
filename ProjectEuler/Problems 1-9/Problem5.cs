@@ -1,10 +1,16 @@
 ﻿using System;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem5
+    public sealed class Problem5 : Problem
     {
-        public ulong Solve()
+        public Problem5()
+            : base(5)
+        {
+        }
+
+        public override string Solve()
         {
             // 1 = 1^1          2 = 2^1
             // 3 = 3^1          4 = 2^2
@@ -17,7 +23,6 @@ namespace ProjectEuler
             // 17 = 17^1        18 = 2^1*3^2
             // 19 = 19^1        20 = 2^2*5^1
             // Max exponent for a factor still below limit is Log(limit) / Log(factor) rounded down
-
             const ulong limit = 20;
             ulong result = 1;
             foreach (ulong factor in Primes.SoE.PrimesCacheFriendly(limit))
@@ -26,7 +31,7 @@ namespace ProjectEuler
                 result *= (ulong)Math.Pow(factor, exponent);
             }
 
-            return result;
+            return result.ToString(CultureInfo.InvariantCulture);
         }
 
         /*

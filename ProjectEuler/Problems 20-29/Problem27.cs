@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem27
+    public sealed class Problem27 : Problem
     {
-        public long Solve()
+        public Problem27() : base(27)
+        {
+        }
+
+        public override string Solve()
         {
             bool[] sieve = Tools.BuildSieve(1000 * 1000 + 1000 * 1000 + 1000);
             int bestCount = 0;
@@ -35,7 +40,8 @@ namespace ProjectEuler
                     }
                 }
             }
-            return bestA * bestB;
+            long result = bestA*bestB;
+            return result.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

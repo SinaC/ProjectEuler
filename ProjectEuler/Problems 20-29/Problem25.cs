@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem25
+    public sealed class Problem25 : Problem
     {
-        public ulong Solve()
+        public Problem25() : base(25)
+        {
+        }
+
+        public override string Solve()
         {
             //uint digits = 1000;
             //BigInt thousandDigits = BigInt.Power(10, digits-1);
@@ -26,7 +31,7 @@ namespace ProjectEuler
             // Log10( phi^n ) - Log10(5) = 999
             // n*Log10(phi) = 999 + Log10( sqrt(5) )
             // n = ( 999 + Log10( sqrt(5) ) ) / Log10( phi )
-            return (ulong)Math.Round((999.0 + Math.Log10(Math.Sqrt(5))) / Math.Log10((1.0 + Math.Sqrt(5)) / 2.0));
+            return ((ulong)Math.Round((999.0 + Math.Log10(Math.Sqrt(5))) / Math.Log10((1.0 + Math.Sqrt(5)) / 2.0))).ToString(CultureInfo.InvariantCulture);
         }
     }
 }

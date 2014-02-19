@@ -1,10 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem23
+    public sealed class Problem23 : Problem
     {
-        public ulong Solve()
+        public Problem23() : base(23)
+        {
+        }
+
+        public override string Solve()
         {
             const ulong limit = 28123;
             // Get list of abundants
@@ -30,7 +35,7 @@ namespace ProjectEuler
             for (int i = (int)limit; i >= 0; i--)
                 if (!check[i])
                     uncheckedSum += (ulong)i;
-            return uncheckedSum;
+            return uncheckedSum.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

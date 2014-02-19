@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem19
+    public sealed class Problem19 : Problem
     {
-        public ulong Solve()
+        public Problem19():base(19)
+        {
+        }
+
+        public override string Solve()
         {
             ulong count = 0;
             int[] monthDays = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
@@ -17,7 +23,7 @@
                         count++;
                     weekday = 1 + ((weekday + daysCount) % 7);
                 }
-            return count;
+            return count.ToString(CultureInfo.InvariantCulture);
             //ulong count = 0;
             //DateTime date = new DateTime(1901, 1, 1);
             //while (date.Year != 2000 || date.Month != 12 || date.Day != 1) {
@@ -28,7 +34,7 @@
             //return count;
         }
 
-        private bool IsLeapYear(int year)
+        private static bool IsLeapYear(int year)
         {
             if (year % 400 == 0)
                 return true;

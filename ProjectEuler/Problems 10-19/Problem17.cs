@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem17
+    public sealed class Problem17 : Problem
     {
-        public ulong Solve()
+        public Problem17() : base(17)
+        {
+        }
+
+        public override string Solve()
         {
             ulong[,] bases = { {0, 0}, {3, 0}, {3, 6}, {5, 6}, {4, 5}, {4, 5}, {3, 5}, {5, 7}, 
                   {5, 6}, {4, 6}, {3, 0}, {6, 0}, {6, 0}, {8, 0}, {8, 0}, {7, 0},
@@ -10,7 +16,7 @@
             ulong count = 0;
             for (ulong i = 1; i <= 1000; i++)
                 count += LettersOfNumber(i, bases);
-            return count;
+            return count.ToString(CultureInfo.InvariantCulture);
         }
 
         private static ulong LettersOfNumber(ulong num, ulong[,] bases)

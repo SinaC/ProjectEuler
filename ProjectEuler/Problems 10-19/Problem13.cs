@@ -4,9 +4,13 @@ using System.Linq;
 
 namespace ProjectEuler
 {
-    public class Problem13
+    public sealed class Problem13 : Problem
     {
-        public ulong Solve()
+        public Problem13() : base(13)
+        {
+        }
+
+        public override string Solve()
         {
             string[] numbers = { 
             "37107287533902102798797998220837590246510135740250",
@@ -109,9 +113,11 @@ namespace ProjectEuler
             "72107838435069186155435662884062257473692284509516",
             "20849603980134001723930671666823555245252804609722",
             "53503534226472524250874054075591789781264330331690"};
+
+            //string aggregate = numbers.Aggregate(String.Empty, Tools.SumString);
             // Only the 11 first digit affect the resulting sum
             ulong sum = numbers.Select(s => Convert.ToUInt64(s.Substring(0, 11))).Aggregate<ulong, ulong>(0, (current, i) => current + i);
-            return Convert.ToUInt64(sum.ToString(CultureInfo.InvariantCulture).Substring(0, 10));
+            return sum.ToString(CultureInfo.InvariantCulture).Substring(0, 10);
         }
     }
 }

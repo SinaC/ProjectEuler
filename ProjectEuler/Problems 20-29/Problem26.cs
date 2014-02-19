@@ -1,10 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem26
+    public sealed class Problem26 : Problem
     {
-        public ulong Solve()
+        public Problem26() : base(26)
+        {
+        }
+
+        public override string Solve()
         {
             ulong longest = 1;
             int length = 1;
@@ -33,7 +38,7 @@ namespace ProjectEuler
                     longest = i;
                 }
             }
-            return longest;
+            return longest.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

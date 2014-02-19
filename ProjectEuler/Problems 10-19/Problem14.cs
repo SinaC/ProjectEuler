@@ -1,14 +1,20 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem14
+    public sealed class Problem14 : Problem
     {
-        public ulong Solve()
+        public Problem14() : base(14)
+        {
+        }
+
+        public override string Solve()
         {
             const ulong limit = 1000000;
             int[] lengths = new int[limit];
-            for (ulong i = 0; i < limit; i++) lengths[i] = 0;
+            for (ulong i = 0; i < limit; i++) 
+                lengths[i] = 0;
             int bestLength = 0;
             ulong longest = 0;
             for (ulong n = 2; n < limit; n++)
@@ -52,7 +58,7 @@ namespace ProjectEuler
                     }
                 }
             }
-            return longest;
+            return longest.ToString(CultureInfo.InvariantCulture);
 
             //ulong longest = 0;
             //ulong bestLength = 0;

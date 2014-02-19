@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem24
+    public sealed class Problem24 : Problem
     {
-        public ulong Solve()
+        public Problem24():base(24)
+        {
+        }
+
+        public override string Solve()
         {
             //string[] permutations = Permutations("0123456789");
             //return Convert.ToUInt64(permutations[999999]);
@@ -23,7 +28,7 @@ namespace ProjectEuler
                 result += digits[(int)quotient];
                 digits = digits.Substring(0, (int)quotient) + digits.Substring((int)quotient + 1);
             }
-            return Convert.ToUInt64(result + digits);
+            return Convert.ToUInt64(result + digits).ToString(CultureInfo.InvariantCulture);
         }
     }
 }

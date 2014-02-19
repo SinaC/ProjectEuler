@@ -20,6 +20,7 @@ namespace ProjectEuler
             return assembly.GetTypes().Where(t => String.Equals(t.Namespace, nameSpace, StringComparison.Ordinal));
         }
 
+        // TODO: use inheritance from Problem and abstract method Solve
         static public void SolveAll(int limit = 1, bool runTooSlow = false)
         {
             using (StreamWriter sw = new StreamWriter("results.txt"))
@@ -99,7 +100,7 @@ namespace ProjectEuler
 
             //Problem96 problem = new Problem96();
             //ulong result = problem.Solve(@"D:\GitHub\ProjectEuler\Datas\Problem96.txt");
-            Problem315 problem = new Problem315();
+            Problem problem = new Problem16();
             string result = problem.Solve();
             //SolveAll();
         }

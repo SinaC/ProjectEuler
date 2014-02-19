@@ -1,8 +1,15 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem3
+    public sealed class Problem3 : Problem
     {
-        public ulong Solve()
+        public Problem3()
+            : base(3)
+        {
+        }
+
+        public override string Solve()
         {
             const ulong limit = 600851475143;
             ulong solution = 0;
@@ -21,8 +28,9 @@
             if (number > solution)
                 solution = number;
 
-            return solution;
+            return solution.ToString(CultureInfo.InvariantCulture);
         }
+
         //public ulong Solve()
         //{
         //    const ulong number = 600851475143;

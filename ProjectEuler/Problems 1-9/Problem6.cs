@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem6
+    public sealed class Problem6 : Problem
     {
-        public ulong Solve()
+        public Problem6() : base(6)
+        {
+        }
+
+        public override string Solve()
         {
             // a/ sum(i:1->n,i)^2 = (n*(n+1)/2)^2 = n^2*(n+1)^2 /4 
             // b/ sum(i:1->n,i^2) = n*(n+1)*(2*n+1)/6 
@@ -10,7 +16,8 @@
             const ulong limit = 100;
             const ulong sumSquared = (limit * limit * (limit + 1) * (limit + 1)) / 4;
             const ulong sumSquare = (limit * (limit + 1) * (2 * limit + 1)) / 6;
-            return sumSquared - sumSquare;
+            const ulong result = sumSquared - sumSquare;
+            return result.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem8
+    public sealed class Problem8 : Problem
     {
-        public ulong Solve()
+        public Problem8() : base(8)
+        {
+        }
+
+        public override string Solve()
         {
             const string s =
                 "73167176531330624919225119674426574742355349194934" +
@@ -36,7 +42,7 @@
                 if (number > largest)
                     largest = number;
             }
-            return largest;
+            return largest.ToString(CultureInfo.InvariantCulture);
         }
 
         //        public ulong Solve()

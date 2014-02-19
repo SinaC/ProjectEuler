@@ -1,15 +1,21 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem2
+    public sealed class Problem2 : Problem
     {
+        public Problem2()
+            : base(2)
+        {
+        }
+
         // 1, 2, 3, 4, 5, 6,  7,  8,  9, 10, 11
         // 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89
         // => every 3rd number is pair
         // Fn = Fn-1 + Fn-2  (with Fn pair)
         // ...
         // Fn = 4*Fn-3 + Fn-6 (which are both pair)
-
-        public ulong Solve()
+        public override string Solve()
         {
             const ulong limit = 4000000;
             ulong fib3 = 2;
@@ -23,8 +29,9 @@
                 fib6 = fib3;
                 fib3 = fib;
             }
-            return sum;
+            return sum.ToString(CultureInfo.InvariantCulture);
         }
+
         //public ulong Solve()
         //{
         //    // Fn = Fn-1 + Fn-2

@@ -1,11 +1,16 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 
 namespace ProjectEuler
 {
-    public class Problem20
+    public sealed class Problem20 : Problem
     {
-        public ulong Solve()
+        public Problem20() : base(20)
+        {
+        }
+
+        public override string Solve()
         {
             //int limit = 100;
             //BigInt number = 1;
@@ -30,7 +35,7 @@ namespace ProjectEuler
                 //    toto += digit;
                 //Console.WriteLine(i + "->" + toto);
             }
-            return digits.Aggregate<ulong, ulong>(0, (current, digit) => current + digit);
+            return digits.Aggregate<ulong, ulong>(0, (current, digit) => current + digit).ToString(CultureInfo.InvariantCulture);
         }
     }
 }

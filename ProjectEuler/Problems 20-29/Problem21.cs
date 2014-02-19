@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem21
+    public sealed class Problem21 : Problem
     {
-        public ulong Solve()
+        public Problem21():base(21)
+        {
+        }
+
+        public override string Solve()
         {
             //ulong sum = 0;
             //for (ulong a = 2; a <= 9999; a++) {
@@ -27,7 +33,7 @@
                         sum = sum + i;
                 }
             }
-            return sum;
+            return sum.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

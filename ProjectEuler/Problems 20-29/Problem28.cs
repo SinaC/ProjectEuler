@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem28
+    public sealed class Problem28 : Problem
     {
-        public ulong Solve()
+        public Problem28() : base(28)
+        {
+        }
+
+        public override string Solve()
         {
             // square side 3 = square side 1 + [ 3 + 5 + 7 + 9 ]
             // square side 5 = square side 3 + [ 13 + 17 + 21 + 25 ]
@@ -14,8 +20,9 @@
             ulong sum = 1;
             for (ulong i = 3; i <= 1001; i += 2)
                 sum += 4 * i * i - 6 * i + 6;
-            return sum;
+            return sum.ToString(CultureInfo.InvariantCulture);
         }
+
         //private ulong Sub(ulong n) {
         //    if (n == 1)
         //        return 1;

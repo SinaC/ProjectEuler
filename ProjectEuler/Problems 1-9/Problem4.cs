@@ -4,13 +4,16 @@ using System.Linq;
 
 namespace ProjectEuler
 {
-    public class Problem4
+    public sealed class Problem4 : Problem
     {
-        public ulong Solve()
+        public Problem4() : base(4)
+        {
+        }
+
+        public override string Solve()
         {
             bool found = false;
             ulong firstHalf = 998;
-            ulong[] factors = new ulong[2];
             ulong palindrome = 0;
             while (!found)
             {
@@ -24,13 +27,13 @@ namespace ProjectEuler
                     if (palindrome % i == 0)
                     {
                         found = true;
-                        factors[0] = palindrome / i;
-                        factors[1] = i;
+                        //factors1 = palindrome / i;
+                        //factors2 = i;
                         break;
                     }
                 }
             }
-            return palindrome;
+            return palindrome.ToString(CultureInfo.InvariantCulture);
         }
 
         private static ulong MakePalindrome(ulong firstHalf)
@@ -38,6 +41,7 @@ namespace ProjectEuler
             char[] reversed = firstHalf.ToString(CultureInfo.InvariantCulture).Reverse().ToArray();
             return Convert.ToUInt32(firstHalf + new string(reversed));
         }
+
         //public ulong Solve()
         //{
         //    // product of the 3-digits number is a 6-digits number
