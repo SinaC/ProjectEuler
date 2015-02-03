@@ -1,25 +1,24 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace ProjectEuler
 {
-    public class Problem96
+    public class Problem96 : ProblemBase
     {
-        public ulong Solve(string path)
+        public Problem96()
+            : base(96)
         {
-            List<int[][]> puzzles;
-            using (System.IO.StreamReader reader = new System.IO.StreamReader(path))
-            {
-                string data = reader.ReadToEnd();
-                string[] lines = data.Split('\n');
+        }
 
-                puzzles = new List<int[][]>();
-                for (int i = 1; i < lines.Length; i += 10) // 9 lines for puzzle + 1 for header
-                {
-                    // take 9 lines of puzzle, for each line get each column and convert to digit
-                    int[][] puzzle = lines.Skip(i).Take(9).Select(x => x.Trim().Select(c => c - '0').ToArray()).ToArray();
-                    puzzles.Add(puzzle);
-                }
+        public override string Solve()
+        {
+            List<int[][]> puzzles = new List<int[][]>();
+            for (int i = 1; i < Lines.Count(); i += 10) // 9 lines for puzzle + 1 for header
+            {
+                // take 9 lines of puzzle, for each line get each column and convert to digit
+                int[][] puzzle = Lines.Skip(i).Take(9).Select(x => x.Trim().Select(c => c - '0').ToArray()).ToArray();
+                puzzles.Add(puzzle);
             }
 
             int counter = 0;
@@ -30,7 +29,7 @@ namespace ProjectEuler
                 counter += puzzle[0][0]*100 + puzzle[0][1]*10 + puzzle[0][2];
             }
 
-            return (ulong)counter;
+            return counter.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

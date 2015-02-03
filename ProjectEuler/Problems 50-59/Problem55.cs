@@ -3,9 +3,13 @@ using System.Text;
 
 namespace ProjectEuler
 {
-    public class Problem55
+    public class Problem55 : ProblemBase
     {
-        public ulong Solve()
+        public Problem55() : base(55)
+        {
+        }
+
+        public override string Solve()
         {
             const ulong limit = 10000;
             ulong count = 0;
@@ -16,7 +20,7 @@ namespace ProjectEuler
                 for (int t = 0; t < 50; t++)
                 {
                     string reverse = ReverseString(n);
-                    string sum = Tools.SumString(n, reverse);
+                    string sum = Tools.Tools.SumString(n, reverse);
                     if (IsPalindromic(sum))
                     {
                         fOk = true;
@@ -27,10 +31,10 @@ namespace ProjectEuler
                 if (!fOk)
                     count++;
             }
-            return count;
+            return count.ToString(CultureInfo.InvariantCulture);
         }
 
-        private string ReverseString(string s)
+        private static string ReverseString(string s)
         {
             StringBuilder result = new StringBuilder(s.Length);
             int len = s.Length - 1;
@@ -38,7 +42,8 @@ namespace ProjectEuler
                 result.Append(s[len - i]);
             return result.ToString();
         }
-        private bool IsPalindromic(string s)
+
+        private static bool IsPalindromic(string s)
         {
             for (int i = 0; i < s.Length / 2; i++)
                 if (s[i] != s[s.Length - i - 1])

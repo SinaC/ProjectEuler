@@ -1,24 +1,19 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem52
+    public class Problem52 : ProblemBase
     {
-        public ulong Solve()
+        public Problem52():base(52)
+        {
+        }
+
+        public override string Solve()
         {
             ulong n = 1;
             ulong result;
             while (true)
             {
-                //string sortedString = _52_SortString(n.ToString());
-                //if (
-                //    sortedString == _52_SortString((n * 2).ToString())
-                //    && sortedString == _52_SortString((n * 3).ToString())
-                //    && sortedString == _52_SortString((n * 4).ToString())
-                //    && sortedString == _52_SortString((n * 5).ToString())
-                //    && sortedString == _52_SortString((n * 6).ToString())
-                //    ) {
-                //    result = n;
-                //    break;
-                //}
                 ulong hash = Hash(n);
                 if (
                     hash == Hash(n * 2)
@@ -34,15 +29,15 @@
 
                 n++;
             }
-            return result;
+            return result.ToString(CultureInfo.InvariantCulture);
         }
 
-        private ulong Hash(ulong n)
+        private static ulong Hash(ulong n)
         {
             ulong r = 1;
             while (n > 0)
             {
-                r *= Tools.Primes10[n % 10];
+                r *= Tools.Tools.Primes10[n % 10];
                 n /= 10;
             }
             return r;

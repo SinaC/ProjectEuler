@@ -5,8 +5,12 @@ using System.Collections.Generic;
 
 namespace ProjectEuler
 {
-    public class Problem357
+    public class Problem357 : ProblemBase
     {
+        public Problem357() : base(357)
+        {
+        }
+
         public ulong Solve2()
         {
             const ulong limit = 100000000;
@@ -35,12 +39,12 @@ namespace ProjectEuler
             return sum;
         }
 
-        public ulong Solve()
+        public override string Solve()
         {
             const ulong limit = 1000;
             List<Entry> result = new List<Entry>();
-            bool[] sieve = Tools.BuildSieve(limit+1);
-            //ulong[] radicals = Tools.Radicals(limit+1);
+            bool[] sieve = Tools.Tools.BuildSieve(limit+1);
+            //ulong[] radicals = Tools.Tools.Radicals(limit+1);
             result.Add(new Entry { Number = 1, Divisors = new List<ulong> { 1 } }); // 1 is ok
             for (ulong n = 2; n < limit; n+=2)
             {
@@ -91,7 +95,7 @@ namespace ProjectEuler
             //    Console.WriteLine("{0} is prime-generator: {1}", entry.Number, entry.Divisors.Select(x => x.ToString(CultureInfo.InvariantCulture)).Aggregate((s, i) => s + "," + i));
 
             ulong sum = result.Aggregate((ulong)0, (n,i) => n + i.Number);
-            return sum;
+            return sum.ToString(CultureInfo.InvariantCulture);
         }
 
         private class Entry

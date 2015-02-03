@@ -1,9 +1,15 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem258
+    public class Problem258 : ProblemBase
     {
+        public Problem258() : base(258)
+        {
+        }
+
         [TooSlow]
-        public ulong Solve()
+        public override string Solve()
         {
             // Gk = Fk-2000
             const ulong limit = 1000000000000000000;
@@ -16,7 +22,7 @@
                 fn = fn1;
                 fn1 = fn2;
             }
-            return fn1;
+            return fn1.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

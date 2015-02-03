@@ -1,11 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    // TOO SLOW
-    public class Problem297
+    public class Problem297 : ProblemBase
     {
-        public ulong Solve()
+        public Problem297() : base(297)
+        {
+        }
+
+        [TooSlow]
+        public override string Solve()
         {
             //A007895
             const ulong limit = 1000000; // 10^17
@@ -42,7 +47,7 @@ namespace ProjectEuler
                 sum += count;
                 //Console.WriteLine(" -> "+count);
             }
-            return sum;
+            return sum.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

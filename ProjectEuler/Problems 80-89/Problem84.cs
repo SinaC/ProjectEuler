@@ -6,16 +6,22 @@ using System.Text;
 
 namespace ProjectEuler
 {
-    public class Problem84
+    public class Problem84 : ProblemBase
     {
-        public string Solve()
+        public Problem84() : base(84)
+        {
+        }
+
+        public override string Solve()
         {
             const int limit = 10000000;
             int[] counter = new int[40];
 
             Count(counter, limit);
 
-            List<Tuple<int, int>> sorted = Enumerable.Range(0, 39).Select(i => new Tuple<int, int>(i, counter[i])).OrderByDescending(t => t.Item2).ToList();
+            List<Tuple<int, int>> sorted = Enumerable.Range(0, 39)
+                .Select(i => new Tuple<int, int>(i, counter[i]))
+                .OrderByDescending(t => t.Item2).ToList();
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < 3; i++)
             {
@@ -33,7 +39,7 @@ namespace ProjectEuler
             return rd.Next(4) + rd.Next(4) + 2;
         }
 
-        private static void Count(int[] counter, int limit)
+        private static void Count(IList<int> counter, int limit)
         {
             Random rd = new Random();
             int pos = 0, ccid = 0, chid = 0;

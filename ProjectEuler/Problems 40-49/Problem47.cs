@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem47
+    public class Problem47 : ProblemBase
     {
-        public ulong Solve()
+        public Problem47() : base(47)
+        {
+        }
+
+        public override string Solve()
         {
             const ulong factorCountLimit = 4;
             const ulong consecutiveCountLimit = 4;
@@ -11,7 +17,7 @@
             ulong result = 0;
             ulong count = 0;
             bool fFound = false;
-            bool[] sieve = Tools.BuildSieve(sieveLimit);
+            bool[] sieve = Tools.Tools.BuildSieve(sieveLimit);
             for (ulong i = 10; i <= limit; i++)
             {
                 ulong n = i;
@@ -67,7 +73,7 @@
                 else
                     count = 0;
             }
-            return fFound ? result - consecutiveCountLimit + 1 : 0;
+            return (fFound ? result - consecutiveCountLimit + 1 : 0).ToString(CultureInfo.InvariantCulture);
         }
     }
 }

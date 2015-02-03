@@ -1,10 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem92
+    public class Problem92 : ProblemBase
     {
-        public ulong Solve()
+        public Problem92() : base(92)
+        {
+        }
+
+        public override string Solve()
         {
             const ulong limit = 10000000;
             Dictionary<ulong, ulong> list89 = new Dictionary<ulong, ulong>();
@@ -42,10 +47,10 @@ namespace ProjectEuler
                     list.Add(i); // No need to store n, we store only after the first sum
                 }
             }
-            return count;
+            return count.ToString(CultureInfo.InvariantCulture);
         }
 
-        private ulong SumSquareDigits(ulong number)
+        private static ulong SumSquareDigits(ulong number)
         {
             ulong sum = 0;
             while (number >= 1)

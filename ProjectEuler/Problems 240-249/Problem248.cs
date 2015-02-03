@@ -1,14 +1,19 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using Primes;
 
 namespace ProjectEuler
 {
-    public class Problem248
+    public class Problem248 : ProblemBase
     {
+        public Problem248() : base(248)
+        {
+        }
+
         //http://mathforum.org/kb/message.jspa?messageID=6745284
         //http://en.wikipedia.org/wiki/Euler's_totient_function
         //http://www.numbertheory.org/php/carmichael.htmls
-        public ulong Solve()
+        public override string Solve()
         {
             // phi(n) = phi(p1^k1 * p2^k2 * p3^k3 * ...) where p are prime divisor and k highest exponent of prime divisor
             //        = n*(1-1/p1)*(1-1/p2)*(1-1/p3)*...
@@ -49,7 +54,7 @@ namespace ProjectEuler
             primes.Sort();
             Sub(primes, res, primes.Count, 1, 6227020800);
             res.Sort();
-            return res[150000];
+            return res[150000].ToString(CultureInfo.InvariantCulture);
         }
 
         private static ulong Power(ulong a, int b)
@@ -60,7 +65,7 @@ namespace ProjectEuler
             return ret;
         }
 
-        private static void Sub(List<ulong> primes, List<ulong> res, int top, ulong cur, ulong rem)
+        private static void Sub(IReadOnlyList<ulong> primes, ICollection<ulong> res, int top, ulong cur, ulong rem)
         {
             if (rem == 1)
                 res.Add(cur);

@@ -3,7 +3,7 @@ using Primes;
 
 namespace ProjectEuler
 {
-    public class Problem315 : Problem
+    public class Problem315 : ProblemBase
     {
         public Problem315()
             : base(315)

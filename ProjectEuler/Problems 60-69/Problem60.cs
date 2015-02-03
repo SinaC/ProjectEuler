@@ -3,13 +3,17 @@ using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem60
+    public class Problem60 : ProblemBase
     {
-        public ulong Solve()
+        public Problem60() : base(60)
+        {
+        }
+
+        public override string Solve()
         {
             // Brute-force
             const ulong sieveLimit = 100000000;
-            bool[] sieve = Tools.BuildSieve(sieveLimit); // slowest step
+            bool[] sieve = Tools.Tools.BuildSieve(sieveLimit); // slowest step
             ulong[] limits = { 9999, 9999, 9999, 9999, 9999 }; // arbitrary limit
             ulong[] p = new ulong[5];
             for (p[0] = 3; p[0] <= limits[0]; p[0] += 2)
@@ -116,13 +120,13 @@ namespace ProjectEuler
                                 ulong sum = 0;
                                 for (int i = 0; i < 5; i++)
                                     sum += p[i];
-                                return sum;
+                                return sum.ToString(CultureInfo.InvariantCulture);
                             }
                         }
                     }
                 }
             }
-            return 0;
+            return "0";
         }
     }
 }

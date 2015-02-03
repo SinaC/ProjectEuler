@@ -2,9 +2,13 @@
 
 namespace ProjectEuler
 {
-    public class Problem40
+    public class Problem40 : ProblemBase
     {
-        public ulong Solve()
+        public Problem40() : base(40)
+        {
+        }
+
+        public override string Solve()
         {
             //int limit = 1000000;
             //StringBuilder s = new StringBuilder();
@@ -37,14 +41,14 @@ namespace ProjectEuler
                 if (positions[positionsIndex] >= currentPos && positions[positionsIndex] < nextPos)
                 {
                     int diff = positions[positionsIndex] - currentPos;
-                    ulong digitAtPosition = Tools.ToUInt64(s[diff]);
+                    ulong digitAtPosition = Tools.Tools.ToUInt64(s[diff]);
                     product *= digitAtPosition;
                     positionsIndex++;
                 }
                 currentPos = nextPos;
                 n++;
             }
-            return product;
+            return product.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

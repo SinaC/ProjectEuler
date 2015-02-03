@@ -2,9 +2,13 @@
 
 namespace ProjectEuler
 {
-    public class Problem90
+    public class Problem90 : ProblemBase
     {
-        public ulong Solve()
+        public Problem90() : base(90)
+        {
+        }
+
+        public override string Solve()
         {
             ulong count = 0;
             for (int a = 0; a <= 9; a++)
@@ -26,10 +30,10 @@ namespace ProjectEuler
                                                                 count++;
                                                         }
 
-            return count / 2;
+            return (count / 2).ToString(CultureInfo.InvariantCulture);
         }
 
-        private bool IsValid(string d1, string d2)
+        private static bool IsValid(string d1, string d2)
         {
             if (!((d1.Contains("0") && d2.Contains("1")) || (d2.Contains("0") && d1.Contains("1"))))
                 return false;

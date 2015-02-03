@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem75
+    public class Problem75 : ProblemBase
     {
-        public ulong Solve()
+        public Problem75() : base(75)
+        {
+        }
+
+        public override string Solve()
         {
             // Pythagorean triple n2 – m2, 2mn, n2 + m2  with m > 1 and 1 <= n
             const ulong limit = 1500000;
@@ -14,7 +19,7 @@ namespace ProjectEuler
             for (ulong i = 1; i <= sideLimit; i += 2)
                 for (ulong j = 2; j <= sideLimit; j += 2)
                 {
-                    ulong pgcd = Tools.GCD(i, j);
+                    ulong pgcd = Tools.Tools.GCD(i, j);
                     if (1 == pgcd)
                     { // reduced triplet
                         //ulong a = (ulong)Math.Abs((long)(i * i) - (long)(j * j));
@@ -33,7 +38,7 @@ namespace ProjectEuler
             foreach (KeyValuePair<ulong, int> kv in dict)
                 if (kv.Value == 1)
                     count++;
-            return count;
+            return count.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

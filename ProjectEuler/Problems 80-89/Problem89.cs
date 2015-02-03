@@ -1,22 +1,24 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem89
+    public class Problem89 : ProblemBase
     {
-        public ulong Solve(string path)
+        public Problem89() : base(89)
         {
-            using (System.IO.StreamReader reader = new System.IO.StreamReader(path))
+        }
+
+        public override string Solve()
+        {
+            ulong count = 0;
+            ulong compressedCount = 0;
+            foreach(string line in Lines)
             {
-                ulong count = 0;
-                ulong compressedCount = 0;
-                while (!reader.EndOfStream)
-                {
-                    string s = reader.ReadLine();
-                    count += (ulong)s.Length;
-                    string t = s.Replace("VIIII", "IX").Replace("IIII", "IV").Replace("LXXXX", "XC").Replace("XXXX", "XL").Replace("DCCCC", "CM").Replace("CCCC", "CD");
-                    compressedCount += (ulong)t.Length;
-                }
-                return count - compressedCount;
+                count += (ulong)line.Length;
+                string t = line.Replace("VIIII", "IX").Replace("IIII", "IV").Replace("LXXXX", "XC").Replace("XXXX", "XL").Replace("DCCCC", "CM").Replace("CCCC", "CD");
+                compressedCount += (ulong)t.Length;
             }
+            return (count - compressedCount).ToString(CultureInfo.InvariantCulture);
         }
     }
 }

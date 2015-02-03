@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem95
+    public class Problem95 : ProblemBase
     {
-        public ulong Solve()
+        public Problem95() : base(95)
+        {
+        }
+
+        public override string Solve()
         {
             //ulong limit = 1000000;
             //ulong longestLength = 0;
@@ -119,10 +125,10 @@
                     smallestOfLongestLength = smallest;
                 }
             }
-            return smallestOfLongestLength;
+            return smallestOfLongestLength.ToString(CultureInfo.InvariantCulture);
         }
 
-        private bool CheckChain(ulong limit, ulong[] divisorsSum, ulong[] chain, ulong n, out ulong smallest, out ulong length)
+        private static bool CheckChain(ulong limit, ulong[] divisorsSum, ulong[] chain, ulong n, out ulong smallest, out ulong length)
         {
             ulong i = n;
             length = 1;
@@ -132,10 +138,12 @@
             {
                 i = divisorsSum[i];
                 smallest = (smallest > i) ? i : smallest;
-                if (i > limit) return false;
+                if (i > limit) 
+                    return false;
                 if (chain[i] == n)
                 {
-                    if (i == n) return true;
+                    if (i == n) 
+                        return true;
                     return false;
                 }
                 chain[i] = n;

@@ -4,9 +4,13 @@ using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem62
+    public class Problem62 : ProblemBase
     {
-        public ulong Solve()
+        public Problem62() : base(62)
+        {
+        }
+
+        public override string Solve()
         {
             const ulong limit = 1000000;
             // key: cube sorted digits
@@ -35,10 +39,10 @@ namespace ProjectEuler
                     for (int j = 1; j < list.Count; j++)
                         if (list[j] < min)
                             min = list[j];
-                    return min * min * min;
+                    return (min * min * min).ToString(CultureInfo.InvariantCulture);
                 }
             }
-            return 0;
+            return "0";
         }
     }
 }

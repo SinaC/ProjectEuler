@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem78
+    public class Problem78 : ProblemBase
     {
-        public ulong Solve()
+        public Problem78() : base(78)
+        {
+        }
+
+        public override string Solve()
         {
             //http://www.math.temple.edu/~melkamu/html/partition.pdf
             // Euler's formula:
@@ -30,7 +36,7 @@
                     sum += lastDigits;
                 p[n] = (sum % lastDigits); // divisible by 1000000
             }
-            return (ulong)n;
+            return n.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

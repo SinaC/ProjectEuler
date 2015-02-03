@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem86
+    public class Problem86 : ProblemBase
     {
-        public ulong Solve()
+        public Problem86() : base(86)
+        {
+        }
+
+        public override string Solve()
         {
             // Brute-force
             //http://oeis.org/A143715
@@ -56,7 +62,7 @@
             while (true)
             {
                 for (ulong a = 1; a <= 2 * size; a++)
-                    if (Tools.IsPerfectSquare(a * a + size * size))
+                    if (Tools.Tools.IsPerfectSquare(a * a + size * size))
                         if (a > size)
                             sum += a / 2 - (a - size - 1);
                         else
@@ -65,7 +71,7 @@
                     break;
                 size++;
             }
-            return size;
+            return size.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

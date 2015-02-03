@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem85
+    public class Problem85 : ProblemBase
     {
-        public ulong Solve()
+        public Problem85() : base(85)
+        {
+        }
+
+        public override string Solve()
         {
             const long limit = 2000000;
             long bestDiff = limit;
@@ -35,7 +40,7 @@ namespace ProjectEuler
                         bestY = y;
                     }
                 }
-            return (ulong)(bestX * bestY);
+            return (bestX * bestY).ToString(CultureInfo.InvariantCulture);
         }
     }
 }

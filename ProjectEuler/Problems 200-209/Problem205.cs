@@ -3,9 +3,13 @@ using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem205
+    public class Problem205 : ProblemBase
     {
-        public string Solve()
+        public Problem205() : base(205)
+        {
+        }
+
+        public override string Solve()
         {
             // Spent many hours to figure out why my answer was not correct
             // Answer must include 0.   so it's the probability rounded at 7 decimals
@@ -43,8 +47,8 @@ namespace ProjectEuler
             double prob = 0;
             for (ulong i = 0; i < 36; i++)
                 for (ulong j = 0; j < i; j++)
-                    prob += ((double)pp[i] * (double)cc[j]);// / (double)(ppCount * ccCount);
-            prob = prob / ((double)ppCount * (double)ccCount);
+                    prob += (pp[i] * (double)cc[j]);// / (double)(ppCount * ccCount);
+            prob = prob / (ppCount * (double)ccCount);
             return Math.Round(prob, 7).ToString(CultureInfo.InvariantCulture).Replace(',', '.');
         }
     }

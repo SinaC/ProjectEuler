@@ -1,11 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace ProjectEuler
 {
-    public class Problem303
+    public class Problem303 : ProblemBase
     {
-        public ulong Solve()
+        public Problem303() : base(303)
+        {
+        }
+
+        public override string Solve()
         {
             // TODO:
             //ull solve(int x)
@@ -102,7 +107,7 @@ namespace ProjectEuler
             List<ulong> base3List = new List<ulong>();
             GenerateBase3Numbers(digitCount, 0, base3List); // Arbitrary limit
             base3List.RemoveAt(0); // Remove 0
-            bool[] sieve = Tools.BuildSieve(limit); // Arbitrary limit
+            bool[] sieve = Tools.Tools.BuildSieve(limit); // Arbitrary limit
             //ulong count = 0;
             multiplierList[0] = 0;
             // Compute Fn
@@ -232,10 +237,10 @@ namespace ProjectEuler
             //    }
             //    sw.WriteLine("Sum=" + sum);
             //}
-            return multiplierList.Aggregate<ulong, ulong>(0, (current, multiplier) => current + multiplier);
+            return multiplierList.Aggregate<ulong, ulong>(0, (current, multiplier) => current + multiplier).ToString(CultureInfo.InvariantCulture);
         }
 
-        private void GenerateBase3Numbers(ulong length, ulong prefix, List<ulong> list)
+        private static void GenerateBase3Numbers(ulong length, ulong prefix, List<ulong> list)
         {
             if (length == 1)
                 for (ulong i = 0; i <= 2; i++)
@@ -243,7 +248,7 @@ namespace ProjectEuler
             else
                 for (ulong i = 0; i <= 2; i++)
                 {
-                    ulong newPrefix = i * Tools.Pow(10, length - 1) + prefix;
+                    ulong newPrefix = i * Tools.Tools.Pow(10, length - 1) + prefix;
                     GenerateBase3Numbers(length - 1, newPrefix, list);
                 }
         }

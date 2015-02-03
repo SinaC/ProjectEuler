@@ -4,9 +4,13 @@ using System.Linq;
 
 namespace ProjectEuler
 {
-    public class Problem32
+    public class Problem32 : ProblemBase
     {
-        public ulong Solve()
+        public Problem32() : base(32)
+        {
+        }
+
+        public override string Solve()
         {
             // #digits multiplicand + #digits multiplier + #digits product = 9 digits
             // 1 digit * 4 digits = 4 digits (9 digits)
@@ -21,13 +25,13 @@ namespace ProjectEuler
                     string s = a.ToString(CultureInfo.InvariantCulture) + b.ToString(CultureInfo.InvariantCulture) + product.ToString(CultureInfo.InvariantCulture);
                     if (s.Length == 9)
                     {
-                        bool fIsPanDigitalProduct = Tools.IsPandigital(s);
+                        bool fIsPanDigitalProduct = Tools.Tools.IsPandigital(s);
                         if (fIsPanDigitalProduct && !panDigitalProducts.Contains(product))
                             panDigitalProducts.Add(product);
                     }
                 }
             }
-            return panDigitalProducts.Aggregate<int, ulong>(0, (current, panDigitalProduct) => current + (ulong) panDigitalProduct);
+            return panDigitalProducts.Aggregate<int, ulong>(0, (current, panDigitalProduct) => current + (ulong) panDigitalProduct).ToString(CultureInfo.InvariantCulture);
         }
     }
 }

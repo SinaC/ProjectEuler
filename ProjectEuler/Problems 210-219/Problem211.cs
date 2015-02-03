@@ -1,13 +1,18 @@
 ﻿using System;
+using System.Globalization;
 
 namespace ProjectEuler
 {
     //https://oeis.org/A046655
     // sum of square divisors = sigma2
-    public class Problem211
+    public class Problem211 : ProblemBase
     {
+        public Problem211() : base(211)
+        {
+        }
+
         [TooSlow]
-        public ulong Solve()
+        public override string Solve()
         {
             const ulong limit = 64000000;
 
@@ -15,10 +20,10 @@ namespace ProjectEuler
             ulong sum = 0;
             for (ulong i = 1; i < limit; i++)
             {
-                if (Tools.IsPerfectSquare(sigma2[i]))
+                if (Tools.Tools.IsPerfectSquare(sigma2[i]))
                     sum += i;
             }
-            return sum;
+            return sum.ToString(CultureInfo.InvariantCulture);
         }
 
         private static ulong[] Sigma2(ulong n)

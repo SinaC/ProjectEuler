@@ -3,9 +3,13 @@ using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem80
+    public class Problem80 : ProblemBase
     {
-        public ulong Solve()
+        public Problem80() : base(80)
+        {
+        }
+
+        public override string Solve()
         {
             const ulong limit = 100;
             const int precision = 100;
@@ -19,23 +23,23 @@ namespace ProjectEuler
                 string sqrt = SqrtString(i, precision + 5); // add 5 to precision just to be sure
                 // Sum digits
                 for (int j = 0; j < precision; j++)
-                    sum += Tools.ToUInt64(sqrt[j]);
+                    sum += Tools.Tools.ToUInt64(sqrt[j]);
             }
-            return sum;
+            return sum.ToString(CultureInfo.InvariantCulture);
         }
 
-        private string SqrtString(ulong number, int digitsCount)
+        private static string SqrtString(ulong number, int digitsCount)
         {
             //http://www.afjarvis.staff.shef.ac.uk/maths/jarvisspec02.pdf
             string a = (5 * number).ToString(CultureInfo.InvariantCulture);
             string b = "5";
             while (b.Length < digitsCount)
             {
-                int cmp = Tools.CompareNumberAsString(a, b);
+                int cmp = Tools.Tools.CompareNumberAsString(a, b);
                 if (cmp > 0)
                 {
-                    a = Tools.SubString(a, b);
-                    b = Tools.SumString(b, "10");
+                    a = Tools.Tools.SubString(a, b);
+                    b = Tools.Tools.SumString(b, "10");
                 }
                 else
                 {

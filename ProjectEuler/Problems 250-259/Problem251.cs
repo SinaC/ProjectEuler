@@ -1,12 +1,16 @@
 ﻿using System;
-using Primes;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem251
+    public class Problem251 : ProblemBase
     {
+        public Problem251() : base(251)
+        {
+        }
+
         [TooSlow]
-        public ulong Solve()
+        public override string Solve()
         {
             //http://www77.wolframalpha.com/input/?i=((a%2Bbsqrt(c))^(1/3))+%2B+((a-bsqrt(c))^(1/3))+%3D+1 
             //http://compsci.ca/v3/viewtopic.php?t=21209&postdays=0&postorder=asc&start=90
@@ -43,21 +47,21 @@ namespace ProjectEuler
                 double s = a * a - t * t * t / 27.0;
                 double bMin = 4.0 * s / (k * k) - 1;
                 double bMax = Math.Sqrt(s) + 1;
-                if (bMin < 1) bMin = 1;
-                if (bMax > k) bMax = k;
+                if (bMin < 1) 
+                    bMin = 1;
+                if (bMax > k) 
+                    bMax = k;
                 for (ulong b = (ulong)bMin; b <= (ulong)bMax; b++)
                 {
                     ulong c = (ulong)s / (b * b);
-                    if (c >= 1 && (b * b * c) == s && (b + c) <= k)
+                    if (c >= 1 && Math.Abs((b * b * c) - s) < 0.00001 && (b + c) <= k)
                     {
                         //cout<<"("<<a<<","<<b<<","<<c<<")"<<endl;
                         count++;
                     }
                 }
             }
-            return count;
-
-            return 0;
+            return count.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

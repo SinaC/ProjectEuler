@@ -3,9 +3,13 @@ using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem235
+    public class Problem235 : ProblemBase
     {
-        public string Solve()
+        public Problem235() : base(235)
+        {
+        }
+
+        public override string Solve()
         {
             // u(k) = (900-3k) * r^(k-1)
             // s(n) = sum(k=1->n,u(k))

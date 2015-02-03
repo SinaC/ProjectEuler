@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem225
+    public class Problem225 : ProblemBase
     {
-        public ulong Solve()
+        public Problem225() : base(225)
+        {
+        }
+
+        public override string Solve()
         {
             // let i the number to test
             // compute Tn-2, Tn-1, Tn modulo i
@@ -32,7 +38,7 @@
                 }
                 i += 2; // odd
             }
-            return i;
+            return i.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

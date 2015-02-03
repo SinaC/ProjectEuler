@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem65
+    public class Problem65 : ProblemBase
     {
-        public ulong Solve()
+        public Problem65(): base(65)
+        {
+        }
+
+        public override string Solve()
         {
             //http://en.wikipedia.org/wiki/Continued_fraction#Infinite_continued_fractions
             // e=[2;1,2,1,1,4,1,16,1,1,...,2n,1,1,...]
@@ -18,11 +24,11 @@
                 //numerator = numerator_2 + numerator_1 * continuedFraction;
                 numerator = numerator2;
                 for (ulong j = 0; j < continuedFraction; j++) // compute numerator_1 * continuedFraction
-                    numerator = Tools.SumString(numerator, numerator1);
+                    numerator = Tools.Tools.SumString(numerator, numerator1);
                 numerator2 = numerator1;
                 numerator1 = numerator;
             }
-            return Tools.SumDigits(numerator);
+            return Tools.Tools.SumDigits(numerator).ToString(CultureInfo.InvariantCulture);
         }
     }
 }

@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem94
+    public class Problem94 : ProblemBase
     {
-        public long Solve()
+        public Problem94() : base(94)
+        {
+        }
+
+        public override string Solve()
         {
             const long max = 1000000000;
             const long maxi = 20;
@@ -24,11 +30,11 @@
                     sum += a + a + b;
                 //Console.WriteLine("{0,2} {1,9} {2,9} {3,9} {4,9}", i, m[i], a, b, sum);
             }
-            return sum;
+            return sum.ToString(CultureInfo.InvariantCulture);
         }
 
         [TooSlow]
-        public ulong OLDSolve()
+        public string OLDSolve()
         {
             // Brute-force
             // perimeter = 2*a+b with b=a+1 or b=a-1
@@ -46,7 +52,7 @@
                 ulong toTest1 = (4 * a * a - b1 * b1); // a^2 - (b/2)^2 = height of the triangle with base b
                 if (0 == (toTest1 % 4))
                 {
-                    bool fIntegral1 = Tools.IsPerfectSquare(toTest1 / 4);
+                    bool fIntegral1 = Tools.Tools.IsPerfectSquare(toTest1 / 4);
                     if (perimeter1 <= perimeterLimit && fIntegral1)
                     {
                         //Console.WriteLine("+1 --> a=" + a + " b=" + b1 + " p=" + perimeter1);
@@ -60,7 +66,7 @@
                 ulong toTest2 = (4 * a * a - b2 * b2); // a^2 - (b/2)^2 = height of the triangle with base b
                 if (0 == (toTest2 % 4))
                 {
-                    bool fIntegral2 = Tools.IsPerfectSquare(toTest2 / 4);
+                    bool fIntegral2 = Tools.Tools.IsPerfectSquare(toTest2 / 4);
                     if (perimeter2 <= perimeterLimit && fIntegral2)
                     {
                         //Console.WriteLine("-1 --> a=" + a + " b=" + b2 + " p=" + perimeter2);
@@ -69,7 +75,7 @@
                     }
                 }
             }
-            return sum;
+            return sum.ToString(CultureInfo.InvariantCulture);
             // Fast method: http://oeis.org/A120893
         }
     }

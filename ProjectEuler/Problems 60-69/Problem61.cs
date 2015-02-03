@@ -1,22 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace ProjectEuler
 {
-    public class Problem61
+    public class Problem61 : ProblemBase
     {
-        public ulong Solve()
+        public Problem61() : base(61)
+        {
+        }
+
+        public override string Solve()
         {
             const ulong lowerBound = 1000; // 4 digits
             const ulong upperBound = 9999; // 4 digits
 
-            List<ulong> triangles = BuildPolygonalList(lowerBound, upperBound, Tools.TriangleIndex, Tools.Triangle);
-            List<ulong> squares = BuildPolygonalList(lowerBound, upperBound, Tools.SquareIndex, Tools.Square);
-            List<ulong> pentagonals = BuildPolygonalList(lowerBound, upperBound, Tools.PentagonalIndex, Tools.Pentagonal);
-            List<ulong> hexagonals = BuildPolygonalList(lowerBound, upperBound, Tools.HexagonalIndex, Tools.Hexagonal);
-            List<ulong> heptagonals = BuildPolygonalList(lowerBound, upperBound, Tools.HeptagonalIndex, Tools.Heptagonal);
-            List<ulong> octogonals = BuildPolygonalList(lowerBound, upperBound, Tools.OctogonalIndex, Tools.Octogonal);
+            List<ulong> triangles = BuildPolygonalList(lowerBound, upperBound, Tools.Tools.TriangleIndex, Tools.Tools.Triangle);
+            List<ulong> squares = BuildPolygonalList(lowerBound, upperBound, Tools.Tools.SquareIndex, Tools.Tools.Square);
+            List<ulong> pentagonals = BuildPolygonalList(lowerBound, upperBound, Tools.Tools.PentagonalIndex, Tools.Tools.Pentagonal);
+            List<ulong> hexagonals = BuildPolygonalList(lowerBound, upperBound, Tools.Tools.HexagonalIndex, Tools.Tools.Hexagonal);
+            List<ulong> heptagonals = BuildPolygonalList(lowerBound, upperBound, Tools.Tools.HeptagonalIndex, Tools.Tools.Heptagonal);
+            List<ulong> octogonals = BuildPolygonalList(lowerBound, upperBound, Tools.Tools.OctogonalIndex, Tools.Tools.Octogonal);
 
             // abcd -> cdef -> efgh -> ghij -> ijkl -> klab
             // loop among octogonals ==> abcd
@@ -44,7 +49,7 @@ namespace ProjectEuler
                     break;
                 }
             }
-            return sum;
+            return sum.ToString(CultureInfo.InvariantCulture);
         }
 
         private static List<ulong> BuildPolygonalList(ulong lowerBound, ulong upperBound, Func<ulong, double> getIndexFunc, Func<ulong, ulong> getPolygonalFunc)

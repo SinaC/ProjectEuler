@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem50
+    public class Problem50 : ProblemBase
     {
-        public ulong Solve()
+        public Problem50() : base(50)
+        {
+        }
+
+        public override string Solve()
         {
             //// Brute-force
             //ulong limit = 1000000;
@@ -35,7 +41,7 @@
             //return nMax;
 
             const ulong limit = 1000000;
-            bool[] sieve = Tools.BuildSieve(limit);
+            bool[] sieve = Tools.Tools.BuildSieve(limit);
             ulong maxCount = 0;
             ulong nMax = 0;
             // n(n+1)/2 = sum(i) with sum(i) = 1000000  -> n ~= 1413 (should be lower because prime[i] > i)
@@ -70,7 +76,7 @@
                             nMax = sum;
                         }
                 }
-            return nMax;
+            return nMax.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

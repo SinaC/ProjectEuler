@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem31
+    public class Problem31 : ProblemBase
     {
-        public ulong Solve()
+        public Problem31() : base(31)
+        {
+        }
+
+        public override string Solve()
         {
             //1p, 2p, 5p, 10p, 20p, 50p, £1 (100p) and £2 (200p)
             //total 200p
@@ -18,7 +24,7 @@
                                 for (f = e; f >= 0; f -= 5)
                                     for (g = f; g >= 0; g -= 2)
                                         count++;
-            return count;
+            return count.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

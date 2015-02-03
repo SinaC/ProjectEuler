@@ -1,23 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace ProjectEuler
 {
-    public class Problem54
+    public class Problem54 : ProblemBase
     {
-        public ulong Solve(string path)
+        public Problem54():base(54)
         {
-            using (System.IO.StreamReader reader = new System.IO.StreamReader(path))
-            {
-                string data = reader.ReadToEnd();
-                //_hands = (from line in data.Split('\n')
-                //          select line.Trim().Split(' ').ToArray()).ToList();
-                _hands = data.Split('\n').Where(x => x.Length > 0).Select(x => x.Trim().Split(' ').ToArray()).ToList();
-            }
+        }
+
+        public override string Solve()
+        {
+            //hands = (from line in data.Split('\n')
+            //          select line.Trim().Split(' ').ToArray()).ToList();
+            List<string[]> hands = Lines.Where(x => x.Length > 0).Select(x => x.Trim().Split(' ').ToArray()).ToList();
             ulong ret = 0;
 
-            foreach (string[] hand in _hands)
+            foreach (string[] hand in hands)
             {
                 Tuple<List<KeyValuePair<int, int>>, bool> tmp = GetCardNumbers(hand.Take(5));
                 Tuple<int, int> score1 = GetScore(tmp.Item1, tmp.Item2);
@@ -29,10 +30,8 @@ namespace ProjectEuler
                     ret++;
             }
 
-            return ret;
+            return ret.ToString(CultureInfo.InvariantCulture);
         }
-
-        private List<string[]> _hands;
 
         private static readonly Dictionary<char, int> ValueDict = new Dictionary<char, int>
             {

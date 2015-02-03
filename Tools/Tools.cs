@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 
-namespace ProjectEuler
+namespace Tools
 {
     public class Tools
     {

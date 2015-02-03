@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem35
+    public class Problem35 : ProblemBase
     {
-        public ulong Solve()
+        public Problem35() : base(35)
+        {
+        }
+
+        public override string Solve()
         {
             const ulong limit = 1000000;
             // Optimisation, consider number with 1, 3, 7, 9 as digit -> number ending with 2, 4, 5, 6, 8 are not prime (except 2 and 5)
@@ -33,7 +38,7 @@ namespace ProjectEuler
                 if (fOk)
                     count++;
             }
-            return count;
+            return count.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

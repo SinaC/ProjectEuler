@@ -1,11 +1,16 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 
 namespace ProjectEuler
 {
-    public class Problem56
+    public class Problem56 : ProblemBase
     {
-        public ulong Solve()
+        public Problem56() : base(56)
+        {
+        }
+
+        public override string Solve()
         {
             //ulong bestDigitSum = 0;
             //for ( uint i = 90; i <= 99; i++ ) {
@@ -32,7 +37,7 @@ namespace ProjectEuler
                 ulong digitCount = 1;
                 for (ulong e = 1; e <= limit; e++)
                 { // compute each power of base
-                    Tools.MulDigitsNumber(digits, ref digitCount, b);
+                    Tools.Tools.MulDigitsNumber(digits, ref digitCount, b);
                     ulong sum = digits.Aggregate<ulong, ulong>(0, (current, digit) => current + digit);
                     if (sum > bestDigitSum)
                     {
@@ -42,7 +47,7 @@ namespace ProjectEuler
                     }
                 }
             }
-            return bestDigitSum;
+            return bestDigitSum.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

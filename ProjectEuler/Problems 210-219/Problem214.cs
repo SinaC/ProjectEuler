@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem214
+    public class Problem214 : ProblemBase
     {
-        public ulong Solve()
+        public Problem214() : base(214)
+        {
+        }
+
+        public override string Solve()
         {
             // Brute-force
             //const ulong limit = 40000000;
@@ -91,7 +97,7 @@
                 if (count[i] == chainLength && primes[i])
                     sum += i;
             }
-            return sum;
+            return sum.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

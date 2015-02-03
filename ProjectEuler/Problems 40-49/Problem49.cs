@@ -3,9 +3,13 @@ using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem49
+    public class Problem49 : ProblemBase
     {
-        public ulong Solve()
+        public Problem49() : base(49)
+        {
+        }
+
+        public override string Solve()
         {
             //ulong result = 0;
             //for ( ulong n = 1001; n <= 9999-2*3330; n += 2 ) {
@@ -36,7 +40,7 @@ namespace ProjectEuler
 
             const ulong limit = 10000;
             ulong result = 0;
-            bool[] sieve = Tools.BuildSieve(limit);
+            bool[] sieve = Tools.Tools.BuildSieve(limit);
             bool fStop = false;
             for (ulong n = 1001; n < limit && !fStop; n += 2)
             {
@@ -53,14 +57,14 @@ namespace ProjectEuler
                     ulong n2 = n1 + diff;
                     if (n2 > 9999 || sieve[n2])
                         continue;
-                    if (Tools.IsPermutation(n, n1) && Tools.IsPermutation(n, n2))
+                    if (Tools.Tools.IsPermutation(n, n1) && Tools.Tools.IsPermutation(n, n2))
                     {
                         result = Convert.ToUInt64(n.ToString(CultureInfo.InvariantCulture) + n1.ToString(CultureInfo.InvariantCulture) + n2.ToString(CultureInfo.InvariantCulture));
                         fStop = true;
                     }
                 }
             }
-            return result;
+            return result.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

@@ -1,33 +1,34 @@
 ﻿using System;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem99
+    public class Problem99 : ProblemBase
     {
-        public ulong Solve(string path)
+        public Problem99() : base(99)
+        {
+        }
+
+        public override string Solve()
         {
             // a^b > c^d  <==> b*ln(a) > d*ln(c) with a, b, c, d > 1
-            using (System.IO.StreamReader reader = new System.IO.StreamReader(path))
+            int lineNumber = 1;
+            double bestPower = 1;
+            int bestLineNumber = 1;
+            foreach(string line in Lines)
             {
-                int lineNumber = 1;
-                double bestPower = 1;
-                int bestLineNumber = 1;
-                while (!reader.EndOfStream)
+                string[] tokens = line.Split(',');
+                ulong b = Convert.ToUInt64(tokens[0]);
+                ulong e = Convert.ToUInt64(tokens[1]);
+                double power = e * Math.Log(b);
+                if (power > bestPower)
                 {
-                    string s = reader.ReadLine();
-                    string[] tokens = s.Split(',');
-                    ulong b = Convert.ToUInt64(tokens[0]);
-                    ulong e = Convert.ToUInt64(tokens[1]);
-                    double power = e * Math.Log(b);
-                    if (power > bestPower)
-                    {
-                        bestPower = power;
-                        bestLineNumber = lineNumber;
-                    }
-                    lineNumber++;
+                    bestPower = power;
+                    bestLineNumber = lineNumber;
                 }
-                return (ulong)bestLineNumber;
+                lineNumber++;
             }
+                return bestLineNumber.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

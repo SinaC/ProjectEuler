@@ -1,11 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace ProjectEuler
 {
-    public class Problem46
+    public class Problem46 : ProblemBase
     {
-        public ulong Solve()
+        public Problem46() : base(46)
+        {
+        }
+
+        public override string Solve()
         {
             Dictionary<ulong, ulong> primes = new Dictionary<ulong, ulong>
                 {
@@ -45,7 +50,7 @@ namespace ProjectEuler
                 }
                 n += 2; // Only odd composite
             }
-            return result;
+            return result.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

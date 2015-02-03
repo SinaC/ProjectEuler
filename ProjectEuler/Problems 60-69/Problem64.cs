@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem64
+    public class Problem64 : ProblemBase
     {
-        public ulong Solve()
+        public Problem64():base(64)
+        {
+        }
+
+        public override string Solve()
         {
             const ulong limit = 10000;
             ulong count = 0;
@@ -14,11 +19,11 @@ namespace ProjectEuler
                 ulong sqrtN = (ulong)Math.Sqrt(n);
                 if (sqrtN * sqrtN == n)
                     continue;
-                List<ulong> continuedFraction = Tools.SqrtContinuedFraction(n);
+                List<ulong> continuedFraction = Tools.Tools.SqrtContinuedFraction(n);
                 if (0 == (continuedFraction.Count & 1)) // odd period <- even list item count
                     count++;
             }
-            return count;
+            return count.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

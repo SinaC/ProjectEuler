@@ -3,13 +3,17 @@ using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem51
+    public class Problem51 : ProblemBase
     {
-        public ulong Solve()
+        public Problem51():base(51)
+        {
+        }
+
+        public override string Solve()
         {
             // last digit doesnt count because we can't replace it by 0, 2, 5, 4, 6, 8
             const ulong limit = 1000000;
-            bool[] sieve = Tools.BuildSieve(limit);
+            bool[] sieve = Tools.Tools.BuildSieve(limit);
             int[] digits = new int[10];
             for (ulong n = 10001; n < limit; n += 2)
             {
@@ -20,7 +24,7 @@ namespace ProjectEuler
                 string s = n.ToString(CultureInfo.InvariantCulture);
                 for (int i = 0; i < 10; i++) digits[i] = 0;
                 for (int i = 0; i < s.Length - 1; i++)
-                    digits[Tools.ToInt32(s[i])]++;
+                    digits[Tools.Tools.ToInt32(s[i])]++;
                 // 2 digits
                 for (int i = 0; i < digits.Length; i++)
                 {
@@ -35,11 +39,11 @@ namespace ProjectEuler
                                 count++;
                         }
                         if (count == 8)
-                            return n;
+                            return n.ToString(CultureInfo.InvariantCulture);
                     }
                 }
             }
-            return 0;
+            return "0";
         }
     }
 }

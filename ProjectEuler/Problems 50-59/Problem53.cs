@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem53
+    public class Problem53 : ProblemBase
     {
-        public ulong Solve()
+        public Problem53() : base(53)
+        {
+        }
+
+        public override string Solve()
         {
             const ulong limit = 1000000;
             // C(n,k) == C(n,n-k)
@@ -11,17 +17,17 @@
             for (int n = 23; n <= nLimit; n++)
                 for (int k = 1; k < n; k++)
                 {
-                    double cnr = _53_Cnk(n, k);
+                    double cnr = Cnk(n, k);
                     if (cnr >= limit)
                     { // Once the limit is reached, every number between k and n-k will break the limit
                         count += (ulong)(n + 1 - 2 * k);
                         break;
                     }
                 }
-            return count;
+            return count.ToString(CultureInfo.InvariantCulture);
         }
 
-        private double _53_Cnk(int n, int k)
+        private static double Cnk(int n, int k)
         {
             // n!/(k!(n-k)!)
             double result = 1;

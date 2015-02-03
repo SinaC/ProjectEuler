@@ -1,12 +1,17 @@
 ﻿using System;
+using System.Globalization;
 using Primes;
 
 namespace ProjectEuler
 {
-    public class Problem291
+    public class Problem291 : ProblemBase
     {
+        public Problem291() : base(291)
+        {
+        }
+
         [TooSlow]
-        public ulong Solve()
+        public override string Solve()
         {
             // use brute-force to get first values: 5, 13, 41, 61, 113, 181, 313, 421, 613, 761, 1013 -> http://oeis.org/A027862
             // n^2 + (n+1)^2
@@ -34,7 +39,7 @@ namespace ProjectEuler
                 }
             }
 
-            return count;
+            return count.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

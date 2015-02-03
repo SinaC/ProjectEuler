@@ -3,9 +3,13 @@ using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem38
+    public class Problem38 : ProblemBase
     {
-        public ulong Solve()
+        public Problem38() : base(38)
+        {
+        }
+
+        public override string Solve()
         {
             ulong product;
             // upper bound is 9876 . 9876*2 = 987619752 (9 digits)
@@ -22,14 +26,14 @@ namespace ProjectEuler
                     if (s.Length + next.ToString(CultureInfo.InvariantCulture).Length > 9)
                         break;
                 }
-                if (Tools.IsPandigital(s))
+                if (Tools.Tools.IsPandigital(s))
                 {
                     product = Convert.ToUInt64(s);
                     break;
                 }
                 n--;
             }
-            return product;
+            return product.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

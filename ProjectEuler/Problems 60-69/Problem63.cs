@@ -1,10 +1,15 @@
-﻿using System.Text;
+﻿using System.Globalization;
+using System.Text;
 
 namespace ProjectEuler
 {
-    public class Problem63
+    public class Problem63 : ProblemBase
     {
-        public ulong Solve()
+        public Problem63() : base(63)
+        {
+        }
+
+        public override string Solve()
         {
             // 10^n has n+1 digits
             // n must be <= 9 if we want only n digits
@@ -29,7 +34,7 @@ namespace ProjectEuler
                         count++;
                 }
             }
-            return count;
+            return count.ToString(CultureInfo.InvariantCulture);
         }
 
         private static string MulStringByDigit(string multiplicand, int multiplier)
@@ -38,7 +43,7 @@ namespace ProjectEuler
             int carry = 0;
             for (int i = multiplicand.Length - 1; i >= 0; i--)
             {
-                int digitA = Tools.ToInt32(multiplicand[i]);
+                int digitA = Tools.Tools.ToInt32(multiplicand[i]);
                 int product = digitA * multiplier + carry;
                 carry = product / 10;
                 int digit = product % 10;

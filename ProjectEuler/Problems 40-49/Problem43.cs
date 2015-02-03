@@ -3,9 +3,13 @@ using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem43
+    public class Problem43 : ProblemBase
     {
-        public ulong Solve()
+        public Problem43() : base(43)
+        {
+        }
+
+        public override string Solve()
         {
             // DOESNT WORK
             //// d0 <> 0
@@ -90,7 +94,7 @@ namespace ProjectEuler
                 }
                 digits[d1] = false;
             }
-            return sum;
+            return sum.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

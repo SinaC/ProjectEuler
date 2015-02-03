@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem230
+    public class Problem230 : ProblemBase
     {
-        public ulong Solve()
+        public Problem230() : base(230)
+        {
+        }
+
+        public override string Solve()
         {
             const string a = "1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679";
             const string b = "8214808651328230664709384460955058223172535940812848111745028410270193852110555964462294895493038196";
@@ -23,12 +28,12 @@ namespace ProjectEuler
                 int k = 0;
                 if ((double)(whichString - 1) <= d && d < (double)whichString)
                 {
-                    digit = Tools.ToUInt64(b[stringIndex]);
+                    digit = Tools.Tools.ToUInt64(b[stringIndex]);
                     k = 1;
                 }
                 else
                 {
-                    digit = Tools.ToUInt64(a[stringIndex]);
+                    digit = Tools.Tools.ToUInt64(a[stringIndex]);
                     k = 0;
                 }
                 //Console.WriteLine(digitIndex + "  " + d + "  " + stringIndex + "  " + k + "  " + digit);
@@ -36,7 +41,7 @@ namespace ProjectEuler
                 pow10 *= 10;
                 pow7 *= 7;
             }
-            return sum;
+            return sum.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem45
+    public class Problem45 : ProblemBase
     {
-        public ulong Solve()
+        public Problem45() : base(45)
+        {
+        }
+
+        public override string Solve()
         {
             const ulong start = 40755;
             // Triangle         T(n) = n(n+1)/2
@@ -17,15 +22,15 @@ namespace ProjectEuler
             {
                 n++;
                 // Compute next hexagonal
-                ulong hexagonal = Tools.Hexagonal(n);
+                ulong hexagonal = Tools.Tools.Hexagonal(n);
                 // Check if pentagonal  n = ( 1 + sqrt(24*P(n)+1) ) + 6
-                if (Tools.IsPentagonal(hexagonal))
+                if (Tools.Tools.IsPentagonal(hexagonal))
                 {
                     result = hexagonal;
                     break;
                 }
             }
-            return result;
+            return result.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

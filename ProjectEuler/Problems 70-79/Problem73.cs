@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem73
+    public class Problem73 : ProblemBase
     {
-        public ulong Solve()
+        public Problem73() : base(73)
+        {
+        }
+
+        public override string Solve()
         {
             // must find the largest n
             //  with n/d < a/b      d <= 12000, a=1 and b=2
@@ -27,7 +33,7 @@
                 {
                     if (n * b < a * d && e * d < n * f)
                     {
-                        ulong pgcd = Tools.GCD(n, d);
+                        ulong pgcd = Tools.Tools.GCD(n, d);
                         if (1 == pgcd)
                             count++;
                         else
@@ -40,7 +46,7 @@
                     }
                 }
             }
-            return count;
+            return count.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

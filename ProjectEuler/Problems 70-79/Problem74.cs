@@ -1,10 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem74
+    public class Problem74 : ProblemBase
     {
-        public ulong Solve()
+        public Problem74() : base(74)
+        {
+        }
+
+        public override string Solve()
         {
             const ulong limit = 1000000;
             const int chainCount = 60;
@@ -22,7 +27,7 @@ namespace ProjectEuler
                     if (fFound)
                         break;
                     list.Add(sum);
-                    sum = Tools.SumFactorialDigits(sum);
+                    sum = Tools.Tools.SumFactorialDigits(sum);
                     index = list.IndexOf(sum);
                     if (-1 != index)
                         break;
@@ -40,7 +45,7 @@ namespace ProjectEuler
             foreach (KeyValuePair<ulong, int> kv in cache)
                 if (kv.Value == chainCount)
                     count++;
-            return count;
+            return count.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

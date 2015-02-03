@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem69
+    public class Problem69 : ProblemBase
     {
-        public ulong Solve()
+        public Problem69() : base(69)
+        {
+        }
+
+        public override string Solve()
         {
             //// Brute-force
             //// maximize n/phi(n) is equivalent to maximize the number of factors
@@ -14,7 +19,7 @@ namespace ProjectEuler
             //ulong maxN = 0;
             //ulong maxFactor = 0;
             //for (ulong n = 3; n < limit; n++) {
-            //    ulong factorsCount = _69_GetFactorsCount(sieve, n);
+            //    ulong factorsCount = GetFactorsCount(sieve, n);
             //    if (factorsCount > maxFactor) {
             //        //Console.WriteLine("n:" + n + "->" + factorsCount);
             //        maxFactor = factorsCount;
@@ -35,10 +40,10 @@ namespace ProjectEuler
                         break;
                     product = newProduct;
                 }
-            return product;
+            return product.ToString(CultureInfo.InvariantCulture);
         }
         
-        //private ulong _69_GetFactorsCount(bool[] sieve, ulong n) {
+        //private static ulong GetFactorsCount(bool[] sieve, ulong n) {
         //    ulong sqrtN = (ulong)Math.Sqrt(n);
         //    ulong factorsCount = 0;
         //    for (ulong j = 2; j <= sqrtN; j++)

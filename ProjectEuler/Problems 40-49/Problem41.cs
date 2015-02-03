@@ -1,11 +1,16 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 
 namespace ProjectEuler
 {
-    public class Problem41
+    public class Problem41 : ProblemBase
     {
-        public ulong Solve()
+        public Problem41() : base(41)
+        {
+        }
+
+        public override string Solve()
         {
             // Optimisation: we can start with 7654321
             // Because if the digit-sum of number is divisible by 3 so is the number
@@ -19,8 +24,8 @@ namespace ProjectEuler
             //return 0;
 
             const string digits = "7654321";
-            string[] permutations = Tools.Permutations(digits);
-            return permutations.Select(s => Convert.ToUInt64(s)).FirstOrDefault(Primes.Check.IsPrime);
+            string[] permutations = Tools.Tools.Permutations(digits);
+            return permutations.Select(s => Convert.ToUInt64(s)).FirstOrDefault(Primes.Check.IsPrime).ToString(CultureInfo.InvariantCulture);
         }
     }
 }

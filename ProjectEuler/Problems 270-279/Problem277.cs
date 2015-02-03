@@ -2,10 +2,14 @@
 
 namespace ProjectEuler
 {
-    public class Problem277
-    {
+    public class Problem277 : ProblemBase
+    { 
+        public Problem277() : base(277)
+        {
+        }
+
         [UnderConstruction]
-        public ulong Solve()
+        public override string Solve()
         {
             // Let An be ( n - a ) / b
             // Compte n, a, b of An+1
@@ -89,7 +93,7 @@ namespace ProjectEuler
             if (1 != an)
                 Console.WriteLine("ERROR");
 
-            return 0;
+            return "0";
 
             ////string sequence = "DdDddUUdDDDdUDUUUdDdUUDDDUdDD";
             ////ulong n = 1000000;

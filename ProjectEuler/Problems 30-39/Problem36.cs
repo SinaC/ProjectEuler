@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem36
+    public class Problem36 : ProblemBase
     {
-        public ulong Solve()
+        public Problem36() : base(36)
+        {
+        }
+
+        public override string Solve()
         {
             //ulong sum = 0;
             //for (int n = 1; n <= 1000000; n+=2) { // no ending 0 in base 2
@@ -45,7 +50,7 @@ namespace ProjectEuler
                         sum += (ulong)nBase10;
                 }
             }
-            return sum;
+            return sum.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

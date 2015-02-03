@@ -1,10 +1,15 @@
-﻿using System.Linq;
+﻿using System.Globalization;
+using System.Linq;
 
 namespace ProjectEuler
 {
-    public class Problem72
+    public class Problem72 : ProblemBase
     {
-        public ulong Solve()
+        public Problem72() : base(72)
+        {
+        }
+
+        public override string Solve()
         {
             // 1: /
             // 2: 1/2
@@ -50,7 +55,7 @@ namespace ProjectEuler
                     }
                 }
             ulong sum = phi.Aggregate<ulong, ulong>(0, (current, p) => current + p);
-            return sum - 1; // -1 because 1 doesn't give a reduced fraction
+            return (sum - 1).ToString(CultureInfo.InvariantCulture); // -1 because 1 doesn't give a reduced fraction
         }
     }
 }

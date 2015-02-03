@@ -4,9 +4,13 @@ using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem33
+    public class Problem33 : ProblemBase
     {
-        public ulong Solve()
+        public Problem33() : base(33)
+        {
+        }
+
+        public override string Solve()
         {
             const ulong lowerBound = 10;
             const ulong upperBound = 99;
@@ -51,12 +55,12 @@ namespace ProjectEuler
             }
             ulong simplifiedProductNumerator, simplifiedProductDenominator;
             SimplifyFraction(productNumerator, productDenominator, out simplifiedProductNumerator, out simplifiedProductDenominator);
-            return simplifiedProductDenominator;
+            return simplifiedProductDenominator.ToString(CultureInfo.InvariantCulture);
         }
 
-        private void SimplifyFraction(ulong numerator, ulong denominator, out ulong simplifiedNumerator, out ulong simplifiedDenominator)
+        private static void SimplifyFraction(ulong numerator, ulong denominator, out ulong simplifiedNumerator, out ulong simplifiedDenominator)
         {
-            ulong pgcd = Tools.GCD(numerator, denominator);
+            ulong pgcd = Tools.Tools.GCD(numerator, denominator);
             simplifiedNumerator = numerator / pgcd;
             simplifiedDenominator = denominator / pgcd;
         }

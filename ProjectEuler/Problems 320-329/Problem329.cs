@@ -5,14 +5,18 @@ using Fractions;
 namespace ProjectEuler
 {
     //http://wiki.san-ss.com.ar/project-euler-problem-329
-    public class Problem329
+    public class Problem329 : ProblemBase
     {
         private readonly Dictionary<Tuple<int, string>, Fraction> _memoization = new Dictionary<Tuple<int, string>, Fraction>(new EqualityComparer());
 
-        public Fraction Solve()
+        public Problem329() : base(329)
+        {
+        }
+
+        public override string Solve()
         {
             //_memoization
-            bool[] sieve = Tools.BuildSieve(501);
+            bool[] sieve = Tools.Tools.BuildSieve(501);
             for (int i = 1; i <= 500; i++)
             {
                 if (!sieve[i])

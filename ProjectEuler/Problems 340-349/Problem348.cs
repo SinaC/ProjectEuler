@@ -1,12 +1,18 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Collections.Generic;
+using Tools;
 
 namespace ProjectEuler
 {
-    public class Problem348
+    public class Problem348 : ProblemBase
     {
-        public ulong Solve()
+        public Problem348() : base(348)
+        {
+        }
+
+        public override string Solve()
         {
             ulong sum = 0;
             int found = 0;
@@ -27,7 +33,7 @@ namespace ProjectEuler
                     found++;
                 }
             }
-            return sum;
+            return sum.ToString(CultureInfo.InvariantCulture);
         }
 
         public ulong Solve2()
@@ -39,7 +45,7 @@ namespace ProjectEuler
                 for(ulong j = 1; j < 32000; j++) // sqrt(1000^3)
                 {
                     ulong number = i*i*i + j*j;
-                    if (Tools.IsPalindromic(number, 10))
+                    if (Tools.Tools.IsPalindromic(number, 10))
                     {
                         List<Tuple<ulong, ulong>> lst;
                         if (!result.TryGetValue(number, out lst))

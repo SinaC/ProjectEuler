@@ -1,12 +1,15 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Numerics;
 
 namespace ProjectEuler
 {
-    public class Problem206
+    public class Problem206 : ProblemBase
     {
-        public ulong Solve()
+        public Problem206() : base(206)
+        {
+        }
+
+        public override string Solve()
         {
             // 1_2_3_4_5_6_7_8_9_0
             // must end with 00
@@ -34,7 +37,7 @@ namespace ProjectEuler
                 n -= 2; // odd number
             }
             n *= 10;
-            return Convert.ToUInt64(n.ToString());
+            return n.ToString();
         }
     }
 }

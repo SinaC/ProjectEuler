@@ -1,10 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem293
+    public class Problem293 : ProblemBase
     {
-        public ulong Solve()
+        public Problem293() : base(293)
+        {
+        }
+
+        public override string Solve()
         {
             const ulong limit = 1000000000;
             ulong[] primes = new ulong[150];
@@ -27,9 +32,8 @@ namespace ProjectEuler
             }
 
             // Get power of 2 and multiples of primes
-            ulong multiple;
             // Get all power of 2
-            multiple = 1;
+            ulong multiple = 1;
             while (true)
             {
                 multiple = multiple * primes[0];
@@ -79,7 +83,7 @@ namespace ProjectEuler
                 }
             }
 
-            return sum;
+            return sum.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

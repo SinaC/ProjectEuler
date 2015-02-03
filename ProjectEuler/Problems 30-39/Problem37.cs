@@ -1,14 +1,19 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace ProjectEuler
 {
-    public class Problem37
+    public class Problem37 : ProblemBase
     {
-        public ulong Solve()
+        public Problem37() : base(37)
+        {
+        }
+
+        public override string Solve()
         {
             const ulong limit = 1000000; // arbitrary limit
-            bool[] sieve = Tools.BuildSieve(limit);
+            bool[] sieve = Tools.Tools.BuildSieve(limit);
             List<ulong> numbers = new List<ulong>();
             for (ulong n = 11; n < limit; n++)
             {
@@ -35,13 +40,13 @@ namespace ProjectEuler
                     ulong pow10 = 10;
                     while (true)
                     {
-                        ulong left = n / pow10;
+                        ulong left = n/pow10;
                         if (sieve[left])
                         {
                             fOk = false;
                             break;
                         }
-                        ulong right = n % pow10;
+                        ulong right = n%pow10;
                         if (sieve[right])
                         {
                             fOk = false;
@@ -58,7 +63,7 @@ namespace ProjectEuler
                         break;
                 }
             }
-            return numbers.Aggregate<ulong, ulong>(0, (current, number) => current + (ulong) number);
+            return numbers.Aggregate<ulong, ulong>(0, (current, number) => current + number).ToString(CultureInfo.InvariantCulture);
         }
     }
 }

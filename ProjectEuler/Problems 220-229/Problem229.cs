@@ -1,12 +1,18 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace ProjectEuler
 {
-    public class Problem229
+    public class Problem229 : ProblemBase
     {
-        public ulong Solve()
+        public Problem229() : base(229)
+        {
+        }
+
+        [TooSlow]
+        public override string Solve()
         {
             const ulong limit = 2000000000;
             byte[] flags = new byte[limit/2]; // divide by 2 size, store odd in first quartet and even in second quartet
@@ -23,7 +29,7 @@ namespace ProjectEuler
 
             int count = flags.Count(x => (x & 0x0F) == 0x0F) + flags.Count(x => (x & 0xF0) == 0xF0);
 
-            return (ulong)count;
+            return count.ToString(CultureInfo.InvariantCulture);
         }
 
         private static void Flags(byte[] flags, ulong limit, ulong multiplier, byte flagEven, byte flagOdd)

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem390 : Problem
+    public class Problem390 : ProblemBase
     {
         public Problem390() : base(390)
         {
@@ -29,7 +30,7 @@ namespace ProjectEuler
                 for (ulong c = b; c <= cMax; c++)
                 {
                     ulong t = b*b + c*c + b*b*c*c;
-                    if (t < limit2 && Tools.IsPerfectSquare(t / 4))
+                    if (t < limit2 && Tools.Tools.IsPerfectSquare(t / 4))
                         result.Add(new Tuple<ulong, ulong>(b, c));
                 }
             }
@@ -48,7 +49,7 @@ namespace ProjectEuler
                 sum += (ulong) Math.Round(area);
             }
 
-            return sum.ToString();
+            return sum.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

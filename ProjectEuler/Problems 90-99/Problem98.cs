@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
 using System.Linq;
 
 namespace ProjectEuler
 {
-    public class Problem98
+    public class Problem98 : ProblemBase
     {
-        public int Solve(string filename)
+        public Problem98() : base(98)
+        {
+        }
+
+        public override string Solve()
         {
             int result = 0;
 
@@ -17,7 +20,7 @@ namespace ProjectEuler
                 squareList.Add(i * i);
             int[] squares = squareList.ToArray();
 
-            string[] words = File.ReadAllText(filename).Replace("\"", "").Split(',');
+            string[] words = Data.Replace("\"", "").Split(',');
             char[][] sorted = new char[words.Length][];
 
             //Find anagrams
@@ -52,10 +55,10 @@ namespace ProjectEuler
                 }
             }
 
-            return result;
+            return result.ToString(CultureInfo.InvariantCulture);
         }
 
-        private int SquareAnagram(int[] squares, string word1, string word2)
+        private static int SquareAnagram(int[] squares, string word1, string word2)
         {
             int max = 0;
             char[] w1Array = word1.ToCharArray();

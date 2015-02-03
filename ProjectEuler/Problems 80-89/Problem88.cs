@@ -1,39 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace ProjectEuler
 {
-    public class Problem88
+    public class Problem88 : ProblemBase
     {
         private const ulong Limit = 12000;
 
-        // get minimal product=sum for a given k
-        // n = the product=sum to check
-        public int GetMin(int k)
+        public Problem88() : base(88)
         {
-            for (int n = k + 1; ; n++)
-                if (Check(n, n, k)) return n;
         }
 
-        // returns true iff wanted prod and sum is possible with
-        // k factors/terms
-        public bool Check(int prod, int sum, int k)
-        {
-            if (sum < k) 
-                return false;
-            if (prod == 1) 
-                return sum == k;
-            if (k == 1) 
-                return prod == sum;
-            for (int d = 2; d <= prod && sum - d >= k - 1; d++)
-                if (prod % d == 0)
-                    if (Check(prod / d, sum - d, k - 1)) 
-                        return true;
-            return false;
-        }
-
-        public ulong Solve()
+        public override string Solve()
         {
             List<int> mins = new List<int>();
             for (int i = 2; i <= 12000; i++)
@@ -41,10 +21,10 @@ namespace ProjectEuler
                 int min = GetMin(i);
                 mins.Add(min);
             }
-            return (ulong)mins.Distinct().Aggregate(0, (n, i) => n + i);
+            return mins.Distinct().Aggregate(0, (n, i) => n + i).ToString(CultureInfo.InvariantCulture);
         }
 
-        public ulong Solve2()
+        public string Solve2()
         {
             Dictionary<ulong, ulong> dict = new Dictionary<ulong, ulong>();
             //HashSet<ulong> values = new HashSet<ulong>();
@@ -57,10 +37,35 @@ namespace ProjectEuler
             //        values.Add(pair.Value);
             //}
 
-            return values.Aggregate((ulong) 0, (n, i) => n + i);
+            return values.Aggregate((ulong)0, (n, i) => n + i).ToString(CultureInfo.InvariantCulture);
         }
 
-        private static void Count(Dictionary<ulong, ulong> dict, ulong cvalue, ulong csum, ulong cproduct, ulong clength)
+        // get minimal product=sum for a given k
+        // n = the product=sum to check
+        private static int GetMin(int k)
+        {
+            for (int n = k + 1; ; n++)
+                if (Check(n, n, k)) return n;
+        }
+
+        // returns true iff wanted prod and sum is possible with
+        // k factors/terms
+        private static bool Check(int prod, int sum, int k)
+        {
+            if (sum < k)
+                return false;
+            if (prod == 1)
+                return sum == k;
+            if (k == 1)
+                return prod == sum;
+            for (int d = 2; d <= prod && sum - d >= k - 1; d++)
+                if (prod % d == 0)
+                    if (Check(prod / d, sum - d, k - 1))
+                        return true;
+            return false;
+        }
+
+        private static void Count(IDictionary<ulong, ulong> dict, ulong cvalue, ulong csum, ulong cproduct, ulong clength)
         {
             ulong ctmp = cproduct - csum + clength;
 

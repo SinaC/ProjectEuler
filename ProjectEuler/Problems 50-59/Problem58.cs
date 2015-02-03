@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem58
+    public class Problem58 : ProblemBase
     {
-        public ulong Solve()
+        public Problem58() : base(58)
+        {
+        }
+
+        public override string Solve()
         {
             // Corners: n^2-3n+3, n^2-2n+2, n^2-n+1, n^2
             // diagonal count = 2*(n-1)+1 with n odd
@@ -25,7 +31,7 @@
                     break;
                 n += 2;
             }
-            return n;
+            return n.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

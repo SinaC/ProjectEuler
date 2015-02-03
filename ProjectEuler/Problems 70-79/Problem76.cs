@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem76
+    public class Problem76 : ProblemBase
     {
-        public ulong Solve()
+        public Problem76() : base(76)
+        {
+        }
+
+        public override string Solve()
         {
             //http://www.math.temple.edu/~melkamu/html/partition.pdf
             // Euler's formula:
@@ -39,7 +45,7 @@
                 }
                 p[i] = sum;
             }
-            return (ulong)(p[100] - 1); // -1 because we want at least two integers
+            return (p[100] - 1).ToString(CultureInfo.InvariantCulture); // -1 because we want at least two integers
 
             //ulong target = 100;
             //ulong[] ways = new ulong[target + 1];

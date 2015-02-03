@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem70
+    public class Problem70 : ProblemBase
     {
-        public ulong Solve()
+        public Problem70() : base(70)
+        {
+        }
+
+        public override string Solve()
         {
             //// Brute-force too slow
             //ulong limit = 10000000;
@@ -33,7 +39,7 @@
             // n = p1*p2
             // phi(n) = n * (1-1/p1) * (1-1/p2) = n * (p1-1)/p1 * (p2-1)/p2 = (p1-1)*(p2-1)
             const ulong limit = 10000000;
-            bool[] sieve = Tools.BuildSieve(10000); // 2.5*sqrt(limit) to be sure
+            bool[] sieve = Tools.Tools.BuildSieve(10000); // 2.5*sqrt(limit) to be sure
             double minRatio = double.MaxValue;
             ulong minN = 0;
             for (ulong p1 = 3; p1 < (ulong)sieve.Length; p1 += 2)
@@ -46,7 +52,7 @@
                     if (n < limit)
                     {
                         ulong phiN = (p1 - 1) * (p2 - 1);
-                        if (Tools.IsPermutation(n, phiN))
+                        if (Tools.Tools.IsPermutation(n, phiN))
                         {
                             double ratio = (double)n / (double)phiN;
                             if (ratio < minRatio)
@@ -59,7 +65,7 @@
                     }
                 }
             }
-            return minN;
+            return minN.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem39
+    public class Problem39 : ProblemBase
     {
-        public ulong Solve()
+        public Problem39() : base(39)
+        {
+        }
+
+        public override string Solve()
         {
             // a^2+b^2=c^2 (1)
             // a+b+c=p -> c = p-a-b (2)
@@ -33,7 +39,7 @@
                     }
                 }
             }
-            return pWithMaxSolution;
+            return pWithMaxSolution.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

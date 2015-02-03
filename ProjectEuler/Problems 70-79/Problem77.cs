@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem77
+    public class Problem77 : ProblemBase
     {
-        public ulong Solve()
+        public Problem77() : base(77)
+        {
+        }
+
+        public override string Solve()
         {
             ulong[] primes = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79 };
             const ulong limit = 5000;
@@ -19,7 +25,7 @@
                     break;
                 target++;
             }
-            return target;
+            return target.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

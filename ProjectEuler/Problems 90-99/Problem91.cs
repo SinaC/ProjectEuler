@@ -1,16 +1,21 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace ProjectEuler
 {
-    public class Problem91
+    public class Problem91 : ProblemBase
     {
-        public ulong Solve()
+        public Problem91() : base(91)
+        {
+        }
+
+        public override string Solve()
         {
             const int limit = 50;
             const int size = limit + 1;
-            int counter = Tools.Combinations(Enumerable.Range(1, size*size - 1), 2).Count(p => Check(p[0]/size, p[0]%size, p[1]/size, p[1]%size));
-            return (ulong)counter;
+            int counter = Tools.Tools.Combinations(Enumerable.Range(1, size*size - 1), 2).Count(p => Check(p[0]/size, p[0]%size, p[1]/size, p[1]%size));
+            return counter.ToString(CultureInfo.InvariantCulture);
         }
 
         private static bool Check(int x1, int y1, int x2, int y2)

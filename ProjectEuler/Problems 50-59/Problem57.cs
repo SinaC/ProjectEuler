@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem57
+    public class Problem57 : ProblemBase
     {
-        public ulong Solve()
+        public Problem57() : base(57)
+        {
+        }
+
+        public override string Solve()
         {
             // sqrt(2) = 1 + 1/(2+1/(2+1/(2+...)))
             // 1 + 1/2
@@ -18,14 +24,14 @@
             string previousDenominator = "1";
             for (int i = 1; i <= 1000; i++)
             {
-                string denominator = Tools.SumString(previousNumerator, previousDenominator);
-                string numerator = Tools.SumString(denominator, previousDenominator);
+                string denominator = Tools.Tools.SumString(previousNumerator, previousDenominator);
+                string numerator = Tools.Tools.SumString(denominator, previousDenominator);
                 previousNumerator = numerator;
                 previousDenominator = denominator;
                 if (numerator.Length > denominator.Length)
                     count++;
             }
-            return count;
+            return count.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

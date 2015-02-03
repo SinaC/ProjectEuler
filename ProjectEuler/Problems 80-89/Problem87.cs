@@ -1,14 +1,19 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem87
+    public class Problem87 : ProblemBase
     {
-        public ulong Solve()
+        public Problem87() : base(87)
+        {
+        }
+
+        public override string Solve()
         {
             const ulong limit = 50000000;
             const ulong sieveLimit = 10000;
-            bool[] sieve = Tools.BuildSieve(sieveLimit);
+            bool[] sieve = Tools.Tools.BuildSieve(sieveLimit);
             Dictionary<ulong, bool> answer = new Dictionary<ulong, bool>();
             ulong count = 0;
             for (ulong i = 2; i < sieveLimit; i++)
@@ -33,7 +38,7 @@ namespace ProjectEuler
                     }
                 }
             }
-            return count;
+            return count.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

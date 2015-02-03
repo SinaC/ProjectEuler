@@ -4,9 +4,13 @@ using System.Linq;
 
 namespace ProjectEuler
 {
-    public class Problem93
+    public class Problem93 : ProblemBase
     {
-        public string Solve()
+        public Problem93() : base(93)
+        {
+        }
+
+        public override string Solve()
         {
             //a+b+c+d
             //a+(b+c)+d
@@ -31,23 +35,23 @@ namespace ProjectEuler
                             for (int k = 0; k < 4; k++)
                             {
 
-                                double? number = ope(ope(ope(perm[0], perm[1], i), perm[2], j), perm[3], k);
+                                double? number = Operation(Operation(Operation(perm[0], perm[1], i), perm[2], j), perm[3], k);
                                 if (number != null && number == (int) number && number < results.Length && number > 0)
                                     results[(int) number] = true;
 
-                                number = ope(ope(perm[0], ope(perm[1], perm[2], j), i), perm[3], k);
+                                number = Operation(Operation(perm[0], Operation(perm[1], perm[2], j), i), perm[3], k);
                                 if (number != null && number == (int) number && number < results.Length && number > 0)
                                     results[(int) number] = true;
 
-                                number = ope(perm[0], ope(ope(perm[1], perm[2], j), perm[3], k), i);
+                                number = Operation(perm[0], Operation(Operation(perm[1], perm[2], j), perm[3], k), i);
                                 if (number != null && number == (int) number && number < results.Length && number > 0)
                                     results[(int) number] = true;
 
-                                number = ope(perm[0], ope(perm[1], ope(perm[2], perm[3], k), j), i);
+                                number = Operation(perm[0], Operation(perm[1], Operation(perm[2], perm[3], k), j), i);
                                 if (number != null && number == (int) number && number < results.Length && number > 0)
                                     results[(int) number] = true;
 
-                                number = ope(ope(perm[0], perm[1], i), ope(perm[2], perm[3], k), j);
+                                number = Operation(Operation(perm[0], perm[1], i), Operation(perm[2], perm[3], k), j);
                                 if (number != null && number == (int) number && number < results.Length && number > 0)
                                     results[(int) number] = true;
                             }
@@ -71,7 +75,7 @@ namespace ProjectEuler
             return best == null ? String.Empty : best.Aggregate(String.Empty, (s, i) => s + i.ToString(CultureInfo.InvariantCulture));
         }
 
-        private double? ope(double? a, double? b, int op)
+        private static double? Operation(double? a, double? b, int op)
         {
             if (a == null || b == null) return null;
             switch (op)

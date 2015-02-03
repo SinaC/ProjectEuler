@@ -5,9 +5,13 @@ using System.Numerics;
 
 namespace ProjectEuler
 {
-    public class Problem66
+    public class Problem66 : ProblemBase
     {
-        public string Solve()
+        public Problem66() : base(66)
+        {
+        }
+
+        public override string Solve()
         {
             //http://en.wikipedia.org/wiki/Pell%27s_equation#Fundamental_solution_via_continued_fractions
             // X^2 - D*Y^2 = 1
@@ -20,7 +24,7 @@ namespace ProjectEuler
                 if (sqrtN * sqrtN == n)
                     continue; // No solution if D is a square
                 // Continued fraction convergent may be injected as X and Y for diophante equation X^2 - DY^2 until result = 1 (X = numerator and Y = denominator)
-                List<ulong> continuedFractions = Tools.SqrtContinuedFraction(n);
+                List<ulong> continuedFractions = Tools.Tools.SqrtContinuedFraction(n);
                 BigInteger numerator2 = 1;
                 BigInteger denominator2 = 0;
                 BigInteger numerator1 = (long)continuedFractions[0];

@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Primes;
 
 namespace ProjectEuler
 {
-    public class Problem358
+    public class Problem358 : ProblemBase
     {
-        public ulong Solve()
+        public Problem358() : base(358)
+        {
+        }
+
+        public override string Solve()
         {
             //http://blog.cyclopsgroup.org/2011/11/cyclic-numbers-project-euler-problem.html
             // leftmost:    00000000137
@@ -66,7 +66,7 @@ namespace ProjectEuler
                 Console.WriteLine("Candidate {0}  sum {1}", candidate, sum);
             }
 
-            return 0; // candidates have been checked manually
+            return "0"; // candidates have been checked manually
 
 
             ////http://en.wikipedia.org/wiki/Cyclic_number
@@ -84,7 +84,7 @@ namespace ProjectEuler
             ////If r ≠ 1 then repeat the loop.
             ////if t = p − 1 then n is a cyclic number.
             //const ulong limit = 62;
-            //bool[] sieve = Tools.BuildSieve(limit);
+            //bool[] sieve = Tools.Tools.BuildSieve(limit);
             //const ulong b = 10;
             //for (ulong p = 7; p < limit; p++)
             //    if (!sieve[p])

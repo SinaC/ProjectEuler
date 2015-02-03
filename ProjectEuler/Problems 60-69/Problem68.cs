@@ -4,9 +4,13 @@ using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem68
+    public class Problem68 : ProblemBase
     {
-        public string Solve()
+        public Problem68() : base(68)
+        {
+        }
+
+        public override string Solve()
         {
             // end of line a, b, c, d, e
             // pentagon f, g, h, i, j

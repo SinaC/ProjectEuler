@@ -1,13 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem234
+    public class Problem234 : ProblemBase
     {
+        public Problem234() : base(234)
+        {
+        }
+
         //private bool _234_IsPrime(bool[] sieve, ulong n) {
         //    if (n < (ulong)sieve.Length)
         //        return !sieve[n];
@@ -31,7 +32,7 @@ namespace ProjectEuler
         //    b = b / d;
         //    return (((b - a + 1) * (b + a)) / 2) * d;
         //}
-        public ulong Solve()
+        public override string Solve()
         {
             // Brute-force
             //const ulong limit = 999966663333;
@@ -63,7 +64,7 @@ namespace ProjectEuler
             const ulong min = 5; // 4 is not semi-divisible, avoid some additional tests
             const ulong max = 999966663333;
             ulong sqrtMax = 2 * (ulong)(Math.Sqrt(max) + 0.5);
-            bool[] sieve = Tools.BuildSieve(sqrtMax);
+            bool[] sieve = Tools.Tools.BuildSieve(sqrtMax);
             ulong lps = 2;
             ulong ups = 3;
             ulong sum = 0;
@@ -142,7 +143,7 @@ namespace ProjectEuler
                 while (sieve[ups]) // Get next prime
                     ups += 2;
             }
-            return sum;
+            return sum.ToString(CultureInfo.InvariantCulture);
         }
     }
 }
