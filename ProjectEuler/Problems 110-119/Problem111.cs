@@ -1,11 +1,16 @@
 ﻿using System;
+using System.Globalization;
 using System.Text;
 
 namespace ProjectEuler
 {
-    public class Problem111
+    public class Problem111 : ProblemBase
     {
-        public ulong Solve()
+        public Problem111() : base(111)
+        {
+        }
+
+        public override string Solve()
         {
             // For each digit
             //  Build number with repeating 10 digits
@@ -31,10 +36,10 @@ namespace ProjectEuler
                 globalSum += sum;
                 //Console.WriteLine(digit + "->" + count + " " + sum);
             }
-            return globalSum;
+            return globalSum.ToString(CultureInfo.InvariantCulture);
         }
 
-        private void Permutation(StringBuilder sb, int digitCount, ulong lowerLimit, ulong upperLimit, int baseDigit, int numberOfDigitToModify, int position, ref ulong count, ref ulong sum)
+        private static void Permutation(StringBuilder sb, int digitCount, ulong lowerLimit, ulong upperLimit, int baseDigit, int numberOfDigitToModify, int position, ref ulong count, ref ulong sum)
         {
             // sb: base number
             // digitCount: number of digit in number

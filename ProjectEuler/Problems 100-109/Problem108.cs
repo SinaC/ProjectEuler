@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem108
+    public class Problem108 : ProblemBase
     {
-        public ulong Solve()
+        public Problem108() : base(108)
+        {
+        }
+
+        public override string Solve()
         {
             // Brute-force
             //ulong limit = 20000;
@@ -47,10 +52,10 @@ namespace ProjectEuler
                 }
                 n++;
             }
-            return bestN;
+            return bestN.ToString(CultureInfo.InvariantCulture);
         }
 
-        private ulong FactorOfSquareCount(ulong n)
+        private static ulong FactorOfSquareCount(ulong n)
         {
             ulong sqrtN = (ulong)Math.Sqrt(n);
             ulong count = 1;

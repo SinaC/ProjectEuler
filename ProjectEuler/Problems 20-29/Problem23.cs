@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace ProjectEuler
 {
-    public sealed class Problem23 : Problem
+    public sealed class Problem23 : ProblemBase
     {
         public Problem23() : base(23)
         {
@@ -16,7 +16,7 @@ namespace ProjectEuler
             List<ulong> abundants = new List<ulong>();
             for (ulong i = 12; i <= limit; i++)
             {
-                ulong sum = Tools.SumOfDivisors(i);
+                ulong sum = Tools.Tools.SumOfDivisors(i);
                 if (sum > 2 * i)
                     abundants.Add(i);
             }

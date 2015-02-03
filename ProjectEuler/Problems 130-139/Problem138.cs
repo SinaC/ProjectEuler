@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem138
+    public class Problem138 : ProblemBase
     {
-        public ulong Solve()
+        public Problem138() : base(138)
+        {
+        }
+
+        public override string Solve()
         {
             //// Brute-force
             //// h=b-1 or h=b+1
@@ -54,7 +60,7 @@
                 fn1 = fn;
                 count++;
             }
-            return sum;
+            return sum.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

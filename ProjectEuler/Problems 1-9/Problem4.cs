@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace ProjectEuler
 {
-    public sealed class Problem4 : Problem
+    public sealed class Problem4 : ProblemBase
     {
         public Problem4() : base(4)
         {

@@ -1,10 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 
 namespace ProjectEuler
 {
-    public class Problem132
+    public class Problem132 : ProblemBase
     {
-        public ulong Solve()
+        public Problem132() : base(132)
+        {
+        }
+
+        public override string Solve()
         {
             // R(n) = ( 10^n - 1 ) / 9   or R(n) * 9 + 1 = 10^n
             // R(n) = sum(i=1->n-1,10^i)
@@ -21,7 +27,7 @@ namespace ProjectEuler
             //      result += 10^(n-1) mod p
             //  return result
 
-            ulong n = Tools.Pow(10, 9);
+            ulong n = Tools.Tools.Pow(10, 9);
             ulong p = 3; // R(n) not divisible by 2
             List<ulong> factors = new List<ulong>();
             while (true)
@@ -37,19 +43,17 @@ namespace ProjectEuler
                 p += 2;
             }
 
-            ulong sum = 0;
-            foreach (ulong factor in factors)
-                sum += factor;
-            return sum;
+            ulong sum = factors.Aggregate<ulong, ulong>(0, (current, factor) => current + factor);
+            return sum.ToString(CultureInfo.InvariantCulture);
         }
 
-        private ulong Sub(ulong b, ulong n, ulong p)
+        private static ulong Sub(ulong b, ulong n, ulong p)
         {
             if (1 == n) return 1;
             if (2 == n) return (1 + b) % p;
-            ulong result = ((Sub(b, n / 2, p) % p) * (1 + Tools.FastPowModulo_BeCareful(10, n / 2, p))) % p;
+            ulong result = ((Sub(b, n / 2, p) % p) * (1 + Tools.Tools.FastPowModulo_BeCareful(10, n / 2, p))) % p;
             if (1 == (n & 1))
-                result = (result + Tools.FastPowModulo_BeCareful(10, n - 1, p)) % p;
+                result = (result + Tools.Tools.FastPowModulo_BeCareful(10, n - 1, p)) % p;
             return result;
         }
     }

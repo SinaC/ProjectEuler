@@ -2,7 +2,7 @@
 
 namespace ProjectEuler
 {
-    public sealed class Problem28 : Problem
+    public sealed class Problem28 : ProblemBase
     {
         public Problem28() : base(28)
         {

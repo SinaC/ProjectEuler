@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace ProjectEuler
 {
-    public sealed class Problem24 : Problem
+    public sealed class Problem24 : ProblemBase
     {
         public Problem24():base(24)
         {
@@ -22,7 +22,7 @@ namespace ProjectEuler
             ulong n = 999999;
             for (ulong i = 9; i >= 1; i--)
             {
-                ulong fact = Tools.Factorial(i);
+                ulong fact = Tools.Tools.Factorial(i);
                 ulong quotient = n / fact;
                 n = n % fact;
                 result += digits[(int)quotient];

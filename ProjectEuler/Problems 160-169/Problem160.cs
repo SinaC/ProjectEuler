@@ -1,11 +1,16 @@
 ﻿using System;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem160
+    public class Problem160 : ProblemBase
     {
+        public Problem160() : base(160)
+        {
+        }
+
         [UnderConstruction]
-        public ulong Solve()
+        public override string Solve()
         {
             //http://mathcentral.uregina.ca/QQ/database/QQ.09.07/s/mukesh1.html
             //http://www.cat4mba.com/forum/number-system/last-non-zero-digit
@@ -59,7 +64,7 @@ namespace ProjectEuler
                         ulong b = a2 - a5;
                         //for (ulong k = 1; k <= b; k++)
                         //    dump = (dump * 2) % lastDigits;
-                        ulong multiplier = Tools.PowModulo(2, b, lastDigits);
+                        ulong multiplier = Tools.Tools.PowModulo(2, b, lastDigits);
                         dump = (dump * multiplier) % lastDigits;
 
                         sw.WriteLine(i + "-->" + dump + "  a2=" + a2 + "  a5=" + a5 + "  result=" + result);
@@ -72,13 +77,13 @@ namespace ProjectEuler
                 // so we have divided too much while removing trailing zeroes, 2^(a2-a5) gives this factor
                 // result without trailing zeroes = result * 2^(a2-a5)
                 ulong a = a2 - a5;
-                ulong pow2 = Tools.PowModulo(2, a, lastDigits);
+                ulong pow2 = Tools.Tools.PowModulo(2, a, lastDigits);
                 result = (result * pow2) % lastDigits;
                 //for (ulong i = 1; i <= a; i++)
                 //    result = (result * 2) % lastDigits;
                 sw.WriteLine(limit + "-->" + result);
             }
-            return result;
+            return result.ToString(CultureInfo.InvariantCulture);
 
             //using (System.IO.StreamWriter sw = new System.IO.StreamWriter(@"..\..\..\output.txt")) {
             //    const ulong numDigits = 1;

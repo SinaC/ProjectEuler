@@ -3,9 +3,13 @@ using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem170
+    public class Problem170 : ProblemBase
     {
-        public ulong Solve()
+        public Problem170() : base(170)
+        {
+        }
+
+        public override string Solve()
         {
             // Split each permutation of 012345789 in 3 or more parts (n, a, b, ... )
             // n*a concat n*b concat n*c ... is pandigital
@@ -33,7 +37,7 @@ namespace ProjectEuler
             //              check if a/i [+] b/i [+] i is pandigital   [+] means concatenation
             bool fFound = false;
             ulong largest = 0;
-            string[] permutations = Tools.Permutations("76543210");
+            string[] permutations = Tools.Tools.Permutations("76543210");
             int index = 0;
             while (!fFound)
             {
@@ -49,7 +53,7 @@ namespace ProjectEuler
                         if (0 == (a % i) && 0 == (b % i))
                         {
                             string concat = (a / i).ToString(CultureInfo.InvariantCulture) + (b / i).ToString(CultureInfo.InvariantCulture) + i.ToString(CultureInfo.InvariantCulture);
-                            if (concat.Length == 10 && Tools.IsPandigitalCharRange(concat, '0', '9'))
+                            if (concat.Length == 10 && Tools.Tools.IsPandigitalCharRange(concat, '0', '9'))
                             {
                                 largest = n;
                                 fFound = true;
@@ -61,7 +65,7 @@ namespace ProjectEuler
                 }
                 index++;
             }
-            return largest;
+            return largest.ToString(CultureInfo.InvariantCulture);
         }
 
         //static List<string[]> _170_Permutations = null;

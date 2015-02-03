@@ -5,24 +5,28 @@ using System.Linq;
 
 namespace ProjectEuler
 {
-    public class Problem118
+    public class Problem118 : ProblemBase
     {
-        public ulong Solve()
+        public Problem118() : base(118)
+        {
+        }
+
+        public override string Solve()
         {
             // Generate every pandigital permutations
             // Foreach permutation, try to extract prime starting from front
             // If able to extract prime till the end of the permutation, store in a set as string in a dictionary
             Dictionary<string, int> results = new Dictionary<string, int>();
-            string[] permutations = Tools.Permutations("123456789");
+            string[] permutations = Tools.Tools.Permutations("123456789");
             foreach (string permutation in permutations)
             {
                 List<ulong> set = new List<ulong>();
-                _118_Extract(permutation, set, results);
+                Extract(permutation, set, results);
             }
-            return (ulong) results.Count;
+            return results.Count.ToString(CultureInfo.InvariantCulture);
         }
 
-        private void _118_Extract(string permutation, List<ulong> set, Dictionary<string, int> results)
+        private static void Extract(string permutation, IList<ulong> set, IDictionary<string, int> results)
         {
             for (int length = 1; length <= permutation.Length; length++)
             {
@@ -47,7 +51,7 @@ namespace ProjectEuler
                 {
                     // Recursive call with the remaining string
                     string remaining = permutation.Substring(length);
-                    _118_Extract(remaining, set, results);
+                    Extract(remaining, set, results);
                 }
                 set.RemoveAt(set.Count - 1); // Pop
             }

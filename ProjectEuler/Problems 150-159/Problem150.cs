@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem150
+    public class Problem150 : ProblemBase
     {
-        public long Solve()
+        public Problem150() : base(150)
+        {
+        }
+
+        public override string Solve()
         {
             //    0
             //   1 2
@@ -24,7 +30,7 @@
             // next line: i,j+2 -> i+2,j+2
             // next line: i,j+3 -> i+3,j+3
 
-            long power19 = (long)Tools.Pow(2, 19);
+            long power19 = (long)Tools.Tools.Pow(2, 19);
             long power20 = power19 * 2;
             const int height = 1000;
             const int size = height * (height + 1) / 2;
@@ -89,7 +95,7 @@
                 }
                 sums = newSums;
             }
-            return best;
+            return best.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

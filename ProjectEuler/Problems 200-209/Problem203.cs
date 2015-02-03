@@ -1,11 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace ProjectEuler
 {
-    public class Problem203
+    public class Problem203 : ProblemBase
     {
-        public ulong Solve()
+        public Problem203() : base(203)
+        {
+        }
+
+        public override string Solve()
         {
             // Triangle[i,j] = Triangle[i-1,j-1] + Triangle[i,j-1]
             // Check for each distinct coefficient if it's divisible by any square of prime between 2^2 and 7^2 (highest square below 51)
@@ -52,7 +57,7 @@ namespace ProjectEuler
                 if (fOk)
                     sum += kv.Key;
             }
-            return sum;
+            return sum.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

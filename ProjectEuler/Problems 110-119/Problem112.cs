@@ -2,9 +2,13 @@
 
 namespace ProjectEuler
 {
-    public class Problem112
+    public class Problem112 : ProblemBase
     {
-        public ulong Solve()
+        public Problem112() : base(112)
+        {
+        }
+
+        public override string Solve()
         {
             ulong n = 100; // no bouncy below 100
             ulong count = 0;
@@ -29,7 +33,7 @@ namespace ProjectEuler
                     break;
                 n++;
             }
-            return n;
+            return n.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

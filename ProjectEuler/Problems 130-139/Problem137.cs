@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem137
+    public class Problem137 : ProblemBase
     {
-        public ulong Solve()
+        public Problem137() : base(137)
+        {
+        }
+
+        public override string Solve()
         {
             // AF(x) = F1*x + F2*x^2 + F3*x^3 + ... + Fk*x^k ...
             // with Fk = Fk-1 + Fk-2 and F1 = 1 and F2 = 2
@@ -40,7 +46,7 @@
                 nugget1 = nugget;
             }
 
-            return nugget1;
+            return nugget1.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

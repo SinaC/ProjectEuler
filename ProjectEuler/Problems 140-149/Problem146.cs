@@ -1,12 +1,17 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace ProjectEuler
 {
-    public class Problem146
+    public class Problem146 : ProblemBase
     {
+        public Problem146() : base(146)
+        {
+        }
+
         [TooSlow]
-        public ulong Solve()
+        public override string Solve()
         {
             //// 2 hours to complete
             //// 10, 315410, 927070, 2525870, 8146100, 16755190, 39313460, 97387280, 119571820, 121288430, 130116970, 139985660
@@ -67,7 +72,7 @@ namespace ProjectEuler
                 }
             }
             //
-            return list.Aggregate<ulong, ulong>(0, (current, item) => current + item);
+            return list.Aggregate<ulong, ulong>(0, (current, item) => current + item).ToString(CultureInfo.InvariantCulture);
         }
     }
 }

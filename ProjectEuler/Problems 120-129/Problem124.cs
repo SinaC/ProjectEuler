@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem124
+    public class Problem124 : ProblemBase
     {
-        public ulong Solve()
+        public Problem124() : base(124)
+        {
+        }
+
+        public override string Solve()
         {
             // Brute-force
             //ulong limit = 100000;
@@ -36,7 +41,7 @@ namespace ProjectEuler
                 }
             }
             Array.Sort(radicals, Radical.Compare);
-            return radicals[10000].N;
+            return radicals[10000].N.ToString(CultureInfo.InvariantCulture);
         }
 
         private class Radical

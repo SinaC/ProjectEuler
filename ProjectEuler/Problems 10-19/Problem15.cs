@@ -1,6 +1,6 @@
 ﻿namespace ProjectEuler
 {
-    public sealed class Problem15 : Problem
+    public sealed class Problem15 : ProblemBase
     {
         public Problem15(): base(15)
         {

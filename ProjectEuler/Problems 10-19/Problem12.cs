@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace ProjectEuler
 {
-    public sealed class Problem12 : Problem
+    public sealed class Problem12 : ProblemBase
     {
         public Problem12()
             : base(12)

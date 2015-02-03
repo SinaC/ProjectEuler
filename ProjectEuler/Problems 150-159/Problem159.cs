@@ -1,11 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace ProjectEuler
 {
-    public class Problem159
+    public class Problem159 : ProblemBase
     {
-        public ulong Solve()
+        public Problem159() : base(159)
+        {
+        }
+
+        public override string Solve()
         {
             const ulong limit = 1000000;
             ulong[] array = new ulong[limit];
@@ -19,7 +25,7 @@ namespace ProjectEuler
                     array[n] = Math.Max(array[n], drsj + array[k]);
                 sum += drsj;
             }
-            return sum;
+            return sum.ToString(CultureInfo.InvariantCulture);
         }
 
         public ulong Solve2()
@@ -36,9 +42,9 @@ namespace ProjectEuler
             return array.Aggregate((ulong) 0, (n, i) => n + i);
         }
 
-        private static void CalculateMDRS(ulong[] primes, ulong[] array, ulong n)
+        private static void CalculateMDRS(IEnumerable<ulong> primes, ulong[] array, ulong n)
         {
-            ulong max = Tools.GetDigitalRoot(n);
+            ulong max = Tools.Tools.GetDigitalRoot(n);
 
             if (primes.Contains(n))
             {

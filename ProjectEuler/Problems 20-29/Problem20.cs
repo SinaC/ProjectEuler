@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace ProjectEuler
 {
-    public sealed class Problem20 : Problem
+    public sealed class Problem20 : ProblemBase
     {
         public Problem20() : base(20)
         {
@@ -29,7 +29,7 @@ namespace ProjectEuler
             ulong digitCount = 1;
             for (ulong i = 2; i <= limit; i++)
             {
-                Tools.MulDigitsNumber(digits, ref digitCount, i);
+                Tools.Tools.MulDigitsNumber(digits, ref digitCount, i);
                 //ulong toto = 0;
                 //foreach (ulong digit in digits)
                 //    toto += digit;

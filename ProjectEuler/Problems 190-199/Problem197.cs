@@ -3,9 +3,13 @@ using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem197
+    public class Problem197 : ProblemBase
     {
-        public string Solve()
+        public Problem197() : base(197)
+        {
+        }
+
+        public override string Solve()
         {
             // No need to compute until n = 10^12 because Un 9 first decimals doesn't change after a few iterations
             // So, we loop until we have enough precision

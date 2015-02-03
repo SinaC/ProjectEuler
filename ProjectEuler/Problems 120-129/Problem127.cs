@@ -1,11 +1,15 @@
 ﻿using System;
-using System.Linq;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem127
+    public class Problem127 : ProblemBase
     {
-        public ulong Solve()
+        public Problem127() : base(127)
+        {
+        }
+
+        public override string Solve()
         {
             /*
              Other simple options to save a lot of time based on the relation "a less than b less than c". This is in addition to skipping values of "c" altogether when rad(c)>=c/2.
@@ -15,7 +19,7 @@ namespace ProjectEuler
                 4) Only the GCD(a,b) ever needs to be checked. If it is equal to 1, the GCD(a,c) and GCD(b,c) would also be equal to 1 by default.
             */
             const ulong limit = 120000;
-            ulong[] radicals = Tools.Radicals(limit);
+            ulong[] radicals = Tools.Tools.Radicals(limit);
             ulong count1 = 0;
             //ulong count = 0;
             for (ulong c = 2; c < limit; c++)
@@ -48,7 +52,7 @@ namespace ProjectEuler
                                     radical *= radicals[b];
                                     if (radical < c)
                                     {
-                                        if (Tools.GCD(radicals[a], radicals[b]) == 1)
+                                        if (Tools.Tools.GCD(radicals[a], radicals[b]) == 1)
                                         {
                                             //count++;
                                             count1 += c;
@@ -60,16 +64,16 @@ namespace ProjectEuler
                     }
                 }
             }
-            return count1;
+            return count1.ToString(CultureInfo.InvariantCulture);
         }
 
         [TooSlow]
         public ulong OLDSolve2()
         {
             const ulong limit = 120000;
-            ulong[] radicals = Tools.Radicals(limit);
+            ulong[] radicals = Tools.Tools.Radicals(limit);
             //ulong limitSieve = (ulong)(Math.Sqrt(limit * limit * limit) + 0.5);
-            //bool[] sieve = Tools.BuildSieve(limitSieve);
+            //bool[] sieve = Tools.Tools.BuildSieve(limitSieve);
             //ulong[] radicals = Enumerable.Range(1, (int) limit).Select(x => Radical(sieve, (ulong) x)).ToArray();
             ulong total = 0;
             for (ulong c = 1; c < limit; c++)
@@ -77,7 +81,7 @@ namespace ProjectEuler
                 {
                     ulong lim = c/radicals[c];
                     for (ulong j = 1; j < c/2; j++)
-                        if (Tools.GCD(c, j) == 1)
+                        if (Tools.Tools.GCD(c, j) == 1)
                             if (radicals[c - j]*radicals[j] < lim) 
                                 total += c;
                 }
@@ -89,7 +93,7 @@ namespace ProjectEuler
         {
             const ulong limit = 120000;
             ulong limitSieve = (ulong)(Math.Sqrt(limit * limit * limit) + 0.5);
-            bool[] sieve = Tools.BuildSieve(limitSieve);
+            bool[] sieve = Tools.Tools.BuildSieve(limitSieve);
             //ulong count = 0;
             ulong sum = 0;
             for (ulong a = 1; a < limit / 2; a++)
@@ -100,11 +104,11 @@ namespace ProjectEuler
                     ulong c = a + b;
                     if (!sieve[a] && !sieve[b] && !sieve[c]) // heuristic
                         continue;
-                    if (1 != Tools.GCD(a, b)) // by definition
+                    if (1 != Tools.Tools.GCD(a, b)) // by definition
                         continue;
-                    if (1 != Tools.GCD(a, c)) // by definition
+                    if (1 != Tools.Tools.GCD(a, c)) // by definition
                         continue;
-                    if (1 != Tools.GCD(b, c)) // by definition
+                    if (1 != Tools.Tools.GCD(b, c)) // by definition
                         continue;
                     ulong radB = Radical(sieve, b);
                     ulong radC = Radical(sieve, c);
@@ -120,7 +124,7 @@ namespace ProjectEuler
             return sum;
         }
 
-        private ulong Radical(bool[] sieve, ulong n)
+        private static ulong Radical(bool[] sieve, ulong n)
         {
             //ulong sqrtN = (ulong)(Math.Sqrt(n) + 0.5);
             ulong p = 2;

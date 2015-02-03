@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem149
+    public class Problem149 : ProblemBase
     {
-        public ulong Solve()
+        public Problem149() : base(149)
+        {
+        }
+
+        public override string Solve()
         {
             // |laggedFibonacci| < 1500000
             const long side = 2000;
@@ -64,7 +70,7 @@
                 }
             }
 
-            return (ulong)best;
+            return best.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

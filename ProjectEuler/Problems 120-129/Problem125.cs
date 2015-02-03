@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace ProjectEuler
 {
-    public class Problem125
+    public class Problem125 : ProblemBase
     {
-        public ulong Solve()
+        public Problem125() : base(125)
+        {
+        }
+
+        public override string Solve()
         {
             // Sum square of every consecutive number from a to b and store the result if it's palindromic
             const ulong limit = 100000000;
@@ -20,12 +25,12 @@ namespace ProjectEuler
                     sumSquare += j * j;
                     if (sumSquare >= limit)
                         break; // No need to continue, further addition will also exceed limit
-                    if (Tools.IsPalindromic(sumSquare, 10))
+                    if (Tools.Tools.IsPalindromic(sumSquare, 10))
                         if (!dict.ContainsKey(sumSquare))
                             dict.Add(sumSquare, i);
                 }
             }
-            return dict.Aggregate<KeyValuePair<ulong, ulong>, ulong>(0, (current, kv) => current + kv.Key);
+            return dict.Aggregate<KeyValuePair<ulong, ulong>, ulong>(0, (current, kv) => current + kv.Key).ToString(CultureInfo.InvariantCulture);
         }
     }
 }

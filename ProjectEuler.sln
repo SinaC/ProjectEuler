@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fractions", "Fractions\Frac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudokuSolver", "SudokuSolver\SudokuSolver.csproj", "{F31140AC-DB15-43B9-B75A-FC06EA4E362B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools", "Tools\Tools.csproj", "{67FA660C-FAD8-4E21-A6C3-CE9DECC63531}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{F31140AC-DB15-43B9-B75A-FC06EA4E362B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F31140AC-DB15-43B9-B75A-FC06EA4E362B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F31140AC-DB15-43B9-B75A-FC06EA4E362B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67FA660C-FAD8-4E21-A6C3-CE9DECC63531}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67FA660C-FAD8-4E21-A6C3-CE9DECC63531}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67FA660C-FAD8-4E21-A6C3-CE9DECC63531}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67FA660C-FAD8-4E21-A6C3-CE9DECC63531}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

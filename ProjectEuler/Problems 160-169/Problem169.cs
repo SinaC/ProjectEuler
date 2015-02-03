@@ -2,9 +2,13 @@
 
 namespace ProjectEuler
 {
-    public class Problem169
+    public class Problem169 : ProblemBase
     {
-        public string Solve()
+        public Problem169() : base(169)
+        {
+        }
+
+        public override string Solve()
         {
             BigInteger n = BigInteger.Pow(10, 25);
             BigInteger a, b;
@@ -12,7 +16,7 @@ namespace ProjectEuler
             return a.ToString();
         }
 
-        private void Sub(BigInteger n, out BigInteger a, out BigInteger b)
+        private static void Sub(BigInteger n, out BigInteger a, out BigInteger b)
         {
             if (n == 0)
             {

@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace ProjectEuler
 {
-    public sealed class Problem13 : Problem
+    public sealed class Problem13 : ProblemBase
     {
         public Problem13() : base(13)
         {
@@ -114,7 +114,7 @@ namespace ProjectEuler
             "20849603980134001723930671666823555245252804609722",
             "53503534226472524250874054075591789781264330331690"};
 
-            //string aggregate = numbers.Aggregate(String.Empty, Tools.SumString);
+            //string aggregate = numbers.Aggregate(String.Empty, Tools.Tools.SumString);
             // Only the 11 first digit affect the resulting sum
             ulong sum = numbers.Select(s => Convert.ToUInt64(s.Substring(0, 11))).Aggregate<ulong, ulong>(0, (current, i) => current + i);
             return sum.ToString(CultureInfo.InvariantCulture).Substring(0, 10);

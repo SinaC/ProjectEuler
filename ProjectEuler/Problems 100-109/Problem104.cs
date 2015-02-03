@@ -3,9 +3,13 @@ using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem104
+    public class Problem104 : ProblemBase
     {
-        public ulong Solve()
+        public Problem104() : base(104)
+        {
+        }
+
+        public override string Solve()
         {
             // Brute-force too slow
             //string fn = "1";
@@ -31,7 +35,7 @@ namespace ProjectEuler
             {
                 ulong fn2 = (fn + fn1) % last9Digits; // last 9 digits
                 string s = fn2.ToString(CultureInfo.InvariantCulture);
-                if (s.Length >= 9 && Tools.IsPandigital(s))
+                if (s.Length >= 9 && Tools.Tools.IsPandigital(s))
                 {
                     // Last 9 digits matches, check first 9 digits
                     // Compute first 9 digits of Fn for each right-pandigital
@@ -47,16 +51,16 @@ namespace ProjectEuler
                     // 9 first digits:
                     // 10^8 * 10^frac(log10(n))
                     // or 10^[frac(log10(n)) + 8]
-                    double t = (double)n * log10Phi + log10Multiplier; // Log10(Fn)
+                    double t = n * log10Phi + log10Multiplier; // Log10(Fn)
                     double f = t - Math.Floor(t); // frac(t)
                     ulong first9Digits = (ulong)Math.Pow(10.0, f + 9 - 1);
-                    if (Tools.IsPandigital(first9Digits.ToString(CultureInfo.InvariantCulture)))
-                        return n;
+                    if (Tools.Tools.IsPandigital(first9Digits.ToString(CultureInfo.InvariantCulture)))
+                        return n.ToString(CultureInfo.InvariantCulture);
                 }
                 fn = fn1;
                 fn1 = fn2;
             }
-            return 0;
+            return "0";
         }
     }
 }

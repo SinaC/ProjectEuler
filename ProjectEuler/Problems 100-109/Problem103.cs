@@ -1,13 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 
 namespace ProjectEuler
 {
-    public class Problem103
+    public class Problem103 : ProblemBase
     {
-        public ulong Solve()
+        public Problem103() : base(103)
+        {
+        }
+
+        public override string Solve()
         {
             // min = near_optimal - 1
             ulong[] mins = new ulong[] { 19, 30, 37, 38, 39, 41, 44 };
@@ -17,22 +22,22 @@ namespace ProjectEuler
             ulong bestSum = UInt64.MaxValue;
             ulong bestSet = 0;
             DoStuff(mins, maxs, nums, 0, ref bestSum, ref bestSet);
-            return bestSet;
+            return bestSet.ToString(CultureInfo.InvariantCulture);
         }
 
-        private void DoStuff(ulong[] mins, ulong[] maxs, ulong[] nums, int index, ref ulong bestSum, ref ulong bestSet)
+        private static void DoStuff(IList<ulong> mins, IList<ulong> maxs, ulong[] nums, int index, ref ulong bestSum, ref ulong bestSet)
         {
             for (ulong i = mins[index]; i <= maxs[index]; i++)
             {
                 nums[index] = i;
-                if (index < mins.Length - 1)
+                if (index < mins.Count - 1)
                     DoStuff(mins, maxs, nums, index + 1, ref bestSum, ref bestSet);
                 else
                 {
                     //foreach (ulong n in nums)
                     //    Console.Write(" " + n);
                     //Console.WriteLine();
-                    if (Tools.IsSpecialSet(nums))
+                    if (Tools.Tools.IsSpecialSet(nums))
                     {
                         ulong sum = nums.Aggregate<ulong, ulong>(0, (current, n) => current + n);
                         if (sum < bestSum)

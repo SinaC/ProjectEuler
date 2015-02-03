@@ -2,7 +2,7 @@
 
 namespace ProjectEuler
 {
-    public class Problem135 : Problem
+    public class Problem135 : ProblemBase
     {
         public Problem135() : base(135)
         {

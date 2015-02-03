@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem128
+    public class Problem128 : ProblemBase
     {
-        public ulong Solve()
+        public Problem128() : base(128)
+        {
+        }
+
+        public override string Solve()
         {
             // Only the first and last of each layer must be checked
             // 3n(n-1)+2  first (line above 2, including 2)
@@ -50,7 +51,7 @@ namespace ProjectEuler
                 n++;
             }
             list.Sort();
-            return list[count - 1];
+            return list[count - 1].ToString(CultureInfo.InvariantCulture);
         }
     }
 }

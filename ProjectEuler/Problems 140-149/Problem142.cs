@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem142
+    public class Problem142 : ProblemBase
     {
-        public ulong Solve()
+        public Problem142() : base(142)
+        {
+        }
+
+        public override string Solve()
         {
             // x+y = a^2
             // x-y = b^2
@@ -32,15 +38,15 @@
                     if (0 == c) continue;
                     ulong c2 = c * c;
                     ulong f2 = a2 - c2;
-                    if (!Tools.IsSquare(f2)) continue;
+                    if (!Tools.Tools.IsSquare(f2)) continue;
                     for (ulong b = c & 1; b < c && !fSolved; b += 2)
                     {
                         if (0 == b) continue;
                         ulong b2 = b * b;
                         ulong e2 = c2 - b2;
-                        if (!Tools.IsSquare(e2)) continue;
+                        if (!Tools.Tools.IsSquare(e2)) continue;
                         ulong d2 = a2 + b2 - c2;
-                        if (!Tools.IsSquare(d2)) continue;
+                        if (!Tools.Tools.IsSquare(d2)) continue;
                         // Found
                         fSolved = true;
                         ulong x = (a2 + b2) / 2;
@@ -51,7 +57,7 @@
                 }
                 a++;
             }
-            return result;
+            return result.ToString(CultureInfo.InvariantCulture);
 
             //long a2, b2, c2, d2, e2, f2;
             //bool solved = false;

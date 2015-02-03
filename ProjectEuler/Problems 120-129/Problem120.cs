@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem120
+    public class Problem120 : ProblemBase
     {
-        public ulong Solve()
+        public Problem120() : base(120)
+        {
+        }
+
+        public override string Solve()
         {
             // ((a-1)^n + (a+1)^n)/a^2
             // using binomial theorem
@@ -23,7 +29,7 @@
                 ulong maxN = (a - 1) / 2;
                 sum += 2 * a * maxN;
             }
-            return sum;
+            return sum.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

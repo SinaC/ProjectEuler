@@ -1,9 +1,15 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem145
+    public class Problem145 : ProblemBase
     {
+        public Problem145() : base(145)
+        {
+        }
+
         [TooSlow]
-        public ulong Solve()
+        public override string Solve()
         {
             // Brute-force
             //ulong[] digitsCount = { 0, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000 };
@@ -78,7 +84,7 @@
                 else
                     digits[i]++;
             }
-            return count;
+            return count.ToString(CultureInfo.InvariantCulture);
 
             // Trailing digit cannot be 0
             // 1 digit: 0 solutions

@@ -2,7 +2,7 @@
 
 namespace ProjectEuler
 {
-    public sealed class Problem10 : Problem
+    public sealed class Problem10 : ProblemBase
     {
         public Problem10() : base(10)
         {
@@ -11,7 +11,7 @@ namespace ProjectEuler
         public override string Solve()
         {
             const ulong limit = 2000000;
-            bool[] sieves = Tools.BuildSieve(limit);
+            bool[] sieves = Tools.Tools.BuildSieve(limit);
             ulong sum = 2; // 2 is 1st prime
             for (ulong i = 3; i < limit; i+=2)
                 if (!sieves[i])

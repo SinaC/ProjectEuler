@@ -4,10 +4,14 @@ using System.Threading.Tasks;
 
 namespace ProjectEuler
 {
-    public class Problem200
+    public class Problem200 : ProblemBase
     {
+        public Problem200() : base(200)
+        {
+        }
+
         [UnderConstruction]
-        public ulong Solve()
+        public override string Solve()
         {
             char[] odd =
                 {
@@ -15,7 +19,7 @@ namespace ProjectEuler
                 };
             List<ulong> primeProof200 = new List<ulong>();
             const uint limit = 10000;
-            bool[] sieve = Tools.BuildSieve(limit);
+            bool[] sieve = Tools.Tools.BuildSieve(limit);
             Parallel.For(0, limit + 1, sp =>
                 {
                     ulong p = (ulong)sp;
@@ -55,7 +59,7 @@ namespace ProjectEuler
                             }
                 });
             primeProof200.Sort();
-            return 0;
+            return "0";
         }
     }
 }

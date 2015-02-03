@@ -2,7 +2,7 @@
 
 namespace ProjectEuler
 {
-    public sealed class Problem21 : Problem
+    public sealed class Problem21 : ProblemBase
     {
         public Problem21():base(21)
         {
@@ -21,14 +21,14 @@ namespace ProjectEuler
             //}
             //return sum;
             const ulong limit = 10000;
-            bool[] sieve = Tools.BuildSieve(limit);
+            bool[] sieve = Tools.Tools.BuildSieve(limit);
             ulong sum = 0;
             for (ulong i = 10; i < limit; i++)
             {
                 if (sieve[i])
                 {
-                    ulong factorSum = Tools.SumOfProperDivisors(i);
-                    ulong amicableFactorSum = Tools.SumOfProperDivisors(factorSum);
+                    ulong factorSum = Tools.Tools.SumOfProperDivisors(i);
+                    ulong amicableFactorSum = Tools.Tools.SumOfProperDivisors(factorSum);
                     if (factorSum != amicableFactorSum && i == amicableFactorSum)
                         sum = sum + i;
                 }

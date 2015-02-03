@@ -1,13 +1,19 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem123
+    public class Problem123 : ProblemBase
     {
-        public ulong Solve()
+        public Problem123() : base(123)
+        {
+        }
+
+        public override string Solve()
         {
             // Same as 120 except a are prime numbers
             const ulong limit = 10000000000;
             const ulong sieveLimit = 1000000; // sqrt limit
-            bool[] sieve = Tools.BuildSieve(sieveLimit);
+            bool[] sieve = Tools.Tools.BuildSieve(sieveLimit);
             ulong pn = 3;
             ulong n = 2;
             while (true)
@@ -19,7 +25,7 @@
                 { // remainder = 2an only if odd
                     ulong remainder = 2 * pn * n;
                     if (remainder >= limit)
-                        return n;
+                        return n.ToString(CultureInfo.InvariantCulture);
                 }
                 // Next prime
                 pn += 2;

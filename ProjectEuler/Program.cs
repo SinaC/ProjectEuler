@@ -21,7 +21,7 @@ namespace ProjectEuler
         }
 
         // TODO: use inheritance from Problem and abstract method Solve
-        static public void SolveAll(int limit = 1, bool runTooSlow = false)
+        static public void SolveAll2(int limit = 1, bool runTooSlow = false)
         {
             using (StreamWriter sw = new StreamWriter("results.txt"))
             {
@@ -75,32 +75,60 @@ namespace ProjectEuler
             }
         }
 
-        //private class P11 : Problem
-        //{
-        //    public P11() : base(11)
-        //    {
-        //    }
-
-        //    [TooSlow]
-        //    public override string Solve()
-        //    {
-        //        string data = Data;
-        //        string[] lines = data.Split('\n');
-
-        //        return data;
-        //    }
-        //}
+        static public void SolveAll(bool runTooSlow = false)
+        {
+            using (StreamWriter sw = new StreamWriter("results.txt"))
+            {
+                Assembly assembly = Assembly.GetExecutingAssembly();
+                Type problemBaseType = typeof (ProblemBase);
+                List<ProblemBase> problems = GetTypesInNamespace(assembly, "ProjectEuler")
+                    .Where(x => x.IsSubclassOf(problemBaseType))
+                    .Select(x => assembly.CreateInstance(x.FullName) as ProblemBase)
+                    .OrderBy(x => x.Id).ToList();
+                foreach(ProblemBase problem in problems)
+                {
+                    Type type = problem.GetType();
+                    try
+                    {
+                        MethodInfo solve = type.GetMethod("Solve");
+                        UnderConstruction underConstruction = Attribute.GetCustomAttribute(solve, typeof(UnderConstruction)) as UnderConstruction;
+                        TooSlow tooSlow = Attribute.GetCustomAttribute(solve, typeof(TooSlow)) as TooSlow;
+                        if (underConstruction == null && (tooSlow == null || runTooSlow))
+                        {
+                            string result;
+                            TimeSpan begin = Process.GetCurrentProcess().TotalProcessorTime;
+                            if (solve.GetParameters().Length > 0)
+                            {
+                                string parameter = Path.Combine(@"D:\GitHub\ProjectEuler\Datas", String.Format("{0}.txt", type.Name.ToLower()));
+                                result = solve.Invoke(problem, new object[] { parameter }).ToString();
+                            }
+                            else
+                                result = solve.Invoke(problem, null).ToString();
+                            TimeSpan end = Process.GetCurrentProcess().TotalProcessorTime;
+                            Console.WriteLine("{0}: {1:0}ms -> {2}", type.Name, (end - begin).TotalMilliseconds, result);
+                            sw.WriteLine("{0}: {1:0}ms -> {2}", type.Name, (end - begin).TotalMilliseconds, result);
+                        }
+                        else
+                        {
+                            Console.WriteLine("{0}: {1}", type.Name, underConstruction == null ? "too slow" : "under construction");
+                            sw.WriteLine("{0}: {1}", type.Name, underConstruction == null ? "too slow" : "under construction");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("{0}: exception {1}", type.Name, ex);
+                        sw.WriteLine("{0}: exception {1}", type.Name, ex);
+                    }
+                    sw.Flush();
+                }
+            }
+        }
 
         static void Main(string[] args)
         {
-            //P11 p = new P11();
-            //bool tooSlow = p.IsTooSlow;
-            //bool underConstruction = p.IsUnderConstruction;
-            //string r = p.Solve();
-
             //Problem96 problem = new Problem96();
             //ulong result = problem.Solve(@"D:\GitHub\ProjectEuler\Datas\Problem96.txt");
-            Problem problem = new Problem16();
+            ProblemBase problem = new Problem216();
             string result = problem.Solve();
             //SolveAll();
         }

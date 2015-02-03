@@ -4,7 +4,7 @@ using System.Globalization;
 
 namespace ProjectEuler
 {
-    public sealed class Problem11 : Problem
+    public sealed class Problem11 : ProblemBase
     {
         public Problem11()
             : base(11)
@@ -14,7 +14,7 @@ namespace ProjectEuler
         public override string Solve()
         {
             ulong[,] matrix = new ulong[20, 20];
-            string[] lines = Data.Split('\n');
+            string[] lines = Lines.ToArray();
             for (int i = 0; i < lines.Length; i++)
             {
                 string[] numbers = lines[i].Split(' ');

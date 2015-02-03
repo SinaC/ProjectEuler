@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace ProjectEuler
 {
-    public sealed class Problem27 : Problem
+    public sealed class Problem27 : ProblemBase
     {
         public Problem27() : base(27)
         {
@@ -11,7 +11,7 @@ namespace ProjectEuler
 
         public override string Solve()
         {
-            bool[] sieve = Tools.BuildSieve(1000 * 1000 + 1000 * 1000 + 1000);
+            bool[] sieve = Tools.Tools.BuildSieve(1000 * 1000 + 1000 * 1000 + 1000);
             int bestCount = 0;
             long bestA = 0;
             long bestB = 0;

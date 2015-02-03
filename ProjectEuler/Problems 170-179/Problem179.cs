@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem179
+    public class Problem179 : ProblemBase
     {
-        public ulong Solve()
+        public Problem179() : base(179)
+        {
+        }
+
+        public override string Solve()
         {
             const ulong limit = 10000000;
             ulong sqrtLimit = (ulong)(Math.Sqrt(limit) + 0.5);
@@ -27,7 +32,7 @@ namespace ProjectEuler
             for (ulong i = 2; i < limit; i++)
                 if (sieve[i] == sieve[i + 1])
                     count++;
-            return count;
+            return count.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

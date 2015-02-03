@@ -5,7 +5,7 @@ using System.Numerics;
 
 namespace ProjectEuler
 {
-    public sealed class Problem16 : Problem
+    public sealed class Problem16 : ProblemBase
     {
         public Problem16() : base(16)
         {

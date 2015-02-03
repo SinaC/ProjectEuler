@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem100
+    public class Problem100 : ProblemBase
     {
-        public ulong Solve()
+        public Problem100() : base(100)
+        {
+        }
+
+        public override string Solve()
         {
             // (b/t)*(b-1)/(t-1) = 1/2   b for blue discs   t for total discs
             // 2b^2 – 2b – t^2 + t = 0
@@ -58,7 +63,7 @@ namespace ProjectEuler
                 b = newB;
                 t = newT;
             }
-            return b;
+            return b.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

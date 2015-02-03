@@ -1,11 +1,16 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 
 namespace ProjectEuler
 {
-    public class Problem153
+    public class Problem153 : ProblemBase
     {
-        public ulong Solve()
+        public Problem153() : base(153)
+        {
+        }
+
+        public override string Solve()
         {
             // n/(a+bi) = na/(a^2+b^2) - i * nb/(a^2+b^2)
             // na and nb divisible by a^2+b^2
@@ -26,7 +31,7 @@ namespace ProjectEuler
                 {
                     if (b == 0 && a == 0)
                         continue;
-                    if (Tools.GCD(b, a) != 1)
+                    if (Tools.Tools.GCD(b, a) != 1)
                         continue;
                     // a and b are co-prime
                     //Console.WriteLine("a:{0} b:{1}", a, b);
@@ -59,7 +64,7 @@ namespace ProjectEuler
                     }
                 }
             }
-            return sum;
+            return sum.ToString(CultureInfo.InvariantCulture);
         }
 
         public ulong Solve3()

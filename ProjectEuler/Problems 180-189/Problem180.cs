@@ -1,13 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using Fractions;
 
 namespace ProjectEuler
 {
     // DOESN'T WORK
-    public class Problem180
+    public class Problem180 : ProblemBase
     {
-        public ulong Solve()
+        public Problem180() : base(180)
+        {
+        }
+
+        [UnderConstruction]
+        public override string Solve()
         {
             // f1n(x,y,z) = x^(n+1) + y^(n+1) - z^(n+1)
             // f2n(x,y,z) = (xy+yz+zx) * (x^(n-1) + y^(n-1) - z^(n-1))
@@ -53,7 +59,7 @@ namespace ProjectEuler
                     ulong denominatorSqrt = x.Denominator * x.Denominator * y.Denominator * y.Denominator;
                     OldFraction.Simplify(ref numeratorSqrt, ref denominatorSqrt);
                     // Test n=2 and n=-2 only if sqrt(x^2 + y^2) is a perfect square
-                    if (Tools.IsPerfectSquare(numeratorSqrt) && Tools.IsPerfectSquare(denominatorSqrt))
+                    if (Tools.Tools.IsPerfectSquare(numeratorSqrt) && Tools.Tools.IsPerfectSquare(denominatorSqrt))
                     {
                         numeratorSqrt = (ulong)Math.Sqrt(numeratorSqrt);
                         denominatorSqrt = (ulong)Math.Sqrt(denominatorSqrt);
@@ -122,7 +128,7 @@ namespace ProjectEuler
                 total = OldFraction.Add(total, kv.Key);
                 total.Simplify();
             }
-            return total.Numerator + total.Denominator;
+            return (total.Numerator + total.Denominator).ToString(CultureInfo.InvariantCulture);
         }
 
         class FractionEqualityComparer : IEqualityComparer<OldFraction>

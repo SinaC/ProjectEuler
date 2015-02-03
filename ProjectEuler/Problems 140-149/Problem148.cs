@@ -1,10 +1,15 @@
-﻿using System.Text;
+﻿using System.Globalization;
+using System.Text;
 
 namespace ProjectEuler
 {
-    public class Problem148
+    public class Problem148 : ProblemBase
     {
-        public ulong Solve()
+        public Problem148() : base(148)
+        {
+        }
+
+        public override string Solve()
         {
             // 8th line: 1, 7, 21, 35, 35, 21, 7, 1 -> every numbers except 1 is divisible by 7
             // 9th line: 1, 8, 28, 56, 70, 56, 28, 8, 1 -> 28, 56 and 70 are divisible by 7
@@ -23,14 +28,14 @@ namespace ProjectEuler
             // for row n (starting with 0), if we write n in base p
             // n = sum(i=0->k, a(i) * p^i )   k number of digits of n in base p, a(i) = i-th digit of n in base p
             // then, the number of entries in that row is (a(0)+1) * (a(1)+1) * (a(2)+1) ...  * (a(k)+1)
-            ulong limit = Tools.Pow(10, 9);
+            ulong limit = Tools.Tools.Pow(10, 9);
             ulong p = 7;
             string digits = ConvertToBase(limit - 1, p);
             ulong result = SumUpTo(digits, p);
-            return result;
+            return result.ToString(CultureInfo.InvariantCulture);
         }
 
-        private string ConvertToBase(ulong number, ulong b)
+        private static string ConvertToBase(ulong number, ulong b)
         {
             StringBuilder sb = new StringBuilder();
             while (number > 0)
@@ -43,14 +48,14 @@ namespace ProjectEuler
             return sb.ToString();
         }
 
-        private ulong SumUpTo(string digits, ulong p)
+        private static ulong SumUpTo(string digits, ulong p)
         {
             if (0 == digits.Length)
                 return 1;
             ulong k = (ulong)(digits.Length - 1);
             ulong n = (ulong)(digits[0] - 48);
             ulong subResult = SumUpTo(digits.Substring(1, digits.Length - 1), p);
-            ulong result = ((n * (n + 1)) / 2) * Tools.Pow((p * (p + 1)) / 2, k) + (n + 1) * subResult;
+            ulong result = ((n * (n + 1)) / 2) * Tools.Tools.Pow((p * (p + 1)) / 2, k) + (n + 1) * subResult;
             return result;
         }
     }

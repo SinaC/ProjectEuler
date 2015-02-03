@@ -1,11 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace ProjectEuler
 {
-    public class Problem141
+    public class Problem141 : ProblemBase
     {
-        public ulong Solve()
+        public Problem141() : base(141)
+        {
+        }
+
+        public override string Solve()
         {
             //long limit = 1000000; // sqrt(10^12)
             //ulong sum = 0;
@@ -44,7 +49,7 @@ namespace ProjectEuler
             for (ulong a = 2; a < 200/*trial-error*/; a++)
                 for (ulong b = 1; b < a; b++)
                 {
-                    ulong pgcd = Tools.GCD(a, b);
+                    ulong pgcd = Tools.Tools.GCD(a, b);
                     if (pgcd > 1)
                         continue;
                     for (ulong c = 1; ; c++)
@@ -52,7 +57,7 @@ namespace ProjectEuler
                         ulong m2 = b * c * (b + c * a * a * a);
                         if (m2 >= limit)
                             break;
-                        if (Tools.IsPerfectSquare(m2))
+                        if (Tools.Tools.IsPerfectSquare(m2))
                         {
                             if (dict.ContainsKey(m2))
                                 dict[m2]++;
@@ -61,7 +66,7 @@ namespace ProjectEuler
                         }
                     }
                 }
-            return dict.Aggregate<KeyValuePair<ulong, int>, ulong>(0, (current, kv) => current + kv.Key);
+            return dict.Aggregate<KeyValuePair<ulong, int>, ulong>(0, (current, kv) => current + kv.Key).ToString(CultureInfo.InvariantCulture);
         }
     }
 }

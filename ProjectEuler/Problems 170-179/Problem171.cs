@@ -1,9 +1,15 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem171
+    public class Problem171 : ProblemBase
     {
+        public Problem171() : base(171)
+        {
+        }
+
         [UnderConstruction]
-        public ulong Solve()
+        public override string Solve()
         {
             // min f(n) = 1 if n = 10^k
             // max f(n) = k*9^2 if n = 10^k - 1
@@ -27,7 +33,7 @@
             const ulong limit = 10000;
             bool[] isPerfectSquare = new bool[20 * 81 + 1];
             for (int i = 0; i < isPerfectSquare.Length; i++)
-                isPerfectSquare[i] = Tools.IsPerfectSquare((ulong)i);
+                isPerfectSquare[i] = Tools.Tools.IsPerfectSquare((ulong)i);
 
             ulong count = 0;
             for (ulong n = 1; n <= limit; n++)
@@ -39,10 +45,10 @@
                     count++;
                 }
             }
-            return 0;
+            return count.ToString(CultureInfo.InvariantCulture);
         }
 
-        private ulong SumSquareDigits(ulong number)
+        private static ulong SumSquareDigits(ulong number)
         {
             ulong sum = 0;
             while (number >= 1)

@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem164
+    public class Problem164 : ProblemBase
     {
-        public ulong Solve()
+        public Problem164() : base(164)
+        {
+        }
+
+        public override string Solve()
         {
             const ulong limit = 9;
             const ulong numDigits = 20;
@@ -10,10 +16,10 @@
             ulong result = 0;
             for (ulong i = 1; i <= 9; i++)
                 result += GetCount(limit, count, 0, i, numDigits - 1);
-            return result;
+            return result.ToString(CultureInfo.InvariantCulture);
         }
 
-        private ulong GetCount(ulong limit, ulong[, ,] count, ulong d1, ulong d2, ulong remainDigits)
+        private static ulong GetCount(ulong limit, ulong[, ,] count, ulong d1, ulong d2, ulong remainDigits)
         {
             if (remainDigits == 0)
                 return 1;

@@ -1,11 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace ProjectEuler
 {
-    public class Problem204
+    public class Problem204 : ProblemBase
     {
-        public ulong Solve()
+        public Problem204() : base(204)
+        {
+        }
+
+        public override string Solve()
         {
             // Out of memory :p
             //const ulong hamming = 100;
@@ -70,7 +75,7 @@ namespace ProjectEuler
                 foreach (ulong m in toAdd.Where(m => !multiples.ContainsKey(m)))
                     multiples.Add(m, m);
             }
-            return (ulong)multiples.Count;
+            return multiples.Count.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

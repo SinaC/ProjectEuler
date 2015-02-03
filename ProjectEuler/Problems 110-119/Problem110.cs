@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem110
+    public class Problem110 : ProblemBase
     {
-        public ulong Solve()
+        public Problem110() : base(110)
+        {
+        }
+
+        public override string Solve()
         {
             // TODO: optimise using http://www.mathpages.com/home/kmath332.htm and http://oeis.org/A018892
 
@@ -45,10 +51,10 @@
                     increment *= 2;
                 n += increment;
             }
-            return solution;
+            return solution.ToString(CultureInfo.InvariantCulture);
         }
 
-        private ulong ProductPrimesExponent(ulong[] primes, ulong factorsCount, ulong maxExponent, ulong startingPrimeIndex)
+        private static ulong ProductPrimesExponent(ulong[] primes, ulong factorsCount, ulong maxExponent, ulong startingPrimeIndex)
         {
             if (factorsCount <= 1)
                 return 1;
@@ -68,7 +74,7 @@
             return best;
         }
 
-        private ulong FactorOfSquareCount(ulong[] primes, ulong n)
+        private static ulong FactorOfSquareCount(ulong[] primes, ulong n)
         {
             ulong count = 1;
             int idx = 0;

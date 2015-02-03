@@ -3,9 +3,13 @@ using System.Numerics;
 
 namespace ProjectEuler
 {
-    public class Problem119
+    public class Problem119 : ProblemBase
     {
-        public string Solve()
+        public Problem119() : base(119)
+        {
+        }
+
+        public override string Solve()
         {
             // Compute a^b (arbitrary limit for a and b) until we have found 40 results. Sort these results and hope the 30th will be the right one :p
             string[] results = new string[40];
@@ -15,13 +19,13 @@ namespace ProjectEuler
                 {
                     BigInteger p = BigInteger.Pow(a, b);
                     string s = p.ToString();
-                    ulong sumDigits = Tools.SumDigits(s);
+                    ulong sumDigits = Tools.Tools.SumDigits(s);
                     if (a == sumDigits)
                         results[idx++] = s;
                     if (idx == results.Length)
                         break;
                 }
-            Array.Sort(results, Tools.CompareNumberAsString);
+            Array.Sort(results, Tools.Tools.CompareNumberAsString);
             return results[29];
         }
     }

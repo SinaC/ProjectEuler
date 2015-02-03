@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjectEuler
 {
-    public class Problem140
+    public class Problem140 : ProblemBase
     {
-        public ulong Solve()
+        public Problem140() : base(140)
+        {
+        }
+
+        public override string Solve()
         {
             // Compute generating function: Gk = Gk-1 + Gk-2 with G1 = 1 and G2 = 4     http://en.wikipedia.org/wiki/Fibonacci_number#Power_series
             // s(x) = SUM(1,Gk * x^k)  k is SUM index and goes to infinity
@@ -34,7 +35,7 @@ namespace ProjectEuler
             //for (ulong i = 1; i < 100000000; i++)
             //{
             //    ulong delta = 5 * i * i + 14 * i + 1;
-            //    if (Tools.IsPerfectSquare(delta))
+            //    if (Tools.Tools.IsPerfectSquare(delta))
             //    {
             //        Console.WriteLine(i + "-->" + delta);
             //        nuggets.Add(i);
@@ -82,7 +83,7 @@ namespace ProjectEuler
                 else
                     nuggets[i] = nuggets[i - 1] + 2*fibonacci[2*(i + 1)];
 
-            return nuggets.Aggregate((ulong) 0, (n, i) => n + i);
+            return nuggets.Aggregate((ulong)0, (n, i) => n + i).ToString(CultureInfo.InvariantCulture);
 
 
             // d^2 = 5*n^2 + 14*n + 1 -> diophantine equation http://www.alpertron.com.ar/QUAD.HTM

@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem187
+    public class Problem187 : ProblemBase
     {
-        public ulong Solve()
+        public Problem187() : base(187)
+        {
+        }
+
+        public override string Solve()
         {
             // Brute-force
             // TODO:
@@ -15,7 +20,7 @@ namespace ProjectEuler
             const ulong limit = 100000000;
             const ulong sieveLimit = limit / 2;
             ulong sqrtLimit = (ulong)(Math.Sqrt(limit) + 0.5);
-            bool[] sieve = Tools.BuildSieve(1 + sieveLimit);
+            bool[] sieve = Tools.Tools.BuildSieve(1 + sieveLimit);
             ulong count = 0;
             for (ulong i = 2; i <= sqrtLimit; i++)
             {
@@ -29,7 +34,7 @@ namespace ProjectEuler
                     count++;
                 }
             }
-            return count;
+            return count.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

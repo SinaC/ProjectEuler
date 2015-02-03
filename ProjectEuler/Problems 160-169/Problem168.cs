@@ -1,11 +1,14 @@
-﻿using System;
-using System.Numerics;
+﻿using System.Numerics;
 
 namespace ProjectEuler
 {
-    public class Problem168
+    public class Problem168 : ProblemBase
     {
-        public ulong Solve()
+        public Problem168() : base(168)
+        {
+        }
+
+        public override string Solve()
         {
             // Brute-force
             //ulong sum = 0;
@@ -62,7 +65,7 @@ namespace ProjectEuler
                     biPower10K *= 10;
                 }
             }
-            return Convert.ToUInt64(sum.ToString());
+            return sum.ToString();
         }
     }
 }

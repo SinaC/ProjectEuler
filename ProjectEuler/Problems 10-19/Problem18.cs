@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace ProjectEuler
 {
-    public sealed class Problem18 : Problem
+    public sealed class Problem18 : ProblemBase
     {
         public Problem18()
             : base(18)
@@ -14,7 +14,7 @@ namespace ProjectEuler
 
         public override string Solve()
         {
-            string[] lines = Data.Split('\n');
+            string[] lines = Lines.ToArray();
             //foreach (string line in lines)
             //{
             //    string[] numbers = line.Split(' ');

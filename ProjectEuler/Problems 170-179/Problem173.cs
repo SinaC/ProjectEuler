@@ -1,8 +1,14 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem173
+    public class Problem173 : ProblemBase
     {
-        public ulong Solve()
+        public Problem173() : base(173)
+        {
+        }
+
+        public override string Solve()
         {
             // Number of tiles needed for a square of side S -> 4(C-1)
             // Start with a square and add englobing square until limit is reached
@@ -21,7 +27,7 @@
                         break; // No need to continue with biggest square
                 }
             }
-            return count;
+            return count.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Globalization;
 
 namespace ProjectEuler
 {
-    public class Problem144
+    public class Problem144 : ProblemBase
     {
-        public ulong Solve()
+        public Problem144() : base(144)
+        {
+        }
+
+        public override string Solve()
         {
             // Entering point
             double oldX = 0;
@@ -34,7 +39,7 @@ namespace ProjectEuler
                 newX = -b - oldX;
                 newY = reflectM * newX + reflectN;
             }
-            return count;
+            return count.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

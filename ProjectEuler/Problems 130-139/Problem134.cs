@@ -1,12 +1,18 @@
-﻿namespace ProjectEuler
+﻿using System.Globalization;
+
+namespace ProjectEuler
 {
-    public class Problem134
+    public class Problem134 : ProblemBase
     {
-        public ulong Solve()
+        public Problem134() : base(134)
+        {
+        }
+
+        public override string Solve()
         {
             ulong[] digitsCount = { 0, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000 };
             const ulong limit = 1000000;
-            bool[] sieve = Tools.BuildSieve(2 * limit);
+            bool[] sieve = Tools.Tools.BuildSieve(2 * limit);
             ulong p1 = 5; // first prime to consider
             ulong p2 = 7; // consecutive prime
             ulong sum = 0;
@@ -41,7 +47,7 @@
                 // number / p2 must be integral
                 // Solve equation p1*x = p2 (mod 10^digits(p1))
                 long x, dummy;
-                Tools.ExtendedPGCD((long)p2, (long)pow10, out x, out dummy);
+                Tools.Tools.ExtendedPGCD((long)p2, (long)pow10, out x, out dummy);
                 ulong result;
                 // number = p2 * ( ( p1 * x ) % 10^digits(p1) )
                 if (x < 0)
@@ -57,7 +63,7 @@
                 while (sieve[++p2])
                     ; // empty statement
             }
-            return sum;
+            return sum.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
 namespace ProjectEuler
 {
-    public sealed class Problem22 : Problem
+    public sealed class Problem22 : ProblemBase
     {
         public Problem22()
             : base(22)
